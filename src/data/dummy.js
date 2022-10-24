@@ -39,10 +39,116 @@ import solana from './solana.png'
 import dogecoin from './dogecoin.png'
 import dai from './dai.png'
 import litecoin from './litecoin.png'
-
+import binance from './binance.png'
+import bitstamp from './bitstamp.png'
+import deribit from './deribit.png'
 // import product8 from './product8.jpg';
 
+export const vaultGrid = [
 
+  { field: 'name',
+    headerText: 'Name',
+    width: '235',
+    textAlign: 'Center' },
+  { field: 'amount',
+    headerText: 'Blance',
+    width: '240',
+    textAlign: 'Center' },
+];
+
+export const vaultData = [  
+  {
+    name: "John Berry",
+    amount: "123.45",
+  },
+  {
+    name: "Tom Carry",
+    amount: "123.45",
+  },
+  {
+    name: "Alice Gibbson",
+    amount: "123.45",
+  },
+];
+
+
+export const WalletDataJohn = [  
+  {
+    name: "BTC",
+    amount: "33.45",
+  },
+  {
+    name: "ETH",
+    amount: "60.00",
+  },
+  {
+    name: "USDC",
+    amount: "30.00",
+  },
+];
+
+
+export const WalletDataTom = [  
+  {
+    name: "BTC",
+    amount: "33.45",
+  },
+  {
+    name: "ETH",
+    amount: "60.00",
+  },
+  {
+    name: "USDC",
+    amount: "30.00",
+  },
+];
+
+
+export const WalletDataAlice = [  
+  {
+    name: "BTC",
+    amount: "33.45",
+  },
+  {
+    name: "ETH",
+    amount: "60.00",
+  },
+  {
+    name: "USDC",
+    amount: "30.00",
+  },
+];
+
+export const exchangeData = [  
+  {
+    name: "Deribit",
+    amount: "123.45",
+  },
+  {
+    name: "Binance",
+    amount: "133.45",
+  },
+  {
+    name: "Bitstamp",
+    amount: "143.45",
+  },
+];
+
+
+export const FiatData = [  
+  {
+    name: "USD",
+    amount: "33.45",
+  },
+  {
+    name: "EUR",
+    amount: "60.00",
+  },
+  {
+    name: "CNY",
+    amount: "30.00",
+  },
+];
 
 export const assetsData = [  
   {

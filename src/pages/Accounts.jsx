@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Modal, ConEx, Addwallet } from '../components';
+import { Tabs, Modal, ConEx, Addwallet, App } from '../components';
 
 const Accounts = () => {
   const toolbarOptions = ['Search'];
@@ -17,9 +17,6 @@ const Accounts = () => {
 
   return (
     <div className=" account md:m-2  md:p-3 ">
-
-      <ConEx />
-
 
 
       <Tabs />

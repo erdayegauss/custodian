@@ -25,6 +25,8 @@ const style = {
 };
 
 
+
+
 const countries = [
   { code: 0, label: 'BTC', phone: '376' },
   {
@@ -50,7 +52,7 @@ function ChildModal() {
   };
 
   return (
-    <React.Fragment>
+    <div >
       <Button onClick={handleOpen}>Connect</Button>
       <Modal
         hideBackdrop
@@ -104,7 +106,7 @@ function ChildModal() {
           </DialogActions>
         </Dialog>
       </Modal>
-    </React.Fragment>
+    </div>
   );
 }
 
@@ -135,8 +137,8 @@ const ConEx = () => {
   };
 
   return (
-    <div>
-      <Button onClick={handleOpen}>+ Exchange Account</Button>
+    <div style={{ display: "flex", justifyContent: "right", alignItems:"right", margin: "10px" }}>
+      <Button variant="outlined" onClick={handleOpen}>+ Exchange Account</Button>
       <Modal
         open={open}
         onClose={handleClose}
