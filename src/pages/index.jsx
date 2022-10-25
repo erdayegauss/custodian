@@ -18,3 +18,6 @@ export { default as Assets } from './Assets';
 export { default as Accounts } from './Accounts';
 export { default as Clearance } from './Clearance';
 export { default as Settlement } from './Settlement';
+export { default as Network } from './Network';
+export { default as Whitelist } from './Whitelist';
+export { default as Defi } from './Defi';

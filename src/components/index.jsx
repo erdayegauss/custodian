@@ -26,3 +26,5 @@ export { default as ConEx } from './ConEx';
 export { default as Slides } from './Slides';
 export { default as Addwallet } from './Addwallet';
 export { default as App } from './App';
+export { default as Netcard } from './Netcard';
+export { default as Deficard } from './Deficard';
