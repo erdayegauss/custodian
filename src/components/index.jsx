@@ -28,3 +28,4 @@ export { default as Addwallet } from './Addwallet';
 export { default as App } from './App';
 export { default as Netcard } from './Netcard';
 export { default as Deficard } from './Deficard';
+export { default as TXS } from './TXS';

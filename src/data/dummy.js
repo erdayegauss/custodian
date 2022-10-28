@@ -9,10 +9,10 @@ import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
 import { GrLocation } from 'react-icons/gr';
-import avatar from './Safeguard1.jpg';
-import avatar2 from './Safeguard1.jpg';
-import avatar3 from './Safeguard1.jpg';
-import avatar4 from './Safeguard1.jpg';
+import avatar from './avatar.jpg';
+import avatar2 from './avatar2.jpg';
+import avatar3 from './avatar3.png';
+import avatar4 from './avatar4.jpg';
 import product1 from './product1.jpg';
 import product2 from './product2.jpg';
 import product3 from './product3.jpg';
@@ -53,6 +53,60 @@ import matic from './matic.png'
 import yfi from './yfi.png'
 import curve from './curve.png'
 import op from './op.png'
+
+
+
+export const userData = [
+    { ID: '0', label: "John", name: 'John Doe', image: avatar },
+    { ID: '1', label: "Tom", name: 'Tom Hanks', image: avatar2 },
+    { ID: '2', label: "Jerry", name: 'Jerry Lee', image: avatar3 },
+    { ID: '3', label: "Shaun", name: 'Shaun Parker', image: avatar4 },
+  ]
+
+
+
+
+export const txData = [{
+    CreatedBy: "Fresh Tomato",
+    To: 'Vinet',
+    TotalAmount: 32.38,
+    From: 'Fresh Tomato',
+    CreatedAt: '2022-09-12 12:21:33',
+    Status: 'pending',
+    StatusBg: '#FB9678',
+    ProductImage: bitcoin,
+
+    Type: "Transfer",
+    Address: "0x12343534365465475765756757567657577",
+    Hash: "0x56345734dfasdfasdfastwerfxfq2342457356",
+    ID: "45344357567",
+    Fee: "0.0001ETH",
+    updated: "2022-09-12 12:21:33",
+    Signed: "Fresh",
+    AML: "NA",
+    Note: "deal",
+},
+{
+    CreatedBy: "Butter Scotch",
+    To: 'Carson Darrin',
+    TotalAmount: 56.34,
+    From: 'Butter Scotch',
+    CreatedAt: '2022-10-12 12:21:33',
+    Status: 'complete',
+    StatusBg: '#8BE78B',
+    ProductImage: ethereum,
+
+
+    Type: "Transfer",
+    Address: "0x4095283746asda1243456756341ababa577",
+    Hash: "0x56345734dfasdfasdfastwerfxfq2342457356",
+    ID: "45344357567",
+    Fee: "0.0001ETH",
+    updated: "2022-09-12 12:21:33",
+    Signed: "Butter",
+    AML: "NA",
+    Note: "pls",
+},]
 
 export const defiData = [{
         image: uni,
@@ -262,15 +316,13 @@ export const iconData = [{
 ];
 
 
-export const gridOrderImage = (props) => ( <
-    div >
+export const gridOrderImage = (props) => ( <div >
     <
     img className = "rounded-xl h-20 md:ml-3"
     src = { props.ProductImage }
     alt = "order-item" /
     >
-    <
-    /div>
+    </div>
 );
 
 export const gridOrderStatus = (props) => ( <
@@ -278,8 +330,7 @@ export const gridOrderStatus = (props) => ( <
     style = {
         { background: props.StatusBg }
     }
-    className = "text-white py-1 px-2 capitalize rounded-2xl text-md" > { props.Status } <
-    /button>
+    className = "text-white py-1 px-2 capitalize rounded-2xl text-md" > { props.Status } </button>
 );
 
 export const kanbanGrid = [{
@@ -307,30 +358,19 @@ export const kanbanGrid = [{
         allowToggle: true
     },
 ];
-const gridEmployeeProfile = (props) => ( <
-    div className = "flex items-center gap-2" >
-    <
-    img className = "rounded-full w-10 h-10"
+const gridEmployeeProfile = (props) => ( <div className = "flex items-center gap-2" >
+    <img className = "rounded-full w-10 h-10"
     src = { props.EmployeeImage }
-    alt = "employee" /
-    >
-    <
-    p > { props.Name } < /p> < /
-    div >
+    alt = "employee" />
+    <p> { props.Name } </p> </div >
 );
 
-const gridEmployeeCountry = (props) => ( <
-    div className = "flex items-center justify-center gap-2" >
-    <
-    GrLocation / >
-    <
-    span > { props.Country } < /span> < /
-    div >
+const gridEmployeeCountry = (props) => ( <div className = "flex items-center justify-center gap-2" >
+    <GrLocation />
+    <span > { props.Country } </span> </div >
 );
-export const EditorData = () => ( <
-    div >
-    <
-    h3 >
+export const EditorData = () => ( <div >
+    <h3 >
     Try React React has been designed from the start
     for gradual adoption, and you can use as little or as much React as you need.Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React - powered app, the links in this section will help you get started.
 
@@ -363,36 +403,18 @@ export const EditorData = () => ( <
 
     JavaScript Resources The React documentation assumes some familiarity with programming in the JavaScript language.You don’ t have to be an expert, but it’ s harder to learn both React and JavaScript at the same time.
 
-    We recommend going through this JavaScript overview to check your knowledge level.It will take you between 30 minutes and an hour but you will feel more confident learning React. <
-    /h3> < /
-    div >
+    We recommend going through this JavaScript overview to check your knowledge level.It will take you between 30 minutes and an hour but you will feel more confident learning React. </h3> < /div >
 );
-const customerGridImage = (props) => ( <
-    div className = "image flex gap-4" >
-    <
-    img className = "rounded-full w-10 h-10"
+const customerGridImage = (props) => ( <div className = "image flex gap-4" >
+    <img className = "rounded-full w-10 h-10"
     src = { props.CustomerImage }
-    alt = "employee" /
-    >
-    <
-    div >
-    <
-    p > { props.CustomerName } < /p> <
-    p > { props.CustomerEmail } < /p> < /
-    div > <
-    /div>
+    alt = "employee" />
+    <div >
+    <p> { props.CustomerName } { props.CustomerEmail } </p> </div > </div>
 );
 
-const customerGridStatus = (props) => ( <
-    div className = "flex gap-2 justify-center items-center text-gray-700 capitalize" >
-    <
-    p style = {
-        { background: props.StatusBg }
-    }
-    className = "rounded-full h-3 w-3" / >
-    <
-    p > { props.Status } < /p> < /
-    div >
+const customerGridStatus = (props) => ( <div className = "flex gap-2 justify-center items-center text-gray-700 capitalize" >
+    <p style = {{ background: props.StatusBg }} className = "rounded-full h-3 w-3"/> <p> { props.Status } </p></div>
 );
 export const areaPrimaryXAxis = {
     valueType: 'DateTime',
@@ -777,6 +799,14 @@ export const links = [{
             },
         ],
     },
+
+    {
+        title: 'history',
+        links: [{
+            name: 'Tx',
+            icon: < IoMdContacts / > ,
+        }, ],
+    },
 ];
 
 export const cartData = [{
@@ -1108,6 +1138,57 @@ export const ordersGrid = [{
     {
         field: 'Location',
         headerText: 'Location',
+        width: '150',
+        textAlign: 'Center',
+    },
+];
+
+
+
+export const txGrid = [{
+        headerText: 'Asset',
+        template: gridOrderImage,
+        textAlign: 'Center',
+        width: '120',
+    },
+    {
+        field: 'From',
+        headerText: 'From',
+        width: '150',
+        editType: 'dropdownedit',
+        textAlign: 'Center',
+    },
+    {
+        field: 'To',
+        headerText: 'To',
+        width: '150',
+        textAlign: 'Center',
+    },
+    {
+        field: 'TotalAmount',
+        headerText: 'Net Amount',
+        format: 'C2',
+        textAlign: 'Center',
+        editType: 'numericedit',
+        width: '150',
+    },
+    {
+        headerText: 'Status',
+        template: gridOrderStatus,
+        field: 'OrderItems',
+        textAlign: 'Center',
+        width: '120',
+    },
+    {
+        field: 'CreatedBy',
+        headerText: 'Created By',
+        width: '120',
+        textAlign: 'Center',
+    },
+
+    {
+        field: 'CreatedAt',
+        headerText: 'Created At',
         width: '150',
         textAlign: 'Center',
     },

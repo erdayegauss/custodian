@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Network, Defi, Whitelist, Clearance, Settlement, Assets, Accounts, Calendar, Stacked, Pyramid, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
+import { Tx, Network, Defi, Whitelist, Clearance, Settlement, Assets, Accounts, Calendar, Stacked, Pyramid, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -68,17 +68,21 @@ const App = () => {
               {themeSettings && (<ThemeSettings />)}
 
               <Routes>
-                {/* dashboard  */}
+                {/* fund  */}
                 <Route path="/" element={(<Assets />)} />
                 <Route path="/accounts" element={(<Accounts />)} />
                 <Route path="/assets" element={(<Assets />)} />
 
-                {/* pages  */}
+                {/* app  */}
                 <Route path="/clearance" element={<Clearance />} />
                 <Route path="/settlement" element={<Settlement />} />
                 <Route path="/network" element={<Network />} />
                 <Route path="/whitelist" element={<Whitelist />} />
                 <Route path="/defi" element={<Defi />} />
+                <Route path="/Tx" element={<Tx />} />
+
+                {/* history  */}
+
                 {/* apps  */}
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />

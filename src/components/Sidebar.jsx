@@ -6,6 +6,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { links, iconData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
+import { TXS } from './';
 
 const Sidebar = () => {
   const { currentColor, activeMenu, setActiveMenu, screenSize } = useStateContext();
@@ -27,6 +28,8 @@ const Sidebar = () => {
             <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
             <img className="rounded-lg h-10 w-18" src={iconData[4].image} alt="" /> <span>Metaharvest</span>
             </Link>
+
+
             <TooltipComponent content="Menu" position="BottomCenter">
               <button
                 type="button"
@@ -39,6 +42,9 @@ const Sidebar = () => {
             </TooltipComponent>
           </div>
           <div className="mt-10 ">
+
+          
+                      
             {links.map((item) => (
               <div key={item.title}>
                 <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase">
