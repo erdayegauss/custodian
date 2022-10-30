@@ -13,6 +13,19 @@ import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
 import avatar4 from './avatar4.jpg';
+import avatar5 from './avatar5.png';
+import avatar6 from './avatar6.png';
+import avatar7 from './avatar7.png';
+import avatar8 from './avatar8.png';
+import avatar9 from './avatar9.png';
+import avatar10 from './avatar10.png';
+import avatar11 from './avatar11.png';
+import avatar12 from './avatar12.png';
+import avatar13 from './avatar13.jpeg';
+
+
+
+
 import product1 from './product1.jpg';
 import product2 from './product2.jpg';
 import product3 from './product3.jpg';
@@ -39,9 +52,7 @@ import solana from './solana.png'
 import dogecoin from './dogecoin.png'
 import dai from './dai.png'
 import litecoin from './litecoin.png'
-import binance from './binance.png'
-import bitstamp from './bitstamp.png'
-import deribit from './deribit.png'
+
 // import product8 from './product8.jpg';
 import uni from './uni.png'
 import aave from './aave.png'
@@ -54,13 +65,50 @@ import yfi from './yfi.png'
 import curve from './curve.png'
 import op from './op.png'
 
+import usd from './usd.png'
+import euro from './euro.png'
+import cny from './cny.png'
+
+import binance from './binance.png'
+import bitstamp from './bitstamp.png'
+import deribit from './deribit.png'
+import coinbase from './coinbase.png'
+import ftx from './ftx.png'
+import bitfinex from  './bitfinex.png'
+import kraken from './kraken.png'
+import gemini from './gemini.png'
+import kucoin from './kucoin.png'
+
+
+import zilliqa from './zilliqa.png'
+import gether from './gether.png'
+import b2c2 from './b2c2.jpeg'
+import hodlnaut from './hodlnaut.png'
+import galaxy from './galaxy.webp'
+import silver from './silver.png'
+import signature from './signature.png'
+import cosmos from './cosmos.png'
+
+import { fontSize } from '@mui/system';
+
+
 
 
 export const userData = [
-    { ID: '0', label: "John", name: 'John Doe', image: avatar },
-    { ID: '1', label: "Tom", name: 'Tom Hanks', image: avatar2 },
-    { ID: '2', label: "Jerry", name: 'Jerry Lee', image: avatar3 },
-    { ID: '3', label: "Shaun", name: 'Shaun Parker', image: avatar4 },
+    { ID: '0', label: "John", name: 'John Doe', image: avatar, status:"active", statusBg:"green" },
+    { ID: '1', label: "Lily", name: 'Lily Hanks', image: avatar2 , status:"active", statusBg:"green"},
+    { ID: '2', label: "Jerry", name: 'Jerry Lee', image: avatar3, status:"verifying" , statusBg:"#8BE78B"},
+    { ID: '3', label: "Shaun", name: 'Shaun Parker', image: avatar4 , status:"active", statusBg:"green"},
+    { ID: '4', label: "Kevin", name: 'Kevin Woods', image: avatar5 , status:"invalid", statusBg:"red"},
+    { ID: '5', label: "Richard", name: 'Richard Green', image: avatar6 , status:"active", statusBg:"green"},
+    { ID: '6', label: "Jim", name: 'Jim Roberston', image: avatar7 , status:"verifying", statusBg:"#8BE78B"},
+    { ID: '7', label: "Dwright", name: 'Dwright Schulz', image: avatar8 , status:"invalid", statusBg:"red"},
+    { ID: '8', label: "Sam", name: 'Sam Scot', image: avatar9 , status:"active", statusBg:"green"},
+    { ID: '9', label: "Peter", name: 'Peter Baum', image: avatar10 , status:"invalid", statusBg:"red"},
+    { ID: '10', label: "Sherry", name: 'Sherry Low', image: avatar11 , status:"active", statusBg:"green"},
+    { ID: '11', label: "Flower", name: 'Flower Cook', image: avatar12 , status:"invalid", statusBg:"red"},
+    { ID: '12', label: "Hank", name: 'Hank Paul', image: avatar13 , status:"verifying", statusBg:"#8BE78B"},
+    { ID: '13', label: "Hoe", name: 'Hoe Rhodes', image: avatar13 , status:"invalid", statusBg:"red"},
   ]
 
 
@@ -147,31 +195,140 @@ export const defiData = [{
 ];
 
 
-export const vaultGrid = [
 
+export const vaultImage = (props) => ( <button onClick={() => {console.log("a popup will be great"); }}>
+    <img style={{width: "40px",}}
+    src = { props.image }
+    alt = "vault" />
+    </button>
+);
+
+
+export const vaultGrid = [
+    {
+        headerText: 'Image',
+        fontWeight: "bold",
+        fontSize:'100',
+        template: vaultImage,
+        textAlign: 'left',
+        width: '33%',
+    },
     {
         field: 'name',
         headerText: 'Name',
-        width: '235',
-        textAlign: 'Center'
+        width: '33%',
+        textAlign: 'Left'
     },
     {
         field: 'amount',
-        headerText: 'Blance',
-        width: '240',
-        textAlign: 'Center'
+        headerText: 'USD Amount',
+        width: '33%',
+        textAlign: 'Left'
     },
 ];
 
+
+
+export const exchangeGrid = [
+    {
+        headerText: '',
+        fontWeight: "bold",
+        fontSize:'100',
+        template: vaultImage,
+        textAlign: 'left',
+        width: '33%',
+    },
+    {
+        field: 'name',
+        headerText: 'Name',
+        width: '33%',
+        textAlign: 'Left'
+    },
+    {
+        field: 'amount',
+        headerText: 'USD Amount',
+        width: '33%',
+        textAlign: 'Left'
+    },
+];
+
+
+export const fiatGrid = [
+    {
+        headerText: 'Image',
+        fontWeight: "bold",
+        fontSize:'100',
+        template: vaultImage,
+        textAlign: 'left',
+        width: '33%',
+    },
+    {
+        field: 'name',
+        headerText: 'Name',
+        width: '33%',
+        textAlign: 'Left'
+    },
+    {
+        field: 'amount',
+        headerText: 'USD Amount',
+        width: '33%',
+        textAlign: 'Left'
+    },
+];
+
+
+export const whitelistImage = (props) => ( <div >
+    <img className = "rounded-xl h-20 md:ml-3"
+    src = { props.image }
+    alt = "order-item" />
+    </div>
+);
+
+
+export const whitelistStatus = (props) => ( <div >
+          <button type = "button"
+    style = {{ background: props.statusBg }}
+    className = "text-white py-1 px-2 capitalize rounded-2xl text-md" > { props.status} </button>
+    </div>
+);
+
+export const WhitelistGrid = [
+    {
+        headerText: '',
+        field: "image",
+        template: whitelistImage,
+        textAlign: 'left',
+        width: '33%',
+    },
+    {
+        field: 'name',
+        headerText: 'Name',
+        width: '33%',
+        textAlign: 'Left'
+    },
+    {
+        field: 'status',
+        headerText: 'status',
+        template: whitelistStatus,
+        width: '33%',
+        textAlign: 'Left'
+    },
+];
+
+
+
 export const vaultData = [{
+        image: deribit,
         name: "John Berry",
         amount: "123.45",
     },
     {
+        image: binance,
         name: "Tom Carry",
         amount: "123.45",
     },
     {
+        image: bitstamp,
         name: "Alice Gibbson",
         amount: "123.45",
     },
@@ -224,71 +381,162 @@ export const WalletDataAlice = [{
 
 export const exchangeData = [{
         name: "Deribit",
+        image: deribit,
         amount: "123.45",
     },
     {
         name: "Binance",
+        image: binance,
         amount: "133.45",
     },
     {
         name: "Bitstamp",
+        image: bitstamp,
+        amount: "143.45",
+    },
+    {
+        name: "Gemini",
+        image: gemini,
+        amount: "143.45",
+    },
+    {
+        name: "kucoin",
+        image: kucoin,
+        amount: "143.45",
+    },
+    {
+        name: "Bitfinex",
+        image: bitfinex,
+        amount: "143.45",
+    },
+    {
+        name: "Kraken",
+        image: kraken,
+        amount: "143.45",
+    },
+    {
+        name: "FTX",
+        image: ftx,
+        amount: "143.45",
+    },
+    {
+        name: "Coinbase",
+        image: coinbase,
         amount: "143.45",
     },
 ];
 
 
 export const FiatData = [{
+        image: usd,
         name: "USD",
         amount: "33.45",
     },
     {
+        image: euro,
         name: "EUR",
         amount: "60.00",
     },
     {
+        image: cny,
         name: "CNY",
         amount: "30.00",
     },
 ];
 
+
+export const partnerData = [{
+    image: zilliqa,
+    label: 'Zilliqa',
+    id: 0,
+},
+{
+    image: cosmos,
+    label: 'Cosmos',
+    id: 1,
+},
+{
+    image: b2c2,
+    label: 'B2C2',
+    id: 2,
+},
+{
+    image: hodlnaut,
+    label: 'Hodlnaut',
+    id: 3,
+},
+{
+    image: galaxy,
+    label: 'Galaxy Digital',
+    id: 4,
+},
+{
+    image: silver,
+    label: 'SilverGate Bank',
+    id: 5,
+}, 
+{
+    image: signature,
+    label: 'Signature Bank',
+    id: 6,
+}, 
+];
+
+
 export const assetsData = [{
         image: bitcoin,
-        name: 'BTC',
+        label: 'BTC',
+        id: 0,
     },
     {
         image: ethereum,
-        name: 'ETH',
+        label: 'ETH',
+        id: 1,
     },
     {
         image: tether,
-        name: 'USDT',
+        label: 'USDT',
+        id: 2,
     },
     {
         image: usdc,
-        name: 'USDC',
+        label: 'USDC',
+        id: 3,
     },
     {
         image: xrp,
-        name: 'XRP',
+        label: 'XRP',
+        id: 4,
     },
     {
         image: bnb,
-        name: 'BNB',
-    }, {
+        label: 'BNB',
+        id: 5,
+    }, 
+    {
         image: cardano,
-        name: 'ADA',
-    }, {
+        label: 'ADA',
+        id: 6,
+    }, 
+    {
         image: solana,
-        name: 'SOL',
-    }, {
+        label: 'SOL',
+        id: 7,
+    }, 
+    {
         image: dogecoin,
-        name: 'DOGE',
-    }, {
+        label: 'DOGE',
+        id: 8,
+    }, 
+    {
         image: dai,
-        name: 'DAI',
-    }, {
+        label: 'DAI',
+        id: 9,
+    }, 
+    {
         image: litecoin,
-        name: 'LTC',
+        label: 'LTC',
+        id: 10,
     },
 ];
 
@@ -317,13 +565,16 @@ export const iconData = [{
 
 
 export const gridOrderImage = (props) => ( <div >
-    <
-    img className = "rounded-xl h-20 md:ml-3"
+    <img className = "rounded-xl h-20 md:ml-3"
     src = { props.ProductImage }
-    alt = "order-item" /
-    >
+    alt = "order-item" />
     </div>
 );
+
+
+
+
+
 
 export const gridOrderStatus = (props) => ( <
     button type = "button"
@@ -365,46 +616,19 @@ const gridEmployeeProfile = (props) => ( <div className = "flex items-center gap
     <p> { props.Name } </p> </div >
 );
 
+
+const gridExchangeProfile = (props) => ( <div className = "flex items-center gap-2" >
+    <img className = "rounded-full w-10 h-10"
+    src = { props.ExchangeImage }
+    alt = "exchange" />
+    <p> { props.Name } </p> </div >
+);
+
 const gridEmployeeCountry = (props) => ( <div className = "flex items-center justify-center gap-2" >
     <GrLocation />
     <span > { props.Country } </span> </div >
 );
-export const EditorData = () => ( <div >
-    <h3 >
-    Try React React has been designed from the start
-    for gradual adoption, and you can use as little or as much React as you need.Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React - powered app, the links in this section will help you get started.
 
-    Online Playgrounds If you’ re interested in playing around with React, you can use an online code playground.Try a Hello World template on CodePen, CodeSandbox, or Stackblitz.
-
-    If you prefer to use your own text editor, you can also download this HTML file, edit it, and open it from the local filesystem in your browser.It does a slow runtime code transformation, so we’ d only recommend using this
-    for simple demos.
-
-    Add React to a Website You can add React to an HTML page in one minute.You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
-
-    Create a New React App When starting a React project, a simple HTML page with script tags might still be the best option.It only takes a minute to set up!
-
-    As your application grows, you might want to consider a more integrated setup.There are several JavaScript toolchains we recommend
-    for larger applications.Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem.Learn how.
-
-    Learn React People come to React from different backgrounds and with different learning styles.Whether you prefer a more theoretical or a practical approach, we hope you’ ll find this section helpful.
-
-    If you prefer to learn by doing, start with our practical tutorial.If you prefer to learn concepts step by step, start with our guide to main concepts.Like any unfamiliar technology, React does have a learning curve.With practice and some patience, you will get the hang of it.
-
-    First Examples The React homepage contains a few small React examples with a live editor.Even
-    if you don’ t know anything about React yet,
-    try changing their code and see how it affects the result.
-
-    React
-    for Beginners If you feel that the React documentation goes at a faster pace than you’ re comfortable with, check out this overview of React by Tania Rascia.It introduces the most important React concepts in a detailed, beginner - friendly way.Once you’ re done, give the documentation another
-    try !
-
-    React
-    for Designers If you’ re coming from a design background, these resources are a great place to get started.
-
-    JavaScript Resources The React documentation assumes some familiarity with programming in the JavaScript language.You don’ t have to be an expert, but it’ s harder to learn both React and JavaScript at the same time.
-
-    We recommend going through this JavaScript overview to check your knowledge level.It will take you between 30 minutes and an hour but you will feel more confident learning React. </h3> < /div >
-);
 const customerGridImage = (props) => ( <div className = "image flex gap-4" >
     <img className = "rounded-full w-10 h-10"
     src = { props.CustomerImage }
@@ -724,6 +948,7 @@ export const customersGrid = [
 
 ];
 
+
 export const employeesGrid = [{
         headerText: 'Employee',
         width: '150',
@@ -801,11 +1026,17 @@ export const links = [{
     },
 
     {
-        title: 'history',
-        links: [{
-            name: 'Tx',
-            icon: < IoMdContacts / > ,
-        }, ],
+        title: 'Trading',
+        links: [
+            {
+                name: 'Transactions',
+                icon: < IoMdContacts / > ,
+            },
+            {
+                name: 'Exchange',
+                icon: < IoMdContacts / > ,
+            }, 
+        ],
     },
 ];
 
@@ -1093,6 +1324,9 @@ export const userProfileData = [{
         iconBg: 'rgb(254, 201, 15)',
     },
 ];
+
+
+
 
 export const ordersGrid = [{
         headerText: 'Image',

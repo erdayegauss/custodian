@@ -1,24 +1,24 @@
 import React from 'react';
-import Popup from 'reactjs-popup';
+import Popinfo from './Popinfo.jsx'
 const Netcard = (props) => (
 
 
 
   <div>
-   <div class="netcard">
-    <div class="net1"><img width='50px' src={props.image}></img></div>
-    <div class="net2">   
-     <div class="net3"> 
-         
-              <div>{ props.name}</div>
-        </div>
-     <div class="net4">
-       <div style={{  fontSize: "10",
-    fontWeight: 'normal'}}>connect to </div>
-     <div>{props.connect}</div>
-     </div>        
+    <div class="netcard">
+      <div class="net1">
+        <button onClick={() => { console.log("it is a test") }
+        }> <Popinfo dataSource={props.dataSource} image={props.image}></Popinfo>
+
+        </button>
+      </div>
+      <p> </p>
+
+      <div class="net2">{props.name}</div>
+      <p fontSize="12px" fontWeight="normal">Connected with</p>
+
+      <div class="net2">{props.connect}</div>
     </div>
-   </div>
   </div>
 );
 

@@ -9,7 +9,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import shuan from '../data/shuan.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
-import Pop from './Pop';
+import Pop from './Popinfo';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">

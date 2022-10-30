@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slides } from '../components';
+import { Slides, Header } from '../components';
 
 
 const Assets = () => {
@@ -18,8 +18,8 @@ const Assets = () => {
 
 
   return (
-    <div className=" md:m-2  md:p-3 ">
-
+<div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+      <Header category="" title="Asset" />
       <Slides>
       </Slides>
     </div >

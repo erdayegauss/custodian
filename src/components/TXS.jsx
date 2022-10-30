@@ -1,4 +1,4 @@
-import  React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
@@ -9,7 +9,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Autocomplete from '@mui/material/Autocomplete';
-import { assetsData,userData } from '../data/dummy';
+import { assetsData, userData } from '../data/dummy';
+
 
 import PropTypes from 'prop-types';
 import Collapse from '@mui/material/Collapse';
@@ -24,118 +25,73 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Moment from 'moment';
-
 import { Ajax } from '@syncfusion/ej2-base';
 import { format } from 'date-fns'
+import avatar3 from '../data/Safeguard1.jpg'
+
+
 
 
 let rows = [
-  createData('Frozen yoghurt', "Tom Billy", 6.0, "BTC", "Pending", "2022-09-12"),
-  createData('Ice cream sandwich', "Jim Billy", 3.2, "ETH", "done", "2022-09-12"),
-  createData('Eclair', "John Riddle", 7.0, "XRP", "done", "2022-10-12"),
-  createData('Cupcake', "Tim Cook", 6.2, "USDC", "done", "2022-10-19"),
-  createData('Gingerbread', "Tom Billy", 12.2, "USDT", "done", "2022-8-12"),
+  createData(0, 3, 6.0, 0, "Pending","#FEC90F", "2022-09-12"),
+  createData(1, 3, 3.2, 1, "active", "#03c9d7", "2022-09-12"),
+  createData(2, 3, 7.0, 4, "done", "#8BE78B","2022-10-12"),
+  createData(1, 3, 6.2, 3, "done","#8BE78B", "2022-10-19"),
+  createData(3, 0,12.2, 2, "done","#8BE78B", "2022-8-12"),
 ];
 
 
-  
-function createData(source, destination, amount, asset, status, createdAt) {
+function createData(source, destination, amount, asset, status,statusBg, createdAt) {
   return {
     source,
     destination,
     amount,
     asset,
     status,
+    statusBg,
     createdAt,
     history: [
-      { Type: "Transfer",
-        DestAddr: "0x123123r345456576767897897897978979789",
-        TxHash: "0x4231443456767582342342342312234342342ac",
-        TxID: "1231234345676",
-        NetworkFee: "0.001",
-        Amount: 32.1,
+      {
+        Type: "Transfer",
+        DestAddr: "0x2546BcD3c84621e976D8185a91A922aE77ECEc30",
+        TxHash: "0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e",
+        TxID: "0x2562a1f91567",
+        NetworkFee: "0.001ETH",
+        Amount: 6,
         Update: "2020-01-05",
         Signed: "Tom",
         AML: 'N/A',
-        Note: "pls check",
-      },      
+        Note: "pls accept",
+      },
     ],
   };
 }
 
-
 const TXS = () => {
-
-
-
   useEffect(() => {
-
     const ajax = new Ajax();
-            ajax.send();
+    ajax.send();
     ajax.onSuccess = (data: any) => {
       setData([]);
     }
-
-
-}, []);
+  }, []);
 
   const [data, setData] = useState('');
   const [source, setSource] = useState('');
-  const [destination, setDestination] =  useState('');
-  const [amount, setAmount] =  useState('');
-  const [asset, setAsset] =  useState('');
-  const [note, setNote] =  useState('');
-  
-  const handleChange  = event =>{
-    setAsset(event.target.value);
-    console.log(event.target.value)
+  const [destination, setDestination] = useState('');
+  const [amount, setAmount] = useState('');
+  const [asset, setAsset] = useState('');
+  const [note, setNote] = useState('');
 
-   }  
-  
-  const handleChange1  = event =>{
-    setSource(event.target.value);
-    console.log(event.target.value)
-
-   }
-  
-   const handleChange2  = event =>{
-    setDestination(event.target.value);
-    console.log(event.target.value)
-
-   }
-
-
-   const handleChange3  = event =>{
-    setAmount(event.target.value);
-    console.log(event.target.value)
-
-   }
-  
-
-  
-   const handleChange4  = event =>{
-    setNote(event.target.value);
-    console.log(event.target.value)
-   }
-  
-  
-  
-
-  
   const handleTx = () => {
-  
-  rows = [...rows, createData(source, destination, amount, asset, "done", format(new Date(), 'yyyy-mm-dd'))]
-  setData(rows)
-
+    rows = [...rows, createData(3, destination.ID, amount, asset.id, "done","#8BE78B", format(new Date(), 'yyyy-mm-dd'))]
+    setData(rows)
+    handleClose()
   }
 
-  
-  
   function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
-  
     return (
       <>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -148,58 +104,73 @@ const TXS = () => {
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </TableCell>
-          <TableCell component="th" scope="row">
-            {row.source}
+          <TableCell >
+          <Box  sx={{ '& > img': { mr: 1,  } }} {...props}>
+                    <img
+                      loading="eager"
+                      width="30"
+                      src={userData[row.source].image}
+                      alt=""
+                    />
+                  </Box>
           </TableCell>
-          <TableCell>{row.destination}</TableCell>
+          <TableCell>
+            
+          <Box  sx={{ '& > img': { mr: 1,  } }} {...props}>
+                    <img
+                      loading="eager"
+                      width="30"
+                      src={userData[row.destination].image}
+                      alt=""
+                    />
+                  </Box>
+            </TableCell>
           <TableCell>{row.amount}</TableCell>
-          <TableCell align="right">{row.asset}</TableCell>
-          <TableCell align="right">{row.status}</TableCell>
+          <TableCell style={{width: "10px"}} align="right">
+          <Box  sx={{ '& > img': { mr: 1,  } }} {...props}>
+                    <img
+                      loading="eager"
+                      width="30"
+                      src={assetsData[row.asset].image}
+                      alt=""
+                    />
+                  </Box>
+          </TableCell>
+          <TableCell align="right">
+          <button type = "button"
+    style = {{ background: row.statusBg }}
+    className = "text-white py-1 px-2 capitalize rounded-2xl text-md" > { row.status} </button>
+          </TableCell>
           <TableCell align="right">{row.createdAt}</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
             <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box sx={{ margin: 1 }}>
+              <Box style={{ backgroundColor: "#f7f4ef", }} >
                 <Typography variant="h6" gutterBottom component="div">
                   History
                 </Typography>
-                <Table size="small" aria-label="purchases">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Type</TableCell>
-                      <TableCell>DestAddr</TableCell>
-                      <TableCell>TxHash</TableCell>
-                      <TableCell>TxID</TableCell>
-                      <TableCell align="right">NetworkFee</TableCell>
-                      <TableCell align="right">Amount</TableCell>
-                      <TableCell align="right">Update</TableCell>
-                      <TableCell align="right">Signed</TableCell>
-                      <TableCell align="right">AML</TableCell>
-                      <TableCell align="right">Note</TableCell>                    
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {row.history.map((historyRow) => (
-                      <TableRow key={historyRow.Type}>
-                        <TableCell component="th" scope="row">
-                          {historyRow.Type}
-                        </TableCell>
-                        <TableCell>{historyRow.DestAddr}</TableCell>
-                        <TableCell align="right">{historyRow.TxHash}</TableCell>
-                        <TableCell align="right">
-                        {historyRow.TxID}
-                        </TableCell>
-                        <TableCell align="right">{historyRow.NetworkFee}</TableCell>
-                        <TableCell align="right">{historyRow.Amount}</TableCell>
-                        <TableCell align="right">{historyRow.Update}</TableCell>
-                        <TableCell align="right">{historyRow.Signed}</TableCell>
-                        <TableCell align="right">{historyRow.AML}</TableCell>
-                        <TableCell align="right">{historyRow.Note}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+
+                <div >
+                  {row.history.map((historyRow) =>
+                    <>
+                      <div class="history">
+                        <p style={{ fontWeight: "bold" }}>Transaction type:</p><p> {historyRow.Type}</p><p style={{ fontWeight: "bold" }}>TX ID:</p><p> {historyRow.TxID}</p>
+                      </div>
+                      <div class="container">
+                        <p style={{ fontWeight: "bold" }}>Transaction Hash:</p><a href="https://goerli.etherscan.io/tx/0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e"> {historyRow.TxHash}</a>
+                      </div>
+                      <div class="history" >
+                        <div><p style={{ fontWeight: "bold" }}>fee:</p><p> {historyRow.NetworkFee}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>amount:</p><p> {historyRow.Amount}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>Created:</p><p> {historyRow.Update}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>Signed:</p><p> {historyRow.Signed}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>AML:</p><p> {historyRow.AML}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>Note:</p><p> {historyRow.Note}</p></div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </Box>
             </Collapse>
           </TableCell>
@@ -207,13 +178,13 @@ const TXS = () => {
       </>
     );
   }
-  
-  
+
+
   Row.propTypes = {
     row: PropTypes.shape({
       source: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
-      destination: PropTypes.string.isRequired,
+      destination: PropTypes.number.isRequired,
       history: PropTypes.arrayOf(
         PropTypes.shape({
           Amount: PropTypes.number.isRequired,
@@ -230,50 +201,10 @@ const TXS = () => {
       ).isRequired,
       asset: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
+      statusBg: PropTypes.string.isRequired,
       createdAt: PropTypes.string.isRequired,
     }).isRequired,
   };
-  
-  
-  
-  
-    const editing = { allowDeleting: true, allowEditing: true };
-  
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
-  
-
-
-
-
-
-
-  const countries = [
-    { id: 0, label: 'BTC', phone: '376' },
-    {
-      id: 1,
-      label: 'ETH',
-      phone: '971',
-    },
-    { id: 2, label: 'USDT', phone: '93' },
-    {
-      id: 3,
-      label: 'USDC',
-      phone: '1-268',
-    },
-  ];
-
-
 
 
   const [open, setOpen] = React.useState(false);
@@ -285,215 +216,186 @@ const TXS = () => {
   };
 
   return (
-  <div>
+    <div>
+      <div style={{ display: "flex", justifyContent: "right", alignItems: "left", marginTop: "40px", marginRight: "60px" }}>
+        <Button variant="contained" onClick={handleOpen}>Transfer</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="parent-modal-title"
+          aria-describedby="parent-modal-description"
+        >
+          <Dialog open={open} >
+            <DialogTitle>Transfer</DialogTitle>
+            <DialogContent dividers>
+              <DialogContentText>
+              </DialogContentText>
+              <Autocomplete
+                sx={{ width: 300 }}
+                options={assetsData}
+                autoHighlight
+                getOptionLabel={(option) => option.label}
+                asset={asset}
+                onChange={(event, newValue) => {
+                  setAsset(newValue);
+                }}
 
-    <div style={{ display: "flex", justifyContent: "right", alignItems:"right", margin: "10px" }}>
-      <Button variant="outlined" onClick={handleOpen}>Transfer</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="parent-modal-title"
-        aria-describedby="parent-modal-description"
-      >
-
-        <Dialog open={open} >
-          <DialogTitle>Transfer</DialogTitle>
-          <DialogContent dividers>
-            <DialogContentText>
-            </DialogContentText>
-
-
-            <Autocomplete
-              sx={{ width: 300 }}
-              options={countries}
-              autoHighlight
-              getOptionLabel={(option) => option.label}
-              onChange={(option) => {setAsset(option.label); console.log("the asset is:", {asset}) }}
-              renderOption={(props, option) => (
-                <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                  <img
-                    loading="lazy"
-                    width="20"
-                    src={assetsData[option.id].image}
-                    alt=""
+                renderOption={(props, option) => (
+                  <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                    <img
+                      loading="lazy"
+                      width="20"
+                      src={assetsData[option.id].image}
+                      alt=""
+                    />
+                    {option.label}
+                  </Box>
+                )}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    type="text"
+                    id="asset"
+                    margin="dense"
+                    label="Asset Name"
+                    inputProps={{
+                      ...params.inputProps,
+                    }}
                   />
-                  {option.label}
-                </Box>
-              )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  type="text"
-                  id="asset"
-                  margin="dense"
-                  label="Asset Name"
-                  inputProps={{
-                    ...params.inputProps,
-                  }}
-                />
-              )}
-            />
-            <Autocomplete
-              sx={{ width: 300 }}
-              options={userData}
-              autoHighlight
-              getOptionLabel={(option) => option.label}
-              renderOption={(props, option) => (
-                <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                  <img
-                    loading="eager"
-                    width="20"
-                    src={userData[option.ID].image}
-                    alt=""
+                )}
+              />
+{/*              
+              <Autocomplete
+                sx={{ width: 300 }}
+                options={userData}
+                autoHighlight
+                getOptionLabel={(option) => option.label}
+                asset={source}
+                onChange={(event, newValue) => {
+                  setSource(newValue);
+                  console.log("the source is:", source);
+                }}
+                renderOption={(props, option) => (
+                  <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+                    <img
+                      loading="eager"
+                      width="20"
+                      src={userData[option.ID].image}
+                      alt=""
+                    />
+                    {option.name}
+                  </Box>
+                )}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    id="source"
+                    type="text"
+                    margin="dense"
+                    label="Source Account"
+                    inputProps={{
+                      ...params.inputProps,
+                      autoComplete: '', // disable autocomplete and autofill
+                    }}
                   />
-                  {option.name}
-                </Box>
-              )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  id="source"
-                  type="text"
-                  margin="dense"
-                  label="Source Account"
-                  onChange={handleChange1}
-                  inputProps={{
-                    ...params.inputProps,
-                    autoComplete: '', // disable autocomplete and autofill
-                  }}
-                />
-              )}
-            />
-            <Autocomplete
-              margin="dense"
-              sx={{ width: 300 }}
-              options={userData}
-              autoHighlight
-              onChange={handleChange2}
-              getOptionLabel={(option) => option.label}
-              renderOption={(props, option) => (
-                <Box component="li" sx={{ '& > img': { mr: 4, flexShrink: 0 } }} {...props}>
-                  <img
-                    loading="eager"
-                    width="20"
-                    src={userData[option.ID].image}
-                    alt=""
+                )}
+              />
+                  */}              
+              <Autocomplete
+                margin="dense"
+                sx={{ width: 300 }}
+                options={userData}
+                autoHighlight
+                getOptionLabel={(option) => option.label}
+                asset={destination}
+                onChange={(event, newValue) => {
+                  setDestination(newValue);
+                }}
+                renderOption={(props, option) => (
+                  <Box component="li" sx={{ '& > img': { mr: 4, flexShrink: 0 } }} {...props}>
+                    <img
+                      loading="eager"
+                      width="20"
+                      src={userData[option.ID].image}
+                      alt=""
+                    />
+                    {option.label}
+                  </Box>
+                )}
+                renderInput={(params) => (
+
+                  <TextField
+                    {...params}
+                    id="destination"
+                    type="text"
+                    margin="dense"
+                    label="Recipient"
+                    inputProps={{
+                      ...params.inputProps,
+                      variant: "standard", // disable autocomplete and autofill
+                    }}
                   />
-                  {option.label}
-                </Box>
-              )}
-              renderInput={(params) => (
-
-                <TextField
-                  {...params}
-                  id="destination"
-                  type="text"
-                  margin="dense"
-                  label="Destination Account/Address"
-                  inputProps={{
-                    ...params.inputProps,
-                    variant: "standard", // disable autocomplete and autofill
-                  }}
-                />
-              )}
-            />
-           { /*
-              <TextField
-                autoFocus
-                margin="dense"
-                onChange={handleChange}
-                id="asset"
-                type="text"
-                label="Asset"
-                type="text"
-                fullWidth
-                variant="outlined"
+                )}
               />
-
               <TextField
                 autoFocus
                 margin="dense"
-                onChange={handleChange1}
-                id="source"
-                type="text"
-                label="From"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-
-              <TextField
-                autoFocus
-                margin="dense"
-                onChange={handleChange2}
-                id="destination"
-                type="text"
-                label="To"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-*/}
-
-              <TextField
-                autoFocus
-                margin="dense"
-                onChange={handleChange3}
+                onChange={(event) => {
+                  setAmount(event.target.value);
+                }}
                 id="amount"
                 type="text"
                 label="Net Amount"
-                type="text"
                 fullWidth
                 variant="outlined"
               />
               <TextField
                 autoFocus
                 margin="dense"
-                onChange={handleChange4}
+                onChange={(event) => {
+                  setNote(event.target.value);
+                }}
                 id="note"
                 type="text"
                 label="Internal Note"
-                type="text"
                 fullWidth
                 variant="outlined"
               />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancel</Button>
+              <Button onClick={handleTx}>Submit</Button>
+            </DialogActions>
+          </Dialog>
+        </Modal>
+      </div>
 
 
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleTx}>Submit</Button>
-          </DialogActions>
-        </Dialog>
 
-      </Modal>
+      <TableContainer style={{ width: "90%", margin: "5%" }} component={Paper}>
+        <Table aria-label="collapsible table">
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell >From</TableCell>
+              <TableCell>To</TableCell>
+              <TableCell>Amount</TableCell>
+              <TableCell align="right">Asset</TableCell>
+              <TableCell align="right">Status</TableCell>
+              <TableCell align="right">Updated @</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <Row key={row.name} row={row} > </Row>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+
+
     </div>
-
-
-    <TableContainer style={{width: "90%", margin:"5%"}} component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Source</TableCell>
-            <TableCell>Destination</TableCell>
-            <TableCell>Amount&nbsp;($)</TableCell>
-            <TableCell align="right">Asset</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Created At</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-
-
- </div>
-
   );
 }
 

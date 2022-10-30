@@ -53,7 +53,7 @@ const AddVault = () => {
             label="Vault Name"
             type="text"
             fullWidth
-            variant="outlined"
+            variant="contained"
           />
         </DialogContent>        
         <DialogActions>

@@ -147,7 +147,12 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
     border-radius: 5px;
+    opacity: 0.3;
 }
+
+.card:hover {
+    opacity: 1.2;
+  }
 
 .card img {
     margin: 8%;
@@ -195,11 +200,17 @@
     height: 100px;
 }
 
+.history {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
 .parent {
     margin: 2px;
     padding: 3px;
     display: grid;
     width: 95%;
+    height: 50%;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 5px;
@@ -231,31 +242,36 @@
 }
 
 .netcard {
-    margin: 1px;
-    padding: auto;
+    margin: 2%;
+    padding: 5%;
     display: inline-block;
-    background-color: rgb(229, 233, 235);
+    background-color: ;
     width: 100%;
-    height: 300px;
+    height: 40%;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
     border-radius: 5px;
+    background-color: #ebf1f5;
 }
 
 .net1 {
-    background-color: white;
+    margin-top: 5px;
     position: relative;
-    left: 25%;
+    left: 5%;
     width: 40%;
-    height: 20%;
-    border-radius: 5px;
+    height: 30px;
+    border-top-left-radius: 5px;
     align-content: center;
+    margin-left:'auto';
+    margin-right:'auto';
 }
 
 .net2 {
-    background-color: white;
+    margin-top: 30px;
     height: 75%;
     border-radius: 5px;
+    font-size: larger;
+    font-weight: bold;    
 }
 
 .net3 {
@@ -278,8 +294,8 @@
 .defihead {
     margin: 2px;
     padding: 3px;
-    height: 500px;
-    background-color: wheat;
+    height: 600px;
+    background-color: #f7f4ef;
 }
 
 .defi {
@@ -336,7 +352,7 @@
     padding: auto;
     display: inline-block;
     width: 100%;
-    height: 200px;
+    height: 100px;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
     border-radius: 5px;
@@ -347,6 +363,7 @@
     left: 25%;
     height: 60%;
     border-radius: 5px;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .app2 {
@@ -357,4 +374,56 @@
     text-align: center;
     font-weight: bold;
     font-size: larger;
+}
+
+
+.demo-wrap {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 400px;
+    opacity: 1.0;
+    background-image: url('https://588ku.com/ycbeijing/6054551.html');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+  }
+  
+.try {
+
+    font-weight: bold;
+    font-size:xx-large;
+}
+
+
+.exchange {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 250px;
+}
+
+.ex1 {
+    position: relative;
+    left: 25%;
+    width: 40%;
+    height: 10px;
+    align-content: center;
+    margin-left:'auto';
+    margin-right:'auto';
+}
+
+.excard {
+    margin: 1px;
+    padding: auto;
+    display: inline-block;
+    width: 100%;
+    height: 200px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    border-radius: 5px;
 }
