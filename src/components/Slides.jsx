@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GridComponent,  ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
-import { employeesData3, employeesData1, employeesData2, employeesGrid, assetsData} from '../data/dummy';
+import { assetData1, assetData2, assetData3, assetGrid, assetsData} from '../data/dummy';
 import Button from '@mui/material/Button';
 import "swiper/css";
 import "swiper/css/navigation";
@@ -14,7 +14,7 @@ const Slides = () => {
 
     const [currentTab, setCurrentTab] = useState('1');
 
-    const source = [employeesData1, employeesData2, employeesData3, employeesData1, employeesData2]
+    const source = [assetData1, assetData2, assetData3, assetData1, assetData2, assetData3, assetData1, assetData2, assetData3, assetData1, assetData2]
 
     const { currentColor } = useStateContext();
 
@@ -97,7 +97,7 @@ const Slides = () => {
 
         <div className='container' style={{ zIndex: 1 }} >
 
-            <div class=" " >
+            <div class="" >
                 <>
                     <div class="scrolling-wrapper">
 
@@ -126,7 +126,7 @@ const Slides = () => {
                         {currentTab === `${tab.id}` &&
                             <GridComponent dataSource={source[`${tab.id}`]} pageSettings={{ pageCount: 5 }} toolbar={toolbarOptions}>
                                 <ColumnsDirective >
-                                    {employeesGrid.map((item, index) => <ColumnDirective class='' key={index} {...item} />)}
+                                    {assetGrid.map((item, index) => <ColumnDirective class='' key={index} {...item} />)}
                                 </ColumnsDirective>
                             </GridComponent>}
 

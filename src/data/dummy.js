@@ -637,6 +637,14 @@ const customerGridImage = (props) => ( <div className = "image flex gap-4" >
     <p> { props.CustomerName } { props.CustomerEmail } </p> </div > </div>
 );
 
+
+const assetVaultImg = (props) => ( <div className = "image flex gap-4" >
+    <img className = "rounded-full w-10 h-10"
+    src = { props.AccountImage }
+    alt = "employee" />
+ </div>
+);
+
 const customerGridStatus = (props) => ( <div className = "flex gap-2 justify-center items-center text-gray-700 capitalize" >
     <p style = {{ background: props.StatusBg }} className = "rounded-full h-3 w-3"/> <p> { props.Status } </p></div>
 );
@@ -946,6 +954,28 @@ export const customersGrid = [
         isPrimaryKey: true,
     },
 
+];
+
+
+
+export const assetGrid = [{
+    headerText: '',
+    width: '150',
+    template: assetVaultImg,
+    textAlign: 'Center'
+},
+{
+    field: 'Name',
+    headerText: 'Account Name',
+    width: '100',
+    textAlign: 'Center',
+},
+{
+    field: 'amount',
+    headerText: 'Amount',
+    width: '170',
+    textAlign: 'Center',
+},
 ];
 
 
@@ -1427,6 +1457,95 @@ export const txGrid = [{
         textAlign: 'Center',
     },
 ];
+
+export const Vault = [
+  { image: safeguard1, name: "Quant Vault", amount: "1,000,000", status: "active", statusBg:"#8BE78B",updateAt:"2022-10-21",    Accounts: [
+    { BTC: "34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo",
+    ETH: "0xda9dfa130df4de4673b89022ee50ff26f6ea73cf",
+    USDT: "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+    USDC: "0xdcef968d416a41cdac0ed8702fac8128a64241a2",
+    XRP: "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+    LTC: "M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua",
+    BNB: "0xf977814e90da44bfa03b6295a0616a897441acec",
+    Doge: "DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ",
+    SOL: "BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z",
+    ADA: "Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG",
+  }, ]   },
+  { image: safeguard1, name: "Autocall Vault", amount: "560,010" , status: "active", statusBg:"#8BE78B",updateAt:"2022-10-11",    Accounts: [
+    { BTC: "1LQoWist8KkaUXSPKZHNvEyfrEkPHzSsCd",
+    ETH: "0x0716a17fbaee714f1e6ab0f9d59edbc5f09815c0",
+    USDT: "0x18709e89bd403f470088abdacebe86cc60dda12e",
+    USDC: "0xdcef968d416a41cdac0ed8702fac8128a64241a2",
+    XRP: "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+    LTC: "MQTGsZHA96Smwjiz6RRTrsrRMo65q2JKbR",
+    BNB: "0xb4b3351918a9bedc7d386c6a685c42e69920b34d",
+    Doge: "DRSqEwcnJX3GZWH9Twtwk8D5ewqdJzi13k",
+    SOL: "FbGeZS8LiPCZiFpFwdUUeF2yxXtSsdfJoHTsVMvM8STh",
+    ADA: "addr1v8m0dvk84c7hg6rzul6h9f4998vtaqqrupw778vrw3e4ezqck7n2g",
+  }, ]   },
+  { image: safeguard1, name: "Options Vault", amount: "790,000", status: "active", statusBg:"#8BE78B",updateAt:"2022-09-17",     Accounts: [
+    { BTC: "bc1qazcm763858nkj2dj986etajv6wquslv8uxwczt",
+      ETH: "0xbe0eb53f46cd790cd13851d5eff43d12404d33e8",
+      USDT: "0x0162cd2ba40e23378bf0fd41f919e1be075f025f",
+      USDC: "0x134750a99286afc269d17eb791b9b670c6c0c91e",
+      XRP: "0xf522f55190b8cfb2f11f15cc947a321999b1dd37",
+      LTC: "ltc1qn9rs0j0d6dc6vtc7yw2h8qyzxy425m3tvlxlfl",
+      BNB: "0xbdbd1d2602d77b98368d3f9c8c7a689dd939d5b2",
+      Doge: "DDCRBABw7b1U7gSmgstb5SHWRS7gTqRWBc",
+      SOL: "52C9T2T7JRojtxumYnYZhyUmrN7kqzvCLc4Ksvjk7TxD",
+      ADA: "addr1qxdfqunt6cjd03485aqpma6e065kvf2vuxznfu6ex0kjnclrzr27g03klu862usxqsru794d03gzkk8n86ta34n85z0s704",
+    }, ]   },
+  { image: safeguard1, name: "Grid Vault", amount: "45,000" , status: "active", statusBg:"#8BE78B",updateAt:"2022-09-10",    Accounts: [
+    { BTC: "37XuVSEpWW4trkfmvWzegTHQt7BdktSKUs",
+    ETH: "0x742d35cc6634c0532925a3b844bc454e4438f44e",
+    USDT: "0xb8e6d31e7b212b2b7250ee9c26c56cebbfbe6b23",
+    USDC: "0x467d543e5e4e41aeddf3b6d1997350dd9820a173",
+    XRP: "0x03f18135c44c64ebfdcbad8297fe5bdafdbbdd86",
+    LTC: "MQSs17ECe51kqhkFPQY98wiyPvGuK5iCB6",
+    BNB: "0xf559397ee2a0f2782246a395943449b5b6ae94e7",
+    Doge: "DMuFDCTwxdqzfWrCEE7HiMxBonKVU49Fz4",
+    SOL: "HcTDaQXACrWUGZY6q1mWYFoxaQvqiBRR1D7JqFJgXrHM",
+    ADA: "addr1qxdfqunt6cjd03485aqpma6e065kvf2vuxznfu6ex0kjnclrzr27g03klu862usxqsru794d03gzkk8n86ta34n85z0s704",
+  }, ]   },
+  { image: safeguard1, name: "Dual currency Vault", amount: "120,000", status: "halten", statusBg:"red",updateAt:"2022-09-01",     Accounts: [
+    { BTC: "1FeexV6bAHb8ybZjqQMjJrcCrHGW9sb6uF",
+    ETH: "0xa7efae728d2936e78bda97dc267687568dd593f3",
+    USDT: "0x69166e49d2fd23e4cbea767d7191be423a7733a5",
+    USDC: "0xda9ce944a37d218c3302f6b82a094844c6eceb17",
+    XRP: "0x98e5b99f2483f22641c596d606c90c70d793afd2",
+    LTC: "MQSs17ECe51kqhkFPQY98wiyPvGuK5iCB6",
+    BNB: "0xf2549fba1da6e17a1e82478a0b0a945adb7416c7",
+    Doge: "DGmzv39riELTuigZCUD6sWoHEHPdSbxdUB",
+    SOL: "6ZRCB7AAqGre6c72PRz3MHLC73VMYvJ8bi9KHf1HFpNk",
+    ADA: "addr1q80y77jjfcdymt38amg3na9w4p4d89ffw66xqsspdwsa2sx7faa9yns6fkhz0mk3r862a2r26w2jja45vppqz6ap64qqfjd",
+  }, ]   },
+  { image: safeguard1, name: "Snowball Vault", amount: "103,000", status: "frozon", statusBg:"gray",updateAt:"2022-08-19",     Accounts: [
+    { BTC: "bc1qa5wkgaew2dkv56kfvj49j0av5nml45x9ek9hz6",
+    ETH: "0xe92d1a43df510f82c66382592a047d288f85226f",
+    USDT: "0xc882b111a75c0c657fc507c04fbfcd2cc984f071",
+    USDC: "0x76a3305b63c02930e0b115a50616b08f023922e0",
+    XRP: "0x64e3bd974ac1cd911deceabcc145475f38d05760",
+    LTC: "MNicdrF32eipvN2thqA2V6E4R1tG8GY19D",
+    BNB: "0xf9eae871a7c1692aa52fbdd84fac84d64c85127e",
+    Doge: "D9a1Ah7mUNAJwNqHPER4DN9zNLoqcYFDZW",
+    SOL: "8PjJTv657aeN9p5R2WoM6pPSz385chvTTytUWaEjSjkq",
+    ADA: "addr1q8kgcfdpefrnf5570v47manyyg85jshlrg4p2hrsx3wdsplv3sj6rjj8xnffu7etahmxggs0f9p07x32z4w8qdzumqrsquz",
+  }, ]   },
+  { image: safeguard1, name: "Fix income Vault", amount: "100,001", status: "active", statusBg:"#8BE78B",updateAt:"2022-08-21",     Accounts: [
+    { BTC: "3M219KR5vEneNb47ewrPfWyb5jQ2DjxRP6",
+    ETH: "0x1b3cb81e51011b549d78bf720b0d924ac763a7c2",
+    USDT: "0x8a446971dbb112f3be15bc38c14d44b94d9e94b9",
+    USDC: "0x201bba67fe7e8eeededc20558fb4493bb72f177e",
+    XRP: "0x7187eb5cf4f3f349323374a346255bbceb2cd801",
+    LTC: "LM4ch8ZtAowdiGLSnf92MrMVC9dVmve2hr",
+    BNB: "0x3b77804a3b221f1c8f985e2ef4fdf5efd078f86d",
+    Doge: "D9FV7Ka27RVzS9NPBx3H57TUVi1hb4QS64",
+    SOL: "3bHbMa5VW3np5AJazuacidrN4xPZgwhcXigmjwHmBg5e",
+    ADA: "addr1qykswuxl2xd9xkv7a73zcqnvg5paud3g25c54e93j7wxs5vxvvrc0an876y89s8p3nr9t2w4349mq2ca8r2v88cgr50shsc",
+  }, ]   },
+]
+
+
 
 export const customersData = [{
         CustomerID: 1001,
@@ -1948,6 +2067,51 @@ export const customersData = [{
     },
 
 ];
+
+
+
+export const assetData1 = [
+    {
+    AccountImage: safeguard1,
+    Name: 'Quant Vault',
+    amount: 100.34,
+    }, 
+]
+
+export const assetData2 = [
+    {
+        AccountImage: safeguard1,
+        Name: 'Options Vault',
+        amount: 1200.34,
+    },
+    {
+        AccountImage: safeguard1,
+        Name: 'Autocall Vault',
+        amount: 19730.74,
+    },
+]
+
+
+export const assetData3 = [
+    {
+        AccountImage: safeguard1,
+        Name: 'Grid Vault',
+        amount: 8200.60,
+    },
+    {
+        AccountImage: safeguard1,
+        Name: 'Dual currency Vault',
+        amount: 82130.98,
+    },
+    {
+        AccountImage: safeguard1,
+        Name: 'Fix income Vault',
+        amount: 265756.74,
+    },
+]
+
+
+
 
 
 export const employeesData1 = [{

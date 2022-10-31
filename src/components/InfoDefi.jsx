@@ -46,7 +46,7 @@ const InfoDefi = (props) => {
   
     return (
       <div >
-        <Button onClick={handleOpen}> <img  width='30px' src={props.image}></img></Button>
+        <Button onClick={handleOpen}> <img  width='30%' src={props.image}></img></Button>
         <Modal
         
           hideBackdrop
@@ -56,44 +56,11 @@ const InfoDefi = (props) => {
           aria-describedby="child-modal-description"
         >
           <Dialog  backgroundColor="#ebf1f5" open={open} >
-            <DialogTitle>Settlement and Clearance</DialogTitle>
+            <DialogTitle>Connect to Exchange</DialogTitle>
             <DialogContent dividers>
               <div style={{ width: "350px", height: "250px", backgroundColor: "#ebf1f5" }} alignItems="center" >
                 <Button style={{ margin: "15px", position:"center"}} variant="filled" startIcon={<img width="20" src={props.display} alt="" />}>
                 </Button>
-  {/*
-                <Autocomplete
-                  id="country-select-demo"
-                  options={props.dataSource}
-                  autoHighlight
-                  asset={connect}
-                  onChange={(event, newValue) => {
-                    setConnect(newValue);
-                  }}  
-                  getOptionLabel={(option) => option.label}
-                  renderOption={(props, option) => (
-                    <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                      <img
-                        loading="lazy"
-                        width="20"
-                        src={assetsData[option.id].image}
-                        alt=""
-                      />
-                      {assetsData[option.id].label}
-                    </Box>
-                  )}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Route Deposits To "
-                      inputProps={{
-                        ...params.inputProps,
-                        autoComplete: 'new-password', // disable autocomplete and autofill
-                      }}
-                    />
-                  )}
-                />
-*/}
             <TextField
                 autoFocus
                 margin="dense"

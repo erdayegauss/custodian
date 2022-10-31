@@ -34,3 +34,5 @@ export { default as Popinfo } from './Popinfo';
 export { default as InfoDefi } from './InfoDefi';
 export { default as excard } from './excard';
 export { default as Addlist } from './Addlist';
+export { default as AccountTab } from './AccountTab';
+export { default as InfoAccount } from './InfoAccount';

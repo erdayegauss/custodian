@@ -264,43 +264,7 @@ const TXS = () => {
                   />
                 )}
               />
-{/*              
-              <Autocomplete
-                sx={{ width: 300 }}
-                options={userData}
-                autoHighlight
-                getOptionLabel={(option) => option.label}
-                asset={source}
-                onChange={(event, newValue) => {
-                  setSource(newValue);
-                  console.log("the source is:", source);
-                }}
-                renderOption={(props, option) => (
-                  <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                    <img
-                      loading="eager"
-                      width="20"
-                      src={userData[option.ID].image}
-                      alt=""
-                    />
-                    {option.name}
-                  </Box>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    id="source"
-                    type="text"
-                    margin="dense"
-                    label="Source Account"
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: '', // disable autocomplete and autofill
-                    }}
-                  />
-                )}
-              />
-                  */}              
+                          
               <Autocomplete
                 margin="dense"
                 sx={{ width: 300 }}

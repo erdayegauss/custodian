@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 
 import { ordersData, contextMenuItems, ordersGrid, exchangeData, assetsData } from '../data/dummy';
 import { Header, Deficard, InfoDefi, Popinfo } from '../components';
-import connect from "../data/connect.jpeg";
+import connect from "../data/connect.png";
 
 const Exchange = () => {
   const editing = { allowDeleting: true, allowEditing: true };
@@ -19,7 +19,7 @@ const Exchange = () => {
     <div className=" m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <div class="defihead">
 
-        <iframe src={link} height="600" width="1000" title="Iframe Example"></iframe>
+        <iframe src={link} height="100%" width="100%" title="Iframe Example"></iframe>
 
       </div>
       <div class="exchange">

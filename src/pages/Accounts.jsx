@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Header } from '../components';
+import { Tabs, Header, AccountTab } from '../components';
 
 const Accounts = () => {
   const toolbarOptions = ['Search'];
@@ -20,8 +20,13 @@ const Accounts = () => {
 
 <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="" title="Accounts" />
-      <h2> total amount in Dollar: $ 100,000.23 </h2>
-      <Tabs />
+
+      <p className="text-lg text-gray-400">Total Amount($): </p>
+    <p className="text-3xl font-extrabold tracking-tight text-slate-900">$ 2,812,341.00</p>
+
+{/*      <Tabs /> */}
+<AccountTab></AccountTab>
+
     </div >
     </div>
   );

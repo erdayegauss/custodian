@@ -167,7 +167,7 @@ const Tabs = () => {
   return (
     <div className='container' style={{ zIndex: 1 }} >
 
-      <div className='tablet '>
+      <div className=''>
         {tabs.map((tab, i) =>
           <Button class="card " justify-self='center' key={i} id={tab.id} variant="outlined"
             startIcon={<img src={iconData[i].image} alt="" />}
@@ -186,7 +186,7 @@ const Tabs = () => {
         {tabs.map((tab, i) =>
 
 
-          <div key={i} style={{ width: "1000px" }}>
+          <div key={i} style={{ width: "95%" }}>
 
 
             {currentTab === `0` && `${tab.id}` === `0` &&
