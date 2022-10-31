@@ -1,16 +1,7 @@
 import React from 'react';
-import { Tabs, Header, AccountTab } from '../components';
+import {  Header, AccountTab } from '../components';
 
 const Accounts = () => {
-  const toolbarOptions = ['Search'];
-
-  const editing = { allowDeleting: true, allowEditing: true };
-
-
-  const state = {
-    seen: false
-  };
-
 
 
 

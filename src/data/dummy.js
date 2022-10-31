@@ -1,8 +1,7 @@
 import React from 'react';
-import { AiOutlineCalendar, AiOutlineShoppingCart } from 'react-icons/ai';
-import { FiShoppingBag, FiEdit, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
-import { BsKanban, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
-import { BiColorFill } from 'react-icons/bi';
+import {  AiOutlineShoppingCart } from 'react-icons/ai';
+import { FiShoppingBag, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
+import { BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
 import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
@@ -81,15 +80,12 @@ import kucoin from './kucoin.png'
 
 
 import zilliqa from './zilliqa.png'
-import gether from './gether.png'
 import b2c2 from './b2c2.jpeg'
 import hodlnaut from './hodlnaut.png'
 import galaxy from './galaxy.webp'
 import silver from './silver.png'
 import signature from './signature.png'
 import cosmos from './cosmos.png'
-
-import { fontSize } from '@mui/system';
 
 
 
@@ -617,12 +613,6 @@ const gridEmployeeProfile = (props) => ( <div className = "flex items-center gap
 );
 
 
-const gridExchangeProfile = (props) => ( <div className = "flex items-center gap-2" >
-    <img className = "rounded-full w-10 h-10"
-    src = { props.ExchangeImage }
-    alt = "exchange" />
-    <p> { props.Name } </p> </div >
-);
 
 const gridEmployeeCountry = (props) => ( <div className = "flex items-center justify-center gap-2" >
     <GrLocation />

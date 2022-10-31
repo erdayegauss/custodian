@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Inject } from '@syncfusion/ej2-react-grids';
-import { vaultData, exchangeData, FiatData, vaultGrid, exchangeGrid, fiatGrid, employeesData2, employeesGrid, iconData } from '../data/dummy';
+import { GridComponent, ColumnsDirective, ColumnDirective} from '@syncfusion/ej2-react-grids';
+import { vaultData, exchangeData, FiatData, vaultGrid, exchangeGrid, fiatGrid, iconData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
-import { Addwallet, AddVault, ConEx } from '../components';
 import { Ajax } from '@syncfusion/ej2-base';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -11,7 +10,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
-import avatar3 from '../data/Safeguard1.jpg'
 
 import binance from '../data/binance.png'
 import bitstamp from '../data/bitstamp.png'

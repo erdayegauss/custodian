@@ -1,11 +1,9 @@
 import {React, useState} from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
 
-import { ordersData, contextMenuItems, ordersGrid, defiData } from '../data/dummy';
-import { Header, Deficard } from '../components';
+import { defiData } from '../data/dummy';
+import {  Deficard } from '../components';
 
 const Defi = () => {
-  const editing = { allowDeleting: true, allowEditing: true };
 
 
   const [link, setLink] = useState('');

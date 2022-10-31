@@ -15,7 +15,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 
-
 import avatar3 from '../data/Safeguard1.jpg'
 //import axios from 'axios';
 
@@ -33,37 +32,13 @@ const App = () => {
 
 
     useEffect(() => {
-        // ajax
-/*
-        const ajax = new Ajax(
-            "https://services.odata.org/V4/Northwind/Northwind.svc/Orders",
-            "GET");
-        ajax.send();
-        ajax.onSuccess = (data: any) => {
-            setData(JSON.parse(data).value);
-        }
-*/
+
         const ajax = new Ajax();
                 ajax.send();
 
         ajax.onSuccess = (data: any) => {
           setData([]);
         }
-
-        // fetch native api
-        // fetch("https://ej2services.syncfusion.com/production/web-services/api/Orders")
-        //   .then(res => res.json())
-        //   .then(
-        //     data => {
-        //       setData(data);
-        //     }
-        //   );
-
-        // axios
-        // axios.get("https://ej2services.syncfusion.com/production/web-services/api/Orders")
-        //     .then((res: any) => {
-        //         setData(res.data);
-        //     })
 
     }, []);
 
@@ -109,20 +84,6 @@ setData(datatmp);
   };
 
 
-  const countries = [
-    { code: 0, label: 'BTC', phone: '376' },
-    {
-      code: 1,
-      label: 'ETH',
-      phone: '971',
-    },
-    { code: 2, label: 'USDT', phone: '93' },
-    {
-      code: 3,
-      label: 'USDC',
-      phone: '1-268',
-    },
-  ]
 
 
  const handleChange  = event =>{

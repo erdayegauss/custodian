@@ -7,8 +7,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Autocomplete from '@mui/material/Autocomplete';
-import { assetsData,userData, Vault } from '../data/dummy';
+import { assetsData, Vault } from '../data/dummy';
 
 import PropTypes from 'prop-types';
 import Collapse from '@mui/material/Collapse';
@@ -23,11 +22,9 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Moment from 'moment';
 import safeguard1 from "../data/Safeguard.png"
 import Button from "@mui/material/Button"
 import { Ajax } from '@syncfusion/ej2-base';
-import { format } from 'date-fns'
 import {InfoAccount} from "../components";
 
 
@@ -77,28 +74,6 @@ const AccountTab = () => {
 
   const [data, setData] = useState('');
   const [name, setName] = useState('');
-  const [destination, setDestination] =  useState('');
-  const [amount, setAmount] =  useState('');
-  const [updateAt, setUpdateAt] =  useState('');
-  const [status, setStatus] =  useState('');
-
-  
-
-
-   const handleChange3  = event =>{
-    setAmount(event.target.value);
-    console.log(event.target.value)
-
-   }
-  
-
-  
-   const handleChange4  = event =>{
-    setStatus(event.target.value);
-    console.log(event.target.value)
-   }
-  
-  
   
 
   
@@ -229,22 +204,6 @@ const AccountTab = () => {
   };
   
   
-  
-  
-    const editing = { allowDeleting: true, allowEditing: true };
-  
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
 
   
 
@@ -269,7 +228,7 @@ const AccountTab = () => {
 
 
     <div style={{ display: "flex", justifyContent: "right", alignItems:"right", margin: "10px" }}>
-      <Button variant="outlined" onClick={handleOpen}>+ Vault</Button>
+      <Button variant="contained" onClick={handleOpen}>+ Vault</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -295,7 +254,6 @@ const AccountTab = () => {
                 id="vaultName"
                 type="text"
                 label="Vault Name"
-                type="text"
                 fullWidth
                 variant="outlined"
               />

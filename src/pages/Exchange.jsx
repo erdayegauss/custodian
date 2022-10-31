@@ -1,13 +1,11 @@
 import { React, useState } from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
 import Button from '@mui/material/Button';
 
-import { ordersData, contextMenuItems, ordersGrid, exchangeData, assetsData } from '../data/dummy';
-import { Header, Deficard, InfoDefi, Popinfo } from '../components';
+import {  exchangeData, assetsData } from '../data/dummy';
+import {  Deficard, InfoDefi } from '../components';
 import connect from "../data/connect.png";
 
 const Exchange = () => {
-  const editing = { allowDeleting: true, allowEditing: true };
 
 
   const [link, setLink] = useState('');

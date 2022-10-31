@@ -27,8 +27,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Ajax } from '@syncfusion/ej2-base';
 import { format } from 'date-fns'
-import avatar3 from '../data/Safeguard1.jpg'
-
 
 
 
@@ -264,7 +262,7 @@ const TXS = () => {
                   />
                 )}
               />
-                          
+
               <Autocomplete
                 margin="dense"
                 sx={{ width: 300 }}
