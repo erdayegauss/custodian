@@ -9,7 +9,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Autocomplete from '@mui/material/Autocomplete';
-import { assetsData } from '../data/dummy';
+import { assetsData, userData } from '../data/dummy';
+import avatar from '../data/avatar.jpg'
 
 const style = {
   position: 'absolute',
@@ -27,12 +28,11 @@ const style = {
 
 
 
-
+let data = userData
 
 const Addlist = (props) => {
 
-  const [connect, setConnect] = useState(0);
-
+  const [name, setName] = useState(0); 
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -42,6 +42,15 @@ const Addlist = (props) => {
     setOpen(false);
   };
 
+  const addentry = () => {
+
+
+data=[...data,   { ID: '0', label: name, name: name, image: avatar, status:"active", statusBg:"green" },]
+
+setOpen(false);
+console.log("the data is:", data)
+
+  }
 
   
     return (
@@ -61,67 +70,20 @@ const Addlist = (props) => {
               <div style={{ width: "350px", height: "250px", backgroundColor: "#ebf1f5" }} alignItems="center" >
                 <Button style={{ margin: "15px", position:"center"}} variant="filled" startIcon={<img width="20" src={props.display} alt="" />}>
                 </Button>
-  {/*
-                <Autocomplete
-                  id="country-select-demo"
-                  options={props.dataSource}
-                  autoHighlight
-                  asset={connect}
-                  onChange={(event, newValue) => {
-                    setConnect(newValue);
-                  }}  
-                  getOptionLabel={(option) => option.label}
-                  renderOption={(props, option) => (
-                    <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                      <img
-                        loading="lazy"
-                        width="20"
-                        src={assetsData[option.id].image}
-                        alt=""
-                      />
-                      {assetsData[option.id].label}
-                    </Box>
-                  )}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Route Deposits To "
-                      inputProps={{
-                        ...params.inputProps,
-                        autoComplete: 'new-password', // disable autocomplete and autofill
-                      }}
-                    />
-                  )}
-                />
-*/}
+
             <TextField
                 autoFocus
                 margin="dense"
                 id="name"
                 label="Name"
+                onChange={(event)=>{
+                  setName(event.target.value)
+
+                }}
                 type="text"
                 fullWidth
                 variant="outlined"
               />  
-              <TextField
-                autoFocus
-                margin="dense"
-                id="apikey"
-                label="API key"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="Private key"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-  
   
               </div>
             </DialogContent>
@@ -134,7 +96,7 @@ const Addlist = (props) => {
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={handleClose}>Connect</Button>
+              <Button onClick={addentry}>Connect</Button>
             </DialogActions>
           </Dialog>
         </Modal>
