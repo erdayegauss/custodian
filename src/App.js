@@ -2,15 +2,34 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-
-import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
+import { Validation, TwoFactor, Dashboard, Register, Login, ProtectedRoute, AuthedRoute,  Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Exchange, Tx, Network, Defi, Whitelist, Clearance, Settlement, Assets, Accounts, Calendar, Stacked, Pyramid, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
 import './App.css';
+import UseToken from './components/UseToken';
+
 
 import { useStateContext } from './contexts/ContextProvider';
 
+
+function setToken(userToken) {
+  sessionStorage.setItem('token', JSON.stringify(userToken));
+}
+
+function getToken() {
+  const tokenString = sessionStorage.getItem('token');
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token
+
+}
+
+
+
+
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+
+  const { token, setToken } = UseToken();
+
 
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('colorMode');
@@ -20,6 +39,11 @@ const App = () => {
       setCurrentMode(currentThemeMode);
     }
   }, []);
+
+
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -69,7 +93,7 @@ const App = () => {
 
               <Routes>
                 {/* fund  */}
-                <Route path="/" element={(<Accounts />)} />
+                <Route path="/" element={(<Login />)} />
                 <Route path="/accounts" element={(<Accounts />)} />
                 <Route path="/assets" element={(<Assets />)} />
 
@@ -82,7 +106,13 @@ const App = () => {
                 <Route path="/Transactions" element={<Tx />} />
                 <Route path="/Exchange" element={<Exchange />} />
 
-                {/* history  */}
+                {/* login  */}
+
+            <Route path="/login" component={Login} />            
+            <Route path="/register" component={Register} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route path="/dashboard/2fa" component={TwoFactor} />
+            <Route path="/user/validate" component={Validation} />
 
                 {/* apps  */}
                 <Route path="/kanban" element={<Kanban />} />

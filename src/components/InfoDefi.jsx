@@ -26,7 +26,7 @@ const InfoDefi = (props) => {
   
     return (
       <div >
-        <Button onClick={handleOpen}> <img  width='30%' src={props.image}></img></Button>
+        <Button onClick={handleOpen}> <img  width='20%' src={props.image}></img></Button>
         <Modal
         
           hideBackdrop

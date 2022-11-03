@@ -9,6 +9,15 @@ const initialState = {
   notification: false,
 };
 
+
+const mainContext = createContext();
+
+
+export const useGlobalState = () => {
+  return useContext(mainContext);
+};
+
+
 export const ContextProvider = ({ children }) => {
   const [screenSize, setScreenSize] = useState(undefined);
 //  const [currentColor, setCurrentColor] = useState('#03C9D7');
