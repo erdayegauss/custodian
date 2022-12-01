@@ -3,7 +3,6 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import shuan from '../data/shuan.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
@@ -25,7 +24,16 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
+  const UserData = JSON.parse(sessionStorage.token).data;
+    const {
+        currentColor,
+        activeMenu,
+        setActiveMenu,
+        handleClick,
+        isClicked,
+        setScreenSize,
+        screenSize
+    } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -57,17 +65,24 @@ const Navbar = () => {
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick('userProfile')}
           >
-            <img
-              className="rounded-full w-6 h-8"
-              src={shuan}
-              alt="user-profile"
-            />
-            <p>
-              <span className="text-gray-400 text-14">Hi,</span>{' '}
-              <span className="text-gray-400 font-bold ml-1 text-14">
-                Shaun
+              <img
+                  className="rounded-full w-6 h-8"
+                  src={UserData.image}
+                  alt="user-profile"
+                  style={{
+                      objectFit: 'cover',
+                      width: '30px',
+                      height: '30px'
+                  }}
+
+
+              />
+              <p>
+                  <span className="text-gray-400 text-14">Hi,</span>{' '}
+                  <span className="text-gray-400 font-bold ml-1 text-14">
+                {UserData.firstName}
               </span>
-            </p>
+              </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
