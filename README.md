@@ -1,9 +1,44 @@
-# Build and Deploy a React Admin Dashboard App With Theming, Tables, Charts, Calendar, Kanban and More
-![Shoppy](https://i.ibb.co/W6g39w3/image.png)
+# Metaharvest
 
-## Introduction
-This is a code repository for the corresponding video tutorial.
+> A web3 custody service
 
-If you want to get a finished, highly customizable Material UI version of a similar dashboard, check out [Flexy React Material Dashboard](https://www.wrappixel.com/templates/flexy-react-material-dashboard-admin/?ref=257&campaign=Flexy).
+## Start frondend service
 
-## Launch your development career with project-based coaching - https://www.jsmastery.pro
+```bash
+npm install
+npm start
+```
+
+## Database connection setup
+
+`./server/app/config/db.config.js`
+
+```javascript
+module.exports = {
+    HOST: ${DB_HOST},
+    USER: ${DB_USER},
+    PASSWORD: ${DB_PASSWORD},
+    DB: ${DB_NAME},
+    dialect: "mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+};
+```
+
+## Create initial data
+
+```bash
+node server/createInitData.js
+```
+
+## Start backend service
+
+```bash
+cd server
+npm install
+node server.js
+```
