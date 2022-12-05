@@ -45,6 +45,7 @@ node server.js
 
 ## Testing user info
 
-```bash
-- email: user1   password: password1
-- email: user2   password: password2
+- email: `user1`
+  - password: `password1`
+- email: `user2`
+  - password: `password2`
