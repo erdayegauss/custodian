@@ -38,9 +38,7 @@ node server/createInitData.js
 ## Start backend service
 
 ```bash
-cd server
-npm install
-node server.js
+node server/server.js
 ```
 
 ## Testing user info
