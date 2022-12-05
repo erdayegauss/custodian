@@ -211,6 +211,20 @@ const run = async () => {
         userName: user1.name
     });
 
+    const wallet1_1_5 = await walletController.createWallet({
+        name: "CR7's Ripple Wallet in Quant Vault",
+        address: "wefwefwefwfwfef",
+        assetName: "Bitcoin",
+        assetSymbol: "BTC",
+        amount: 1000234,
+        status: "active",
+        assetId: asset1.id,
+        vaultId: vault1_1.id,
+        vaultName: vault1_1.name,
+        userId: user1.id,
+        userName: user1.name
+    });
+
     const wallet1_2_1 = await walletController.createWallet({
         name: "CR7's Bitcoin Wallet in AutoCall Vault",
         address: "0x5a52e96bacdabb82fd05763e25335261b270efcb",

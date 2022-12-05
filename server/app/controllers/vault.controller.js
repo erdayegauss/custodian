@@ -7,36 +7,51 @@ const authJwt = require("../middleware/authJwt");
 
 // Create and Save a new Vault
 exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.name) {
-        res.status(400).send({
-            message: "Name can not be empty!"
-        });
-        return;
-    }
+    const token = req.headers["authorization"];
 
-    // Create a Vault
-    const vault = {
-        name: req.body.name,
-        image: req.body.image,
-        amount: req.body.amount,
-        status: req.body.status,
-        statusBg: req.body.statusBg,
-        description: req.body.description,
-        userId: req.body.userId
-    };
+    authJwt.verifyToken(token).then((data) => {
+        const userId = data.id;
+        const username = data.username;
 
-    // Save Vault in the database
-    Vault.create(vault)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Vault."
+        // Validate request
+        if (!req.body.name) {
+            res.status(400).send({
+                message: "Name can not be empty!"
             });
+            return;
+        }
+
+        // Create a Vault
+        const vault = {
+            name: req.body.name,
+            image: "vault/vault_1_1.png",
+            amount: 0,
+            status: "active",
+            statusBg: "green",
+            userId: userId,
+        };
+
+        // Save Vault in the database
+        Vault.create(vault)
+            .then(data => {
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while creating the Vault."
+                });
+            });
+
+
+    }).catch((err) => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while creating the Vault."
         });
+    });
+
+
 };
 
 // Retrieve all Vaults from the database.
@@ -108,7 +123,6 @@ exports.findAllWithWallets = (req, res) => {
         Vault.findAll({where: {userId: userId}, include: ["wallets"]})
             .then(rawVault => {
                 let totalAmount = 0;
-                console.log(typeof total_amout);
                 let resultVaultData = rawVault.map((vault) => {
                     totalAmount = totalAmount + parseFloat(vault.amount);
                     let accounts = vault.wallets.map((wallet) => {
@@ -118,7 +132,7 @@ exports.findAllWithWallets = (req, res) => {
                         }
                     })
 
-                    return createData(vault.image, vault.name, vault.amount, vault.status, vault.updatedAt, accounts)
+                    return createVaultView(vault.id, vault.image, vault.name, vault.amount, vault.status, vault.updatedAt, accounts)
                 })
 
                 res.send({
@@ -151,8 +165,9 @@ exports.createVault = (vault) => {
         });
 }
 
-function createData(image, name, amount, status, updateAt, Accounts) {
+function createVaultView(id, image, name, amount, status, updateAt, Accounts) {
     return {
+        vaultId: id,
         image: image,
         name: name,
         amount: amount,

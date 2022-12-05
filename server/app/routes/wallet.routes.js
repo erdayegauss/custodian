@@ -4,7 +4,8 @@ module.exports = app => {
     // Create a new Wallet
     router.post("/", wallets.create);
     router.get("/", wallets.findAllByUserId);
-    router.post("/getWalletsByAssetId", wallets.getWalletsByAssetId);
+    router.post("/btc", wallets.createBtcKey);
+    router.post("/eth", wallets.createEthKey);
 
     app.use('/api/wallets', router);
 }

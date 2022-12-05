@@ -101,7 +101,10 @@ exports.login = (req, res) => {
             if (data) {
                 bcrypt.compare(password, data.password, function (err, result) {
                     if (result) {
-                        const token = authJwt.createToken({id: data.id});
+                        const token = authJwt.createToken({
+                            id: data.id,
+                            username: data.username
+                        });
                         res.status(200).send({
                             data: data,
                             token: token

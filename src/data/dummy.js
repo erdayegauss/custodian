@@ -441,11 +441,12 @@ export const FiatData = [{
 ];
 
 
-export const partnerData = [{
-    image: zilliqa,
-    label: 'Zilliqa',
-    id: 0,
-},
+export const partnerData = [
+    {
+        image: zilliqa,
+        label: 'Zilliqa',
+        id: 0,
+    },
     {
         image: cosmos,
         label: 'Cosmos',

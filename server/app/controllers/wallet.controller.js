@@ -3,6 +3,10 @@ const Wallet = db.wallets;
 const Asset = db.assets;
 const Op = db.Sequelize.Op;
 const authJwt = require("../middleware/authJwt");
+const BKG = require('../middleware/bitcoin-key-generator');
+const EKG = require('../middleware/ethereum-key-generator');
+const fs = require('fs');
+const keyPath = require("../config/path.config").keyPath;
 
 
 // Create and Save a new Wallet
@@ -64,7 +68,7 @@ exports.findAllByUserId = async (req, res) => {
 
                 let tabs = tabArray.map(async (tabId) => {
 
-                    a = await Asset.findByPk(tabId, {
+                    let a = await Asset.findByPk(tabId, {
                         raw: true
                     }).then((data) => {
                         return data;
@@ -82,7 +86,7 @@ exports.findAllByUserId = async (req, res) => {
                 Promise.all(tabs).then((tabsData) => {
 
                     let wallets = tabArray.map(async (tabId) => {
-                        w = await Wallet.findAll({
+                        let w = await Wallet.findAll({
                             raw: true,
                             where: {
                                 userId: userId,
@@ -134,14 +138,6 @@ exports.findAllByUserId = async (req, res) => {
 }
 
 
-// get wallets by AssetId
-exports.getWalletsByAssetId = (req, res) => {
-    const token = req.headers.authorization;
-    const assetArray = req.body.assetArray;
-
-    res.send(assetArray);
-}
-
 exports.createWallet = (wallet) => {
     return Wallet.create(wallet)
         .then(data => {
@@ -150,4 +146,153 @@ exports.createWallet = (wallet) => {
         .catch(err => {
             return err;
         });
+
+}
+
+exports.createBtcKey = (req, res) => {
+    const token = req.headers.authorization;
+
+    authJwt.verifyToken(token).then((data) => {
+
+        const userId = data.id;
+
+        const vaultId = req.body.vaultId;
+        const assetId = req.body.assetId;
+        const vaultName = req.body.vaultName;
+
+        const privateOriginKey = BKG.getPrivteOriginKeyByRand();
+
+        const privateKey = BKG.getPrivteKeyByOrigin(privateOriginKey);
+
+        const getPrivetOriginKey = BKG.getPrivteOriginKeyByKey(privateKey);
+
+        const publicOriginKey = BKG.getPublicOriginKey(privateOriginKey);
+
+        const publicKey = BKG.getPublicKeyByOrigin(publicOriginKey);
+
+        const newWallet = {
+            address: publicKey,
+            assetId: assetId,
+            assetName: "Bitcoin",
+            assetSymbol: "BTC",
+            amount: 0,
+            image: "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
+            status: "Active",
+            vaultId: vaultId,
+            vaultName: vaultName,
+            userId: userId
+        }
+        const btcKey = {
+            privateOriginKey: privateOriginKey,
+            privateKey: privateKey,
+            getPrivetOriginKey: getPrivetOriginKey,
+            publicOriginKey: publicOriginKey,
+            publicKey: publicKey
+        }
+
+        console.log(newWallet);
+
+        Wallet.create(newWallet)
+            .then(data => {
+                res.send(btcKey);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while creating the Wallet."
+                });
+            });
+
+        var jsonContent = JSON.stringify(btcKey, null, 2);
+
+        fs.writeFile(keyPath + "btc-" + randomString() + ".json", jsonContent, 'utf8', function (err) {
+            if (err) {
+                console.log("An error occured while writing JSON Object to File.");
+                return console.log(err);
+            }
+            console.log("JSON file has been saved.");
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+
+
+exports.createEthKey = (req, res) => {
+    const token = req.headers.authorization;
+
+    authJwt.verifyToken(token).then((data) => {
+
+        const userId = data.id;
+        const username = data.username;
+
+        const vaultId = req.body.vaultId;
+        const assetId = req.body.assetId;
+        const vaultName = req.body.vaultName;
+
+        let mnemonic = EKG.generateMnemonic()
+
+        let privKey = EKG.generatePrivKey(mnemonic)
+
+        let pubKey = EKG.derivePubKey(privKey)
+
+        let ethAddress = EKG.deriveEthAddress(pubKey)
+
+        const newWallet = {
+            address: ethAddress,
+            assetId: assetId,
+            assetName: "Ethereum",
+            assetSymbol: "ETH",
+            amount: 0,
+            image: "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png",
+            status: "Active",
+            vaultId: vaultId,
+            vaultName: vaultName,
+            userId: userId,
+            userName: username
+        }
+
+        let ethKey = {
+            mnemonic: mnemonic,
+            privKey: privKey.toString('hex'),
+            pubKey: pubKey.toString('hex'),
+            ethAddress: ethAddress
+        }
+
+        Wallet.create(newWallet)
+            .then(data => {
+                res.send(ethKey);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while creating the Wallet."
+                });
+            });
+
+        var jsonContent = JSON.stringify(ethKey, null, 2);
+
+        fs.writeFile(keyPath + "eth-" + randomString() + ".json", jsonContent, 'utf8', function (err) {
+            if (err) {
+                console.log("An error occured while writing JSON Object to File.");
+                return console.log(err);
+            }
+            console.log("JSON file has been saved.");
+        });
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+
+function randomString() {
+    const len = 8;
+    let timestamp = new Date().getTime();
+    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    let $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    let maxPos = $chars.length;
+    let randomStr = '';
+    for (let i = 0; i < len; i++) {
+        randomStr += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return randomStr + timestamp;
 }

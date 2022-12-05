@@ -1,3 +1,4 @@
+const {id} = require("date-fns/locale");
 const db = require("../models");
 const Asset = db.assets;
 const Op = db.Sequelize.Op;
@@ -36,19 +37,28 @@ exports.create = (req, res) => {
 }
 
 exports.findAll = (req, res) => {
-    const name = req.query.name;
-    var condition = name ? {name: {[Op.like]: `%${name}%`}} : null;
-
-    Asset.findAll({where: condition})
-        .then(data => {
-            res.send(data);
+    Asset.findAll()
+        .then(assets => {
+            let resultAssets = assets.map((asset, index) => {
+                    let resultAsset = {
+                        id: index,
+                        assetId: asset.id,
+                        name: asset.name,
+                        label: asset.symbol,
+                        image: asset.image
+                    }
+                    return resultAsset;
+                }
+            )
+            res.send(resultAssets);
         })
         .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving assets."
-            });
-        });
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while retrieving assets."
+                });
+            }
+        );
 }
 
 
