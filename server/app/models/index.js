@@ -19,8 +19,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
-
 db.users = require("./user.model.js")(sequelize, Sequelize);
 db.assets = require("./asset.model.js")(sequelize, Sequelize);
 db.vaults = require("./vault.model.js")(sequelize, Sequelize);

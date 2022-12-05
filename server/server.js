@@ -43,10 +43,9 @@ db.sequelize.sync()
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({message: "Welcome to bezkoder application."});
+    res.json({message: "Welcome to metaharvest."});
 });
 
-require("./app/routes/turorial.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/vault.routes")(app);
 require("./app/routes/whitelist.routes")(app);
