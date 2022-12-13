@@ -55,7 +55,7 @@ export default function SignIn({setToken}) {
         if (token.token) {
             setLoginStatus("Hi " + token.data.firstName + "! You have logged in successfully. You can now access the protected page.")
             setToken(token);
-            window.location.href = '/';
+            window.location.href = '/accounts';
         } else {
             setLoginStatus("Invalid username or password.")
         }

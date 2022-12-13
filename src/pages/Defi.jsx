@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 
-import { defiData } from '../data/dummy';
-import {  Deficard } from '../components';
+import {defiData} from '../data/dummy';
+import {Deficard} from '../components';
 
 const Defi = () => {
 

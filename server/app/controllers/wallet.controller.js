@@ -213,7 +213,10 @@ exports.createBtcKey = (req, res) => {
             console.log("JSON file has been saved.");
         });
     }).catch((err) => {
-        console.log(err);
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while creating the Wallet."
+        });
     });
 }
 
@@ -280,7 +283,11 @@ exports.createEthKey = (req, res) => {
             console.log("JSON file has been saved.");
         });
     }).catch((err) => {
-        console.log(err);
+        console.log("hahaha")
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while creating the Wallet."
+        });
     });
 }
 

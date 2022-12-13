@@ -62,24 +62,35 @@ exports.findAll = (req, res) => {
 
 // Find a single User with an id
 exports.findOneWithVaults = (req, res) => {
-    const id = req.params.id;
 
-    User.findByPk(id, {include: ["vaults"]})
-        .then(data => {
-            if (data) {
-                res.send(data);
-            } else {
-                res.status(404).send({
-                    message: `Cannot find User with id=${id}.`
+    const token = req.headers.authorization;
+
+    authJwt.verifyToken(token).then((data) => {
+        const id = data.id;
+        console.log(id);
+
+        User.findByPk(id, {include: ["vaults"]})
+            .then(data => {
+                if (data) {
+                    res.send(data);
+                } else {
+                    res.status(404).send({
+                        message: `Cannot find User with id=${id}.`
+                    });
+                }
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message: "Error retrieving User with id=" + id
                 });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error retrieving User with id=" + id
             });
+    }).catch((err) => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving users."
         });
-}
+    });
+
+};
 
 exports.createUser = (user) => {
     return User.create(user)
@@ -129,12 +140,17 @@ exports.login = (req, res) => {
 }
 
 exports.checkLoginStatus = (req, res) => {
-    console.log(req.session);
-    if (req.session.user) {
-        res.send(req.session.user);
-    } else {
-        res.send({message: 'not logged in'});
-    }
+    const token = req.headers["authorization"];
+
+    authJwt.verifyToken(token).then((data) => {
+        res.status(200).send({
+            message: "you are logged in"
+        });
+    }).catch((err) => {
+        res.status(401).send({
+            message: "Invalid Token!"
+        });
+    });
 }
 
 exports.logout = (req, res) => {

@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./app/middleware/swagger.js');
 
 var corsOptions = {
     origin: "http://localhost:3000",
@@ -11,6 +13,8 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // parse requests of content-type - application/json
 app.use(express.json());

@@ -1,7 +1,9 @@
 const {id} = require("date-fns/locale");
+const {JsonWebTokenError} = require("jsonwebtoken");
 const db = require("../models");
 const Asset = db.assets;
 const Op = db.Sequelize.Op;
+const authJwt = require("../middleware/authJwt");
 
 // Create and Save a new Asset
 exports.create = (req, res) => {
@@ -37,28 +39,41 @@ exports.create = (req, res) => {
 }
 
 exports.findAll = (req, res) => {
-    Asset.findAll()
-        .then(assets => {
-            let resultAssets = assets.map((asset, index) => {
-                    let resultAsset = {
-                        id: index,
-                        assetId: asset.id,
-                        name: asset.name,
-                        label: asset.symbol,
-                        image: asset.image
-                    }
-                    return resultAsset;
+    const token = req.headers["authorization"];
+
+    authJwt.verifyToken(token).then((data) => {
+
+            Asset.findAll()
+                .then(assets => {
+                    let resultAssets = assets.map((asset, index) => {
+                            let resultAsset = {
+                                id: index,
+                                assetId: asset.id,
+                                name: asset.name,
+                                label: asset.symbol,
+                                image: asset.image
+                            }
+                            return resultAsset;
                 }
-            )
-            res.send(resultAssets);
-        })
-        .catch(err => {
-                res.status(500).send({
-                    message:
-                        err.message || "Some error occurred while retrieving assets."
-                });
-            }
-        );
+                    )
+                    res.send(resultAssets);
+                })
+                .catch(err => {
+                        res.status(500).send({
+                            message:
+                                err.message || "Some error occurred while retrieving assets."
+                        });
+                    }
+                );
+        }
+    ).catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving assets."
+            });
+        }
+    );
+
 }
 
 

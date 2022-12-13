@@ -1,13 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
     const Whitelist = sequelize.define("whitelist", {
         adminUserId: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true,
         },
         adminUserName: {
             type: Sequelize.STRING
         },
         targetUserId: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true,
         },
         targetUserName: {
             type: Sequelize.STRING
