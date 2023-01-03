@@ -35,7 +35,16 @@ const AddWalletPopup = (props) => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:8089/api/assets')
+        axios.get('http://localhost:8089/api/assets',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': localToken,
+                    'Access-Control-Allow-Origin': '*',
+                    'Accept': 'application/json'
+                }
+            }
+        )
             .then(response => {
                     setAssetsData(response.data);
                 }

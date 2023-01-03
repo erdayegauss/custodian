@@ -63,7 +63,7 @@ const run = async () => {
         lastName: "De Bruyne",
         email: "deBruyne@jsfund.cn",
         label: "KDB",
-        image: "avatar/deBruyne.jpeg",
+        image: "avatar/de.jpeg",
         status: "active",
         role: "Customer"
     });
