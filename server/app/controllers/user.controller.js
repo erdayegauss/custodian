@@ -114,7 +114,8 @@ exports.login = (req, res) => {
                     if (result) {
                         const token = authJwt.createToken({
                             id: data.id,
-                            username: data.username
+                            username: data.username,
+                            name: data.name
                         });
                         res.status(200).send({
                             data: data,

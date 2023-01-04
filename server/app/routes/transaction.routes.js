@@ -42,6 +42,10 @@ module.exports = app => {
      */
     router.post("/", transactions.create);
 
+    router.post("/eth", transactions.createEthTransaction);
+
+    router.put("/eth", transactions.updateEthTransactionStatus);
+
     /**
      * @swagger
      * /api/transactions:

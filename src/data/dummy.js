@@ -87,7 +87,7 @@ import cosmos from './cosmos.png'
 
 
 export const userData = [
-    {ID: '0', label: "John", name: 'John Doe', image: avatar, status: "active", statusBg: "green"},
+    {ID: '0', label: "John", name: 'John Doe', image: "avatar/ronaldo.jpeg", status: "active", statusBg: "green"},
     {ID: '1', label: "Lily", name: 'Lily Hanks', image: avatar2, status: "active", statusBg: "green"},
     {ID: '2', label: "Jerry", name: 'Jerry Lee', image: avatar3, status: "verifying", statusBg: "#8BE78B"},
     {ID: '3', label: "Shaun", name: 'Shaun Parker', image: avatar4, status: "active", statusBg: "green"},
@@ -101,6 +101,12 @@ export const userData = [
     {ID: '11', label: "Flower", name: 'Flower Cook', image: avatar12, status: "invalid", statusBg: "red"},
     {ID: '12', label: "Hank", name: 'Hank Paul', image: avatar13, status: "verifying", statusBg: "#8BE78B"},
     {ID: '13', label: "Hoe", name: 'Hoe Rhodes', image: avatar13, status: "invalid", statusBg: "red"},
+]
+
+export const candidateUserData = [
+    {ID: '0',targetUserId: 2,label: "John", name: 'John Doe', image: "avatar/ronaldo.jpeg", status: "active", statusBg: "green",deFaultTargetPublicKey:"0x2E87B78eAdaa930eb43254665a9abB0437D72408"},
+    {ID: '1',targetUserId: 3,label: "Lily", name: 'Lily Hanks', image: avatar2, status: "active", statusBg: "green",deFaultTargetPublicKey:"0xbab9243663849eD787567A7C5aB43F4e48d5F58C"},
+    {ID: '2',targetUserId: 4,label: "Jerry", name: 'Jerry Lee', image: avatar3, status: "verifying", statusBg: "#8BE78B",deFaultTargetPublicKey:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"},
 ]
 
 
@@ -305,11 +311,17 @@ export const WhitelistGrid = [
     },
     {
         field: 'status',
-        headerText: 'status',
+        headerText: 'Status',
         template: whitelistStatus,
         width: '33%',
         textAlign: 'Left'
     },
+    {
+        field: 'deFaultTargetPublicKey',
+        headerText: 'Public Key',
+        width: '33%',
+        textAlign: 'Left'
+    }
 ];
 
 
@@ -479,6 +491,11 @@ export const partnerData = [
     },
 ];
 
+export const candidateAssetsData = [{
+    image: ethereum,
+    label: 'ETH',
+    id: 0,
+}];
 
 export const assetsData = [{
     image: bitcoin,

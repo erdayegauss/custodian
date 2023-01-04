@@ -2,6 +2,108 @@ const db = require("../models");
 const Transaction = db.transactions;
 const Op = db.Sequelize.Op;
 const authJwt = require("../middleware/authJwt");
+const { SystemSecurityUpdate } = require("@mui/icons-material");
+
+exports.updateEthTransactionStatus = (req, res) => {
+    const token = req.headers.authorization;
+
+    authJwt.verifyToken(token).then(async (data) => {
+        const id = req.body.recordId;
+        const txStatus = req.body.txStatus;
+
+        Transaction.update({txStatus: txStatus}, {
+            where: {id: id}
+        })
+            .then(num => {
+                if (num == 1) {
+                    res.send({
+                        message: "Transaction was updated successfully."
+                    });
+                } else {
+                    res.send({
+                        message: `Cannot update Transaction with id=${id}. Maybe Transaction was not found or req.body is empty!`
+                    });
+                }
+            }
+            )
+            .catch(err => {
+                res.status(500).send({
+                    message: "Error updating Transaction with id=" + id
+                });
+            }
+            );
+    })
+}
+
+exports.createEthTransaction = (req, res) => {
+    const token = req.headers.authorization;
+
+    authJwt.verifyToken(token).then(async (data) => {
+        const userId = data.id;
+        const name = data.name;
+
+        const txType = "Transfer"
+        const txStatus = "pending"
+        const fee = 0.0001
+        const amount = req.body.amount
+        const senderId = userId
+        const senderName = name
+        const fromAddress = req.body.fromAddress
+        const receiverId = req.body.receiverId
+        const receiverName = req.body.receiverName;
+        const toAddress = req.body.toAddress;
+        const assetId = 2
+        const assetName = "Ethereum"
+        const assetSymbol = "ETH"
+        const sign = req.body.sign;
+        const note = req.body.note;
+        const aml = "pass"
+
+        // Create a Transaction
+        const transaction = {
+            txType: txType,
+            txId: "",
+            txHash: "",
+            txStatus: txStatus,
+            fee: fee,
+            amount: amount,
+            senderId: senderId,
+            senderName: senderName,
+            receiverId: receiverId,
+            receiverName: receiverName,
+            // fromVaultId: "",
+            // fromVaultName: "",
+            // toVaultId: "",
+            // toVaultName: "",
+            // fromWalletId: "",
+            fromAddress: fromAddress,
+            // toWalletId: "",
+            toAddress: toAddress,
+            assetId: assetId,
+            assetName: assetName,
+            assetSymbol: assetSymbol,
+            sign: sign,
+            note: note,
+            aml: aml
+        }
+
+        Transaction.create(transaction)
+        .then(data => {
+            const dataObj = data.get({plain:true})
+            res.send(dataObj);
+        })
+        .catch(err => {
+            return err;
+        });
+
+    }).catch((err) => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while creating the Transaction."
+        });
+    });
+}
+
 
 
 // Create and Save a new Transaction
@@ -58,7 +160,7 @@ exports.findAllByUserId = (req, res) => {
             .then(rawTransactionData => {
 
                 let resultTransactionData = rawTransactionData.map((Tx) => {
-                    return createData(Tx.senderId, Tx.receiverId, Tx.amount, Tx.assetId, Tx.txStatus, (Tx.txStatus === 'active' ? 'green' : (Tx.txStatus === 'pending' ? 'orange' : 'red')), Tx.createdAt,
+                    return createData(Tx.senderId, Tx.receiverId, Tx.amount, Tx.assetId, Tx.txStatus, (Tx.txStatus === 'success' ? 'green' : (Tx.txStatus === 'pending' ? 'orange' : 'red')), Tx.createdAt,
                         Tx.txType, Tx.toAddress, Tx.txHash, Tx.txId, Tx.fee, Tx.updatedAt, Tx.sign, Tx.aml, Tx.note, Tx.sender.image, Tx.receiver.image, Tx.asset.image);
                 });
 

@@ -34,6 +34,9 @@ const Whitelist = () => {
                     'Authorization': localToken,
                     'Access-Control-Allow-Origin': '*',
                     'Accept': 'application/json'
+                },
+                params: {
+                    'shortenAddress': true
                 }
             }
         )

@@ -286,6 +286,7 @@ const run = async () => {
         adminUserName: user1.name,
         targetUserId: user2.id,
         targetUserName: user2.name,
+        defaultTargetPublicKey: "0xbab9243663849eD787567A7C5aB43F4e48d5F58C",
         status: "active",
         statusBg: "#00FF00"
     });
@@ -295,6 +296,7 @@ const run = async () => {
         adminUserName: user1.name,
         targetUserId: user3.id,
         targetUserName: user3.name,
+        defaultTargetPublicKey: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
         status: "pending",
         statusBg: "#00FF00"
     });
@@ -304,6 +306,7 @@ const run = async () => {
         adminUserName: user2.name,
         targetUserId: user1.id,
         targetUserName: user1.name,
+        defaultTargetPublicKey: "0x2E87B78eAdaa930eb43254665a9abB0437D72408",
         status: "pending",
         statusBg: "#00FF00"
     });
@@ -313,6 +316,7 @@ const run = async () => {
         adminUserName: user1.name,
         targetUserId: user4.id,
         targetUserName: user4.name,
+        defaultTargetPublicKey: "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
         status: "invalid",
         statusBg: "#00FF00"
     });

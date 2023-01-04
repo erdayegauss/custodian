@@ -4,6 +4,8 @@ const User = db.users;
 const Op = db.Sequelize.Op;
 const authJwt = require("../middleware/authJwt");
 
+const shortenAddress = (address) => `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
+
 // Create and Save a new Whitelist
 exports.create = (req, res) => {
     // Validate request
@@ -67,6 +69,8 @@ exports.findAllByAdminUserId = (req, res) => {
     authJwt.verifyToken(token).then((data) => {
         const adminUserId = data.id;
 
+        const ifShorten = req.query.shortenAddress;
+
         Whitelist.findAll({where: {adminUserId: adminUserId}, include: ["targetUser"]})
             .then(rawWhitelistData => {
                 let resultWhitelists = rawWhitelistData.map((whitelist) => {
@@ -74,6 +78,7 @@ exports.findAllByAdminUserId = (req, res) => {
                         image: whitelist.targetUser.image,
                         id: whitelist.id,
                         name: whitelist.targetUserName,
+                        deFaultTargetPublicKey: ifShorten ? shortenAddress(whitelist.defaultTargetPublicKey): whitelist.defaultTargetPublicKey,
                         status: whitelist.status,
                         statusBg: whitelist.status === 'active' ? 'green' : (whitelist.status === 'pending' ? 'orange' : 'red')
                     }

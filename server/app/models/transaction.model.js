@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.DECIMAL(10, 4)
         },
         amount: {
-            type: Sequelize.DECIMAL(10, 2)
+            type: Sequelize.DECIMAL(10, 4)
         },
         senderId: {
             type: Sequelize.INTEGER
@@ -53,9 +53,6 @@ module.exports = (sequelize, Sequelize) => {
         },
         toAddress: {
             type: Sequelize.STRING
-        },
-        amount: {
-            type: Sequelize.DECIMAL(10, 2)
         },
         assetId: {
             type: Sequelize.INTEGER

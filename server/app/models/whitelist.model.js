@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
         targetUserName: {
             type: Sequelize.STRING
         },
+        defaultTargetPublicKey: {
+            type: Sequelize.STRING
+        },
         status: {
             type: Sequelize.STRING
         },

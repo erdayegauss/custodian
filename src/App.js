@@ -37,7 +37,8 @@ import {
     ColorPicker,
     ColorMapping,
     Editor,
-    SignIn
+    SignIn,
+    Transfer
 } from './pages';
 import './App.css';
 import UseToken from './components/UseToken';
@@ -152,6 +153,7 @@ const App = () => {
                                 <Route path="/defi" element={<Defi/>}/>
                                 <Route path="/Transactions" element={<Tx/>}/>
                                 <Route path="/Exchange" element={<Exchange/>}/>
+                                <Route path="/transfer" element={<Transfer/>}/>
 
                                 {/* login  */}
 
