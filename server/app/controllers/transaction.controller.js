@@ -160,8 +160,8 @@ exports.findAllByUserId = (req, res) => {
             .then(rawTransactionData => {
 
                 let resultTransactionData = rawTransactionData.map((Tx) => {
-                    return createData(Tx.senderId, Tx.receiverId, Tx.amount, Tx.assetId, Tx.txStatus, (Tx.txStatus === 'success' ? 'green' : (Tx.txStatus === 'pending' ? 'orange' : 'red')), Tx.createdAt,
-                        Tx.txType, Tx.toAddress, Tx.txHash, Tx.txId, Tx.fee, Tx.updatedAt, Tx.sign, Tx.aml, Tx.note, Tx.sender.image, Tx.receiver.image, Tx.asset.image);
+                    return createData(Tx.senderId, Tx.receiverId, Tx.amount, Tx.assetId, Tx.txStatus, (Tx.txStatus === 'success' ? 'green' : (Tx.txStatus === 'pending' ? 'orange' : 'red')), Tx.createdAt.toLocaleString('chinese', {hour12: false}),
+                        Tx.txType, Tx.toAddress, Tx.txHash, Tx.txId, Tx.fee, Tx.updatedAt.toLocaleString('chinese', {hour12: false}), Tx.sign, Tx.aml, Tx.note, Tx.sender.image, Tx.receiver.image, Tx.asset.image);
                 });
 
                 res.send(resultTransactionData);

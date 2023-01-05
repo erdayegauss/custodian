@@ -1066,6 +1066,11 @@ export const links = [{
                 icon: < IoMdContacts / > ,
                 },
             {
+                name: 'Transfer',
+                icon: < IoMdContacts / > ,
+                },
+
+            {
                 name: 'Exchange',
                 icon: < IoMdContacts / > ,
                 },

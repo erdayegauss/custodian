@@ -10,60 +10,60 @@ const run = async () => {
     const user1 = await userController.createUser({
         username: "user1",
         password: "$2b$10$.wjul86Iqdkt/siWXdJM9OwmZwe5erVXElkDpHOtRj9DihT95AX3y",
-        name: "Cristiano Ronaldo dos Santos Aveiro",
-        firstName: "Cristiano",
-        lastName: "Ronaldo",
-        email: "cris@jsfund.cn",
-        label: "CR7",
-        image: "avatar/ronaldo.jpeg",
+        name: "John Doe",
+        firstName: "John",
+        lastName: "Doe",
+        email: "JohnDoe@jsfund.cn",
+        label: "John",
+        image: "avatar/data/avatar.jpg",
         status: "active",
         role: "Customer"
     });
     const user2 = await userController.createUser({
         username: "user2",
         password: "$2b$10$QxT.jJxFzTiMfCXfOMGZJ.QNGcJeGiLZbz9prIX9f5S93RP/1wmzW",
-        name: "Liniel Messi Cuccittini",
-        firstName: "Liniel",
-        lastName: "Messi",
-        email: "messi@jsfund.cn",
-        label: "LM10",
-        image: "avatar/messi.jpeg",
+        name: "Lily Hanks",
+        firstName: "Lily",
+        lastName: "Hanks",
+        email: "LilyHanks@jsfund.cn",
+        label: "Lily",
+        image: "avatar/data/avatar2.jpg",
         status: "active",
         role: "Customer"
     });
     const user3 = await userController.createUser({
         username: "user3",
         password: "$2b$10$QOMWoXQXzspbGnEPuRgz7OJIVSVnokMw0BvFOkF/EPxUJCzmC1ppO",
-        name: "Neymar da Silva Santos Júnior",
-        firstName: "Neymar",
-        lastName: "Júnior",
-        email: "neymar@jsfund.cn",
-        label: "NJR",
-        image: "avatar/neymar.jpeg",
+        name: "Jerry Lee",
+        firstName: "Jerry",
+        lastName: "Lee",
+        email: "JerryLee@jsfund.cn",
+        label: "Jerry",
+        image: "avatar/data/avatar3.png",
         status: "active",
         role: "Customer"
     });
     const user4 = await userController.createUser({
         username: "user4",
         password: "$2b$10$hYHilnDFPPS8akJFJZ1GUe5x0R/cXCjXJX7hXH1e9E3JGHN.YTRc6",
-        name: "Kylian Mbappé Lottin",
-        firstName: "Kylian",
-        lastName: "Mbappé",
-        email: "mbappe@jsfund.cn",
-        label: "KMB",
-        image: "avatar/mbappe.jpg",
+        name: "Shaun Parker",
+        firstName: "Shaun",
+        lastName: "Parker",
+        email: "ShaunParker@jsfund.cn",
+        label: "Shaun",
+        image: "avatar/data/avatar4.jpg",
         status: "active",
         role: "Customer"
     });
     const user5 = await userController.createUser({
         username: "user5",
         password: "$2b$10$9oRHLsYOs5qiqjzQ3sO5G.bgkZGR0XUmrh6hOBOQ4/.TE/08CQJjK",
-        name: "Kevin De Bruyne",
+        name: "Kevin Woods",
         firstName: "Kevin",
-        lastName: "De Bruyne",
-        email: "deBruyne@jsfund.cn",
-        label: "KDB",
-        image: "avatar/de.jpeg",
+        lastName: "Woods",
+        email: "KevinWoods@jsfund.cn",
+        label: "Kevin",
+        image: "avatar/data/avatar5.jpg",
         status: "active",
         role: "Customer"
     });
@@ -74,7 +74,7 @@ const run = async () => {
         symbol: "BTC",
         image: "asset/bitcoin.png",
         status: "active",
-        price: 10000.23,
+        price: 16822.18,
         description: "Bitcoin is a cryptocurrency invented in 2008"
     });
 
@@ -83,7 +83,7 @@ const run = async () => {
         symbol: "ETH",
         image: "asset/ethereum.png",
         status: "active",
-        price: 1000.23,
+        price: 1251.35,
         description: "Ethereum is an open-source, public, blockchain-based distributed computing platform"
     });
 
@@ -92,7 +92,7 @@ const run = async () => {
         symbol: "LTC",
         image: "asset/litecoin.png",
         status: "active",
-        price: 100.23,
+        price: 75.29,
         description: "Litecoin is a peer-to-peer cryptocurrency"
     });
 
@@ -106,61 +106,61 @@ const run = async () => {
     });
 
     const vault1_1 = await vaultController.createVault({
-        name: "CR7's Quant Vault",
+        name: "Quant Vault",
         image: "vault/vault_1_1.png",
-        amount: 1000,
+        amount: 3920,
         status: "active",
         statusBg: "#00FF00",
-        description: "CR7's Quant Vault",
+        description: "John's Quant Vault",
         userId: user1.id
     });
 
     const vault1_2 = await vaultController.createVault({
-        name: "CR7's AutoCall Vault",
+        name: "John's AutoCall Vault",
         image: "vault/vault_1_1.png",
-        amount: 2000,
+        amount: 2230,
         status: "active",
         statusBg: "#00FF00",
-        description: "CR7's AutoCall Vault",
+        description: "John's AutoCall Vault",
         userId: user1.id
     });
 
     const vault2_1 = await vaultController.createVault({
-        name: "LM10's Quant Vault",
+        name: "Options Vault",
         image: "vault/vault_1_1.png",
         amount: 3000,
         status: "active",
         statusBg: "#00FF00",
-        description: "LM10's Quant Vault",
+        description: "Lily's Options Vault",
         userId: user2.id
     });
 
     const vault2_2 = await vaultController.createVault({
-        name: "LM10's AutoCall Vault",
+        name: "Grid Vault",
         image: "vault/vault_1_1.png",
         amount: 200,
         status: "active",
         statusBg: "#00FF00",
-        description: "LM10's AutoCall Vault",
+        description: "Lily's Grid Vault",
         userId: user2.id
     });
 
     const vault3_1 = await vaultController.createVault({
-        name: "NJR's Quant Vault",
+        name: "Dual currency Vault",
         image: "vault/vault_1_1.png",
         amount: 5000,
         status: "active",
         statusBg: "#00FF00",
-        description: "NJR's Quant Vault",
+        description: "Jerry's Dual currency Vault",
         userId: user3.id
     });
 
     const wallet1_1_1 = await walletController.createWallet({
-        name: "CR7's Bitcoin Wallet in Quant Vault",
-        address: "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+        name: "John's Bitcoin Wallet in Quant Vault",
+        address: "34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo",
         assetName: "Bitcoin",
         assetSymbol: "BTC",
-        amount: 1000,
+        amount: 50,
         status: "active",
         assetId: asset1.id,
         vaultId: vault1_1.id,
@@ -170,8 +170,8 @@ const run = async () => {
     });
 
     const wallet1_1_2 = await walletController.createWallet({
-        name: "CR7's Ethereum Wallet in Quant Vault",
-        address: "0xda9dfa130df4de4673b89022ee50ff26f6ea73cf",
+        name: "John's Ethereum Wallet in Quant Vault",
+        address: "0x2E87B78eAdaa930eb43254665a9abB0437D72408",
         assetName: "Ethereum",
         assetSymbol: "ETH",
         amount: 1000,
@@ -184,8 +184,8 @@ const run = async () => {
     });
 
     const wallet1_1_3 = await walletController.createWallet({
-        name: "CR7's Litecoin Wallet in Quant Vault",
-        address: "0x5a52e96bacdabb82fd05763e25335261b270efcb",
+        name: "John's Litecoin Wallet in Quant Vault",
+        address: "LP98Q2gPZ9gUhoL5fDji357HPRHxVqWh6j",
         assetName: "Litecoin",
         assetSymbol: "LTC",
         amount: 1000,
@@ -198,8 +198,8 @@ const run = async () => {
     });
 
     const wallet1_1_4 = await walletController.createWallet({
-        name: "CR7's Ripple Wallet in Quant Vault",
-        address: "0xdcef968d416a41cdac0ed8702fac8128a64241a2",
+        name: "John's Ripple Wallet in Quant Vault",
+        address: "0x5a52e96bacdabb82fd05763e25335261b270efcb",
         assetName: "Ripple",
         assetSymbol: "XRP",
         amount: 1000,
@@ -212,7 +212,7 @@ const run = async () => {
     });
 
     const wallet1_1_5 = await walletController.createWallet({
-        name: "CR7's Ripple Wallet in Quant Vault",
+        name: "John's Ripple Wallet in Quant Vault",
         address: "wefwefwefwfwfef",
         assetName: "Bitcoin",
         assetSymbol: "BTC",
@@ -226,7 +226,7 @@ const run = async () => {
     });
 
     const wallet1_2_1 = await walletController.createWallet({
-        name: "CR7's Bitcoin Wallet in AutoCall Vault",
+        name: "John's Bitcoin Wallet in AutoCall Vault",
         address: "0x5a52e96bacdabb82fd05763e25335261b270efcb",
         assetName: "Bitcoin",
         assetSymbol: "BTC",
@@ -240,7 +240,7 @@ const run = async () => {
     });
 
     const wallet1_2_2 = await walletController.createWallet({
-        name: "CR7's Ethereum Wallet in AutoCall Vault",
+        name: "John's Ethereum Wallet in AutoCall Vault",
         address: "3da9dfa130df4de4673b89022ee50ff26f6ea73cf",
         assetName: "Ethereum",
         assetSymbol: "ETH",
@@ -254,7 +254,7 @@ const run = async () => {
     });
 
     const wallet2_1_1 = await walletController.createWallet({
-        name: "LM10's Bitcoin Wallet in Quant Vault",
+        name: "Lily's Bitcoin Wallet in Quant Vault",
         address: "4a52e96bacdabb82fd05763e25335261b270efcb",
         assetName: "Bitcoin",
         assetSymbol: "BTC",
@@ -268,8 +268,8 @@ const run = async () => {
     });
 
     const wallet2_1_2 = await walletController.createWallet({
-        name: "LM10's Ethereum Wallet in Quant Vault",
-        address: "5da9dfa130df4de4673b89022ee50ff26f6ea73cf",
+        name: "Lily's Ethereum Wallet in Quant Vault",
+        address: "0xbab9243663849eD787567A7C5aB43F4e48d5F58C",
         assetName: "Ethereum",
         assetSymbol: "ETH",
         amount: 1000,
@@ -343,8 +343,8 @@ const run = async () => {
         assetId: asset1.id,
         assetName: asset1.name,
         assetSymbol: asset1.symbol,
-        sign: "Cristiano",
-        note: "Transfer from CR7's Bitcoin Wallet in Quant Vault to LM10's Bitcoin Wallet in Quant Vault",
+        sign: "John transfer to Lily",
+        note: "Transfer from John's Bitcoin Wallet in Quant Vault to Lily's Bitcoin Wallet in Quant Vault",
         aml: "Pass"
     });
 
@@ -352,7 +352,7 @@ const run = async () => {
         txType: "Transfer",
         txId: "0x2562a1f91568",
         txHash: "0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689f",
-        txStatus: "done",
+        txStatus: "success",
         fee: 3.23,
         amount: 100,
         senderId: user2.id,
@@ -371,11 +371,9 @@ const run = async () => {
         assetName: asset2.name,
         assetSymbol: asset2.symbol,
         sign: "Lionel",
-        note: "Transfer from LM10's Ethereum Wallet in Quant Vault to CR7's Ethereum Wallet in AutoCall Vault",
+        note: "Transfer from Lily's Ethereum Wallet in Quant Vault to John's Ethereum Wallet in AutoCall Vault",
         aml: "Pass"
     });
-
-
 };
 
 // db.sequelize.sync();

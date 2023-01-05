@@ -32,8 +32,7 @@ export const TransactionsProvider = ({ children }) => {
   const [transactionCount, setTransactionCount] = useState(localStorage.getItem("transactionCount"));
   const [transactions, setTransactions] = useState([]);
   const [recordId, setRecordId, recordIdRef] = useState("");
-  const localData = JSON.parse(sessionStorage.token).data;
-  const localToken = JSON.parse(sessionStorage.token).token;
+  // const localData = JSON.parse(sessionStorage.token).data;
 
   const handleChange = (e, name) => {
     setformData((prevState) => ({ ...prevState, [name]: e.target.value }));
@@ -125,7 +124,7 @@ export const TransactionsProvider = ({ children }) => {
     }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': localToken,
+        'Authorization': JSON.parse(sessionStorage.token).token,
         'Access-Control-Allow-Origin': '*',
         'Accept': 'application/json'
       }
@@ -143,7 +142,7 @@ export const TransactionsProvider = ({ children }) => {
     }, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': localToken,
+        'Authorization': JSON.parse(sessionStorage.token).token,
         'Access-Control-Allow-Origin': '*',
         'Accept': 'application/json'
       }
@@ -186,16 +185,16 @@ export const TransactionsProvider = ({ children }) => {
 
         updateTransactionSuccess()
 
-        // window.location.reload();
+        window.location.reload();
       } else {
         updateTransactionFailure()
         console.log("No ethereum object");
-        // window.location.reload();
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
       updateTransactionFailure();
-      // window.location.reload();
+      window.location.reload();
       throw new Error("No ethereum object");
     }
   };

@@ -72,7 +72,7 @@ function createData(source, destination, amount, asset, status, statusBg, create
 const TXS = () => {
 
     useEffect(() => {
-        axios.get('http://localhost:8089/api/whitelists',
+        axios.get('http://localhost:8089/api/whitelists/candidate',
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ const TXS = () => {
                     'Accept': 'application/json'
                 },
                 params: {
-                    'shortenAddress': true
+                    'shortenAddress': false
                 }
             }
         )
@@ -206,12 +206,16 @@ const TXS = () => {
                                             <div class="history">
                                                 <p style={{fontWeight: "bold"}}>Transaction type:</p>
                                                 <p> {historyRow.Type}</p><p style={{fontWeight: "bold"}}>TX ID:</p>
+                                                {historyRow.TxID &&(
                                                 <p> {historyRow.TxID}</p>
+                                                    )}
                                             </div>
-                                            <div class="container">
+                                            {historyRow.TxHash && (
+                                                <div class="container">
                                                 <p style={{fontWeight: "bold"}}>Transaction Hash:</p><a
                                                 href="https://goerli.etherscan.io/tx/0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e"> {historyRow.TxHash}</a>
                                             </div>
+                                                )}
                                             <div class="history">
                                                 <div><p style={{fontWeight: "bold"}}>fee:</p>
                                                     <p> {historyRow.NetworkFee}</p></div>
@@ -343,7 +347,7 @@ const TXS = () => {
                             <Autocomplete
                                 margin="dense"
                                 sx={{width: 300}}
-                                options={candidateUserData}
+                                options={whiteListData}
                                 autoHighlight
                                 getOptionLabel={(option) => option.label}
                                 asset={destination}
@@ -359,7 +363,7 @@ const TXS = () => {
                                         <img
                                             loading="eager"
                                             width="20"
-                                            src={candidateUserData[option.ID].image}
+                                            src={whiteListData[option.ID].image}
                                             alt=""
                                         />
                                         {option.label}

@@ -47,6 +47,8 @@ module.exports = app => {
      */
     router.get("/", whitelists.findAllByAdminUserId);
 
+    router.get("/candidate",whitelists.findCandidateUser);
+
 
     app.use('/api/whitelists', router);
 };

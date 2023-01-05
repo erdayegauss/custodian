@@ -93,6 +93,7 @@ const Welcome = (props) => {
             return;
         }
 
+        console.log("111111111111")
         recordTransaction();
         sendTransaction();
     };

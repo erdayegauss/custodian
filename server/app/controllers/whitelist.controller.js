@@ -74,13 +74,54 @@ exports.findAllByAdminUserId = (req, res) => {
         Whitelist.findAll({where: {adminUserId: adminUserId}, include: ["targetUser"]})
             .then(rawWhitelistData => {
                 let resultWhitelists = rawWhitelistData.map((whitelist) => {
+
                     let resultWhitelist = {
                         image: whitelist.targetUser.image,
                         id: whitelist.id,
                         name: whitelist.targetUserName,
-                        deFaultTargetPublicKey: ifShorten ? shortenAddress(whitelist.defaultTargetPublicKey): whitelist.defaultTargetPublicKey,
+                        deFaultTargetPublicKey: ifShorten === 'true'? shortenAddress(whitelist.defaultTargetPublicKey) : whitelist.defaultTargetPublicKey,
                         status: whitelist.status,
                         statusBg: whitelist.status === 'active' ? 'green' : (whitelist.status === 'pending' ? 'orange' : 'red')
+                    }
+                    return resultWhitelist;
+                })
+                res.send(resultWhitelists);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Some error occurred while retrieving whitelists."
+                });
+            });
+    }).catch((err) => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while retrieving whitelists."
+        });
+    });
+};
+
+exports.findCandidateUser = (req, res) => {
+    const token = req.headers.authorization;
+
+    authJwt.verifyToken(token).then((data) => {
+        const adminUserId = data.id;
+        const ifShorten = req.query.shortenAddress;
+
+        Whitelist.findAll({where: {adminUserId: adminUserId}, include: ["targetUser"]})
+            .then(rawWhitelistData => {
+                let resultWhitelists = rawWhitelistData.map((whitelist,i) => {
+
+                    let resultWhitelist = {
+                        ID: i,
+                        targetUserId: whitelist.targetUserId,
+                        label: whitelist.targetUserName,
+                        name: whitelist.targetUserName,
+                        image: whitelist.targetUser.image,
+                        id: whitelist.id,
+                        status: whitelist.status,
+                        statusBg: whitelist.status === 'active' ? 'green' : (whitelist.status === 'pending' ? 'orange' : 'red'),
+                        deFaultTargetPublicKey: ifShorten === 'true'? shortenAddress(whitelist.defaultTargetPublicKey) : whitelist.defaultTargetPublicKey,
                     }
                     return resultWhitelist;
                 })
