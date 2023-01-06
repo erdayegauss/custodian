@@ -139,19 +139,20 @@
 }
 
 .card {
-    margin: 5px;
-    padding: 2px;
+    margin: 1%;
+    padding: 1px;
     display: inline-block;
-    background-color: currentColor;
+    background-color: #1b98c4;
     width: 31%;
+    height: 90px;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
-    border-radius: 5px;
-    opacity: 0.3;
+    border-radius: 10px;
+    opacity: 1.0;
 }
 
 .card:hover {
-    opacity: 1.2;
+    opacity: 0.2;
   }
 
 .card img {
@@ -445,3 +446,12 @@
     align-items: center;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-areas:
+      'part1  part2';
+    gap: 10px;
+    background-color: #fdfdfdf1;
+    padding: 10px;
+  
+  }

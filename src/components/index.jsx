@@ -44,3 +44,4 @@ export { default as Dashboard } from './Dashboard';
 export { default as TwoFactor } from './twoFactor';
 export { default as Validation } from './validation';
 export { default as UseToken } from './UseToken';
+export { default as Transfer } from './Transfer';

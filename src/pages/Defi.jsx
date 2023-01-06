@@ -1,7 +1,7 @@
-import {React, useState} from 'react';
+import { React, useState } from 'react';
 
-import {defiData} from '../data/dummy';
-import {Deficard} from '../components';
+import { defiData } from '../data/dummy';
+import { Deficard } from '../components';
 
 const Defi = () => {
 
@@ -20,7 +20,7 @@ const Defi = () => {
       </div>
 
       <div class="defi">
-        <div class="defi1"><button onClick={() => { setLink("https://app.uniswap.org/") }}>
+        <div class="defi1"><button onClick={() => { setLink("https://app.uniswap.org/#/swap") }}>
           <Deficard image={defiData[0].image} name="Uniswap"  ></Deficard></button> </div>
         <div class="defi2"><button onClick={() => { setLink("https://app.aave.com/markets/") }}>
           <Deficard image={defiData[1].image} name="AVAE"  ></Deficard></button> </div>

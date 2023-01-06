@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
-import { GridComponent, ColumnsDirective, ColumnDirective} from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-grids';
 import { vaultData, exchangeData, FiatData, vaultGrid, exchangeGrid, fiatGrid, iconData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import { Ajax } from '@syncfusion/ej2-base';
@@ -15,6 +15,33 @@ import binance from '../data/binance.png'
 import bitstamp from '../data/bitstamp.png'
 import deribit from '../data/deribit.png'
 import Safeguard1 from '../data/Safeguard.png'
+import Grid from '@mui/material/Unstable_Grid2';
+
+import { Pie, Transfer } from '../components';
+import { ecomPieChartData } from '../data/dummy';
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+
+
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import Paper from '@mui/material/Paper';
+
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 let datatmp = [
   { image: Safeguard1, name: "Quant Vault", amount: "1,000,000" },
@@ -32,6 +59,28 @@ let datatmp1 = [
   { image: bitstamp, name: "Bitstamp", amount: "145,000" },
 
 ];
+
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+
+const rows = [
+  createData('16% APR Fixed Earn', '10d', "6.0%"),
+  createData('16% APR Fixed Earn', '10d', "9.0%"),
+  createData('16% APR Fixed Earn', '10d', "16.0%"),
+  createData('16% APR Fixed Earn', '10d', "3.7%"),
+  createData('16% APR Fixed Earn', '90d', "16.0%"),
+  createData('16% APR Fixed Earn', '10d', "6.0%"),
+  createData('16% APR Fixed Earn', '10d', "9.0%"),
+  createData('16% APR Fixed Earn', '10d', "16.0%"),
+  createData('16% APR Fixed Earn', '10d', "3.7%"),
+  createData('16% APR Fixed Earn', '90d', "16.0%"),
+
+];
+
+
 
 const Tabs = () => {
 
@@ -57,20 +106,23 @@ const Tabs = () => {
     {
       id: 0,
       tabTitle: 'My Vault',
-      title: 'Title 1',
-      content: 'Las tabs se generan automáticamente a partir de un array de objetos, el cual tiene las propiedades: id, tabTitle, title y content.'
+      title: 'Vault',
+      content: 'Las tabs se generan automáticamente a partir de un array de objetos, el cual tiene las propiedades: id, tabTitle, title y content.',
+      amount: "$100M",
     },
     {
       id: 1,
       tabTitle: 'Exchanges',
-      title: 'Title 2',
-      content: 'Contenido de tab 2.'
+      title: 'Exchange',
+      content: 'Contenido de tab 2.',
+      amount: "$205K",
     },
     {
       id: 2,
       tabTitle: 'Fiat',
-      title: 'Title 3',
-      content: 'Contenido de tab 3.'
+      title: 'Fiat',
+      content: 'Contenido de tab 3.',
+      amount: "$50K",
     }
   ];
 
@@ -160,36 +212,61 @@ const Tabs = () => {
   };
 
 
+  const [value, setValue] = React.useState('1');
+
+  const handleChange5 = (event, newValue) => {
+    setValue(newValue);
+  };
 
 
   return (
-    <div className='container' style={{ zIndex: 1 }} >
+    <div className='' style={{ zIndex: 1, "width": "100%", "paddingLeft": "2%" }} >
 
-      <div className=''>
-        {tabs.map((tab, i) =>
-          <Button class="card " justify-self='center' key={i} id={tab.id} variant="outlined"
-            startIcon={<img src={iconData[i].image} alt="" />}
-            onClick={(handleTabClick)}
-            style={{
-              backgroundColor: currentColor,
-            }}
-          >
-          </Button>
-        )}
+
+
+      <div className='' style={{ "padding": "10px" }}>
+        <div>
+          {tabs.map((tab, i) =>
+
+            <Button class="card " justify-self='center' key={i} id={tab.id} variant="outlined"
+              startIcon={<img src={iconData[i].image} alt="" />}
+              onClick={(handleTabClick)}
+              style={{
+                backgroundColor: "#1b98c4",
+              }}
+              disableRipple
+            >
+              <a>{tab.title}<br /></a>
+              <a>&emsp;&emsp;&emsp;{tab.amount}</a>
+            </Button>
+
+          )}
+        </div>
       </div>
+
+
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/network">
+          MUI
+        </Link>
+        <Link
+          underline="hover"
+          color="inherit"
+          href="/assets/"
+        >
+          Core
+        </Link>
+        <Typography color="text.primary">Breadcrumbs</Typography>
+      </Breadcrumbs>
+
+
+
       <div class="container" >
-
-        {/*    <AddVault /> */}
-
         {tabs.map((tab, i) =>
-
-
           <div key={i} style={{ width: "95%" }}>
-
-
             {currentTab === `0` && `${tab.id}` === `0` &&
               <div style={{ display: "flex", justifyContent: "right", alignItems: "right", margin: "10px" }} >
-                <Button variant="contained"  onClick={handleClickOpen}>
+                <Button variant="contained" onClick={handleClickOpen}>
                   + Add Vault
                 </Button>
                 <Dialog open={open} onClose={handleClose} >
@@ -215,6 +292,9 @@ const Tabs = () => {
 
             {currentTab === `1` && `${tab.id}` === `1` &&
               <div style={{ display: "flex", justifyContent: "right", alignItems: "right", margin: "10px" }} >
+
+
+
                 <Button variant="contained" onClick={handleClickOpen}>
                   + Exchange Account
                 </Button>
@@ -238,15 +318,133 @@ const Tabs = () => {
               </div>
             }
 
-            {currentTab === `${tab.id}` &&
 
-              <GridComponent style={{ padding: "1%", width: "1000px" }} dataSource={source[`${tab.id}`]} pageSettings={{ pageCount: 5 }} toolbar={toolbarOptions}>
-                <ColumnsDirective >
-                  {gridsource[`${tab.id}`].map((item, index) => <ColumnDirective class='try' key={index} {...item} ></ColumnDirective>)}
-                </ColumnsDirective>
-              </GridComponent>}
+            <Grid container spacing={2}>
+              <Grid container lg={9} spacing={2} >
+
+                <div style={{ "padding": "20px" }}>
 
 
+
+                  {currentTab === `${tab.id}` &&
+
+                    <TabContext value={value}>
+                      <Box sx={{ borderBottom: 'none', borderColor: 'black', }}>
+                        <TabList onChange={handleChange5} aria-label="lab API tabs example">
+                        </TabList>
+                      </Box>
+                      <TabPanel value="1" padding="10px">
+
+                        <TableContainer component={Paper} style={{ width: '200%' }} >
+                          <Table sx={{ "& td, &  th": { border: 0 } }} size="small" aria-label="a dense table">
+                            <TableHead>
+                              <TableRow>
+                                <TableCell>Name</TableCell>
+                                <TableCell align="left">Tenor</TableCell>
+                                <TableCell align="left">APR</TableCell>
+                                <TableCell align="left"></TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody >
+                              {rows.map((row) => (
+                                <TableRow key={row.name}>
+                                  <TableCell style={{ width: '55%' }} component="th" scope="row" >
+
+                                    <div className="flex-container">
+                                      <img style={{ "width": "10%", "padding": "10px" }} src="/img/btc.png" />
+                                      <a>{row.name}</a>
+                                      <img style={{ "width": "30%", "padding": "10px" }} src="/img/banner1.png" />
+                                    </div>
+
+                                  </TableCell>
+                                  <TableCell align="left">{row.calories}</TableCell>
+                                  <TableCell align="left">{row.fat}</TableCell>
+                                  <TableCell style={{ width: '10%', "alignItems": "center" }} ><Transfer icon={<ArrowUpwardIcon />} /></TableCell>
+                                  <TableCell style={{ width: '10%', "alignItems": "center" }} ><Transfer icon={<ArrowDownwardIcon />} /></TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+                      </TabPanel>
+                    </TabContext>}
+
+
+                </div>
+              </Grid>
+              <Grid container lg={2.9} spacing={2} >
+
+                {currentTab === `0` && `${tab.id}` === `0` &&
+                  <>
+                    <div class="flex" style={{ "width": "400px" }} >
+                      <p>recent activity</p>
+                    </div>
+
+                    <div class="flex" style={{ "width": "400px" }} >
+                      <Pie id="pie-chart" data={ecomPieChartData} legendVisiblity={true} height="150%" />
+                    </div>
+
+                  </>
+                }
+
+
+
+                {currentTab === `1` && `${tab.id}` === `1` &&
+                  <>
+                    <div  >
+
+
+
+                      <Grid container  rowSpacing={1} style={{ width:"140%",height:"300px","justify-self":'center' }} >
+                        <Grid item xs={6} >
+                          <div style={{ padding:"10px", "height":"100px", alignItems:"center",  "text-align": "center", backgroundColor:"blueviolet" }}>
+                            <ArrowOutwardIcon />
+                            <p>inflow </p>
+                            <p>$21M </p>
+
+                          </div>
+                        </Grid>
+                        <Grid item xs={6} >
+                          <div style={{ padding:"10px", "height":"100px","display": "flex",   "justifyContent": "center",   "text-align": "center", backgroundColor:"blueviolet" }}>                            <a>2</a>
+                          </div>
+
+                        </Grid>
+                        <Grid item xs={6} >
+                          <div style={{ padding:"10px", "height":"100px","display": "flex",   "justifyContent": "center",   "text-align": "center", backgroundColor:"blueviolet" }}>
+                            <a>3</a>
+                          </div>
+
+                        </Grid>
+                        <Grid item xs={6} >
+                          <div style={{ padding:"10px", "height":"100px","display": "flex",   "justifyContent": "center",   "text-align": "center", backgroundColor:"blueviolet" }}>
+                            <a>4</a>
+                          </div>
+
+                        </Grid>
+                      </Grid>
+
+
+                      <>
+                        <div class="flex" style={{ "width": "400px" }} >
+                          <Pie id="pie-chart" data={ecomPieChartData} legendVisiblity={true} height="150%" />
+                        </div>
+                      </>
+                    </div>
+
+
+
+                  </>
+                }
+
+                {currentTab === `2` && `${tab.id}` === `2` &&
+                  <>
+                    <div class="flex" style={{ "width": "400px" }} >
+                      <Pie id="pie-chart" data={ecomPieChartData} legendVisiblity={true} height="150%" />
+                    </div>
+                  </>
+                }
+              </Grid>
+            </Grid>
 
           </div>
         )}

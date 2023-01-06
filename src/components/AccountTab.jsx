@@ -256,7 +256,7 @@ const AccountTab = (props) => {
             </div>
 
 
-            <TableContainer style={{width: "90%", margin: "5%"}} component={Paper}>
+            <TableContainer style={{width: "120%", margin: "1%"}} component={Paper}>
                 <Table aria-label="collapsible table">
                     <TableHead>
                         <TableRow>

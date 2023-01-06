@@ -91,7 +91,7 @@ const App = () => {
     if (!getToken()) {
         return <SignIn setToken={setToken}/>
     }
-
+    
     return (
         <div className={currentMode === 'Dark' ? 'dark' : ''}>
             <BrowserRouter>
