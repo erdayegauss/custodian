@@ -377,48 +377,459 @@ export const WalletDataAlice = [{
 
 export const exchangeData = [{
     name: "Deribit",
+    amount: "$123.45M",
     image: deribit,
-    amount: "123.45",
+    details: [
+        {
+            damount: '$12.32M',
+          address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+          title: "BTC",
+        },
+        {
+            damount: '$3.43M',
+          address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+          title: "ETH",
+        },
+        {
+            damount: '$9.87M',
+          address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+          title: "USDT",
+        },
+        {
+            damount: '$15.20M',
+          address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+          title: "USDC",
+        },
+        {
+            damount: '$4.56M',
+          address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+          title: "XRP",
+        },
+        {
+            damount: '$7.14M',
+          address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+          title: "LTC",
+        },
+        {
+            damount: '$16.22M',
+          address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+          title: "BNB",
+        },
+        {
+            damount: '$5.81M',
+          address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+          title: "Doge",
+        },
+        {
+            damount: '$6.46M',
+          address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+          title: "SOL",
+        },
+        {
+            damount: '$7.48M',
+          address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+          title: "ADA",
+        },
+    ],        
 },
     {
         name: "Binance",
+        amount: "$123.45M",
         image: binance,
-        amount: "133.45",
+        details: [
+            {
+                damount: '$12.32M',
+              address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+              title: "BTC",
+            },
+            {
+                damount: '$3.43M',
+              address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+              title: "ETH",
+            },
+            {
+                damount: '$9.87M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+                damount: '$15.20M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },
+            {
+                damount: '$4.56M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "XRP",
+            },
+            {
+                damount: '$7.14M',
+              address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+              title: "LTC",
+            },
+            {
+                damount: '$16.22M',
+              address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+              title: "BNB",
+            },
+            {
+                damount: '$5.81M',
+              address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+              title: "Doge",
+            },
+            {
+                damount: '$6.46M',
+              address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+              title: "SOL",
+            },
+            {
+                damount: '$7.48M',
+              address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+              title: "ADA",
+            },
+        ],        
     },
     {
         name: "Bitstamp",
         image: bitstamp,
-        amount: "143.45",
+        amount: "$143.45M",
+        details: [
+            {
+                damount: '$12.32M',
+              address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+              title: "BTC",
+            },
+            {
+                damount: '$3.43M',
+              address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+              title: "ETH",
+            },
+            {
+                damount: '$9.87M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+                damount: '$15.20M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },
+            {
+                damount: '$4.56M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "XRP",
+            },
+            {
+                damount: '$7.14M',
+              address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+              title: "LTC",
+            },
+            {
+                damount: '$16.22M',
+              address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+              title: "BNB",
+            },
+            {
+                damount: '$5.81M',
+              address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+              title: "Doge",
+            },
+            {
+                damount: '$6.46M',
+              address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+              title: "SOL",
+            },
+            {
+                damount: '$7.48M',
+              address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+              title: "ADA",
+            },
+        ],        
     },
     {
         name: "Gemini",
         image: gemini,
-        amount: "143.45",
+        amount: "$143.45M",
+        details: [
+            {
+                damount: '$12.32M',
+              address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+              title: "BTC",
+            },
+            {
+                damount: '$3.43M',
+              address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+              title: "ETH",
+            },
+            {
+                damount: '$9.87M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+                damount: '$15.20M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },
+            {
+                damount: '$4.56M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "XRP",
+            },
+            {
+                damount: '$7.14M',
+              address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+              title: "LTC",
+            },
+            {
+                damount: '$16.22M',
+              address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+              title: "BNB",
+            },
+            {
+                damount: '$5.81M',
+              address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+              title: "Doge",
+            },
+            {
+                damount: '$6.46M',
+              address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+              title: "SOL",
+            },
+            {
+                damount: '$7.48M',
+              address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+              title: "ADA",
+            },
+        ],        
     },
     {
         name: "kucoin",
         image: kucoin,
-        amount: "143.45",
+        amount: "$143.45M",
+        details: [
+            {
+                damount: '$12.32M',
+              address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+              title: "BTC",
+            },
+            {
+                damount: '$3.43M',
+              address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+              title: "ETH",
+            },
+            {
+                damount: '$9.87M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+                damount: '$15.20M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },
+            {
+                damount: '$4.56M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "XRP",
+            },
+            {
+                damount: '$7.14M',
+              address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+              title: "LTC",
+            },
+            {
+                damount: '$16.22M',
+              address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+              title: "BNB",
+            },
+            {
+                damount: '$5.81M',
+              address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+              title: "Doge",
+            },
+            {
+                damount: '$6.46M',
+              address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+              title: "SOL",
+            },
+            {
+                damount: '$7.48M',
+              address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+              title: "ADA",
+            },
+        ],        
     },
     {
         name: "Bitfinex",
         image: bitfinex,
-        amount: "143.45",
+        amount: "$143.45M",
+        details: [
+            {
+                damount: '$12.32M',
+              address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+              title: "BTC",
+            },
+            {
+                damount: '$3.43M',
+              address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+              title: "ETH",
+            },
+            {
+                damount: '$9.87M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+                damount: '$15.20M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },
+            {
+                damount: '$4.56M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "XRP",
+            },
+            {
+                damount: '$7.14M',
+              address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+              title: "LTC",
+            },
+            {
+                damount: '$16.22M',
+              address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+              title: "BNB",
+            },
+            {
+                damount: '$5.81M',
+              address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+              title: "Doge",
+            },
+            {
+                damount: '$6.46M',
+              address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+              title: "SOL",
+            },
+            {
+                damount: '$7.48M',
+              address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+              title: "ADA",
+            },
+        ],        
     },
     {
         name: "Kraken",
         image: kraken,
-        amount: "143.45",
-    },
-    {
-        name: "FTX",
-        image: ftx,
-        amount: "143.45",
+        amount: "$143.45M",
+        details: [
+            {
+                damount: '$12.32M',
+              address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+              title: "BTC",
+            },
+            {
+                damount: '$3.43M',
+              address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+              title: "ETH",
+            },
+            {
+                damount: '$9.87M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+                damount: '$15.20M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },
+            {
+                damount: '$4.56M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "XRP",
+            },
+            {
+                damount: '$7.14M',
+              address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+              title: "LTC",
+            },
+            {
+                damount: '$16.22M',
+              address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+              title: "BNB",
+            },
+            {
+                damount: '$5.81M',
+              address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+              title: "Doge",
+            },
+            {
+                damount: '$6.46M',
+              address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+              title: "SOL",
+            },
+            {
+                damount: '$7.48M',
+              address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+              title: "ADA",
+            },
+        ],       
     },
     {
         name: "Coinbase",
         image: coinbase,
-        amount: "143.45",
+        amount: "$143.45M",
+        details: [
+            {
+                damount: '$12.32M',
+              address: '34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo',
+              title: "BTC",
+            },
+            {
+                damount: '$3.43M',
+              address: '0xda9dfa130df4de4673b89022ee50ff26f6ea73cf',
+              title: "ETH",
+            },
+            {
+                damount: '$9.87M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+                damount: '$15.20M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },
+            {
+                damount: '$4.56M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "XRP",
+            },
+            {
+                damount: '$7.14M',
+              address: 'M8T1B2Z97gVdvmfkQcAtYbEepune1tzGua',
+              title: "LTC",
+            },
+            {
+                damount: '$16.22M',
+              address: '0xf977814e90da44bfa03b6295a0616a897441acec',
+              title: "BNB",
+            },
+            {
+                damount: '$5.81M',
+              address: 'DPDLBAe3RGQ2GiPxDzhgjcmpZCZD8cSBgZ',
+              title: "Doge",
+            },
+            {
+                damount: '$6.46M',
+              address: 'BQeizWYD2dHmQq1b6HQqwBPrLWKitnhv5K82ZnRNPL8z',
+              title: "SOL",
+            },
+            {
+                damount: '$7.48M',
+              address: 'Ae2tdPwUPEYwFx4dmJheyNPPYXtvHbJLeCaA96o6Y2iiUL18cAt7AizN2zG',
+              title: "ADA",
+            },
+        ],    
     },
 ];
 
@@ -426,17 +837,17 @@ export const exchangeData = [{
 export const FiatData = [{
     image: usd,
     name: "USD",
-    amount: "33.45",
+    amount: "$12.32M",
 },
     {
         image: euro,
         name: "EUR",
-        amount: "60.00",
+        damount: "$12.32M",
     },
     {
         image: cny,
         name: "CNY",
-        amount: "30.00",
+        damount: "$12.32M",
     },
 ];
 
@@ -476,6 +887,42 @@ export const partnerData = [
         image: signature,
         label: 'Signature Bank',
         id: 6,
+    },
+];
+
+
+export const fiatData = [
+    {
+        image: silver,
+        name: 'Silvergate',
+        amount: "$130.00K",
+        details: [
+            {
+              damount: '$12.32M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+              damount: '$12.32M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },],    
+    },
+    {
+        image: signature,
+        name: 'Signature',
+        amount: "$430.00K",        
+        details: [
+            {
+              damount: '$12.32M',
+              address: '0x5a52e96bacdabb82fd05763e25335261b270efcb',
+              title: "USDT",
+            },
+            {
+              damount: '$12.32M',
+              address: '0xdcef968d416a41cdac0ed8702fac8128a64241a2',
+              title: "USDC",
+            },],    
     },
 ];
 
@@ -3700,11 +4147,34 @@ export const links = [{
                 ];
 
                 export const ecomPieChartData = [
-            {x: '2018', y: 18, text: '35%'},
-            {x: '2019', y: 18, text: '15%'},
-            {x: '2020', y: 18, text: '25%'},
-            {x: '2021', y: 18, text: '25%'},
-                ];
+                    [
+                  {  x:  'Futures alt',  y:  31,  text:  '$525.73M'  , color: 'blue'}, 
+                  {  x:  'Futures BlueChip',  y:  25,  text:  '$424.62M'  , color: 'green'}, 
+                  {  x:  'Spot BlueChip',  y:  19,  text:  '$325.32M'  , color: 'red'},  
+                  {  x:  'Option ETH',  y:  11,  text:  '193.83M'  , color: 'skyblue'}, 
+                  {  x:  'Option BTC',  y:  10,  text:  '$175.32M'  , color: 'orange'},  
+                  {  x:  'Dualcurrency',  y:  1,  text:  '$24.23M'  , color: 'brown'}, 
+                  {  x:  'Others',  y:  2,  text:  '$30.21M'  , color: 'black'} ,
+                ],
+                [
+                    {  x:  'Labour',  y:  18,  text:  '18%'  , color: 'red'},  
+                  {  x:  'Legal',  y:  8,  text:  '8%'  , color: 'blue'}, 
+                  {  x:  'Production',  y:  15,  text:  '15%'  , color: 'green'},  
+                  {  x:  'License',  y:  11,  text:  '11%'  , color: 'skyblue'}, 
+                  {  x:  'Facilities',  y:  18,  text:  '18%'  , color: 'orange'},  
+                  {  x:  'Taxes',  y:  14,  text:  '14%'  , color: 'brown'}, 
+                  {  x:  'Insurance',  y:  16,  text:  '16%'  , color: 'black'} ,
+                ],
+                [
+                    {  x:  '',  y:  18,  text:  '18%'  , color: 'red'},  
+                  {  x:  'Legal',  y:  8,  text:  '8%'  , color: 'blue'}, 
+                  {  x:  'Production',  y:  15,  text:  '15%'  , color: 'green'},  
+                  {  x:  'License',  y:  11,  text:  '11%'  , color: 'skyblue'}, 
+                  {  x:  'Facilities',  y:  18,  text:  '18%'  , color: 'orange'},  
+                  {  x:  'Taxes',  y:  14,  text:  '14%'  , color: 'brown'}, 
+                  {  x:  'Insurance',  y:  16,  text:  '16%'  , color: 'black'} ,
+                ],
+            ];
 
                 export const stackedChartData = [
                 [

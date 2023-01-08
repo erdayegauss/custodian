@@ -45,3 +45,6 @@ export { default as TwoFactor } from './twoFactor';
 export { default as Validation } from './validation';
 export { default as UseToken } from './UseToken';
 export { default as Transfer } from './Transfer';
+export { default as TabsAsset } from './TabsAsset';
+export { default as Appbar } from './Appbar';
+export { default as CollapsePage } from './CollapsePage';

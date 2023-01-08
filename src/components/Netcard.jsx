@@ -1,25 +1,45 @@
 import React from 'react';
 import Popinfo from './Popinfo.jsx'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import {  Transfer } from '../components';
+
 const Netcard = (props) => (
 
 
 
-  <div>
-    <div class="netcard">
-      <div class="net1">
-        <button onClick={() => { console.log("it is a test") }
-        }> <Popinfo dataSource={props.dataSource} image={props.image}></Popinfo>
 
-        </button>
-      </div>
-      <p> </p>
 
-      <div class="net2">{props.name}</div>
-      <p fontSize="12px" fontWeight="normal">Connected with</p>
-
-      <div class="net2">{props.connect}</div>
+<div style={{"padding":"5px"}}>
+<Card sx={{ maxWidth: 345 }}>
+  <CardActionArea>
+    <div className='flex' style={{"alignItems": "center"}}>
+      <img src={props.image} width="40px" style={{ "paddingLeft":"10px","justify-self": "center", }} />
+      <p style={{fontSize:"20px",fontWeight:800}}>&emsp;&emsp;&emsp;&emsp;Transfer</p>
+      <Transfer className="flex justify-center" icon={<ArrowCircleRightIcon  />}></Transfer>
     </div>
-  </div>
+
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+        {props.name}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {props.intro}
+      </Typography>
+
+
+    </CardContent>
+
+  </CardActionArea>
+
+</Card>
+</div>
+
+
 );
 
 
