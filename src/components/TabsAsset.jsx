@@ -71,7 +71,7 @@ function createData(name, amount, carbs, protein) {
   return { name, amount, carbs, protein };
 }
 
-
+const rows1 = exchangeData
 const rows = [
   createData('Autocall fund', '$25.91M', "6.0%"),
   createData('Option BTC', '$175.32M', "9.0%"),
@@ -123,7 +123,7 @@ const TabsAsset = () => {
       title: 'Ethereum',
       content: 'Contenido de tab 2.',
       amount: "$205K",
-      image: <Button  startIcon={< CurrencyBitcoinIcon fontSize="large"></CurrencyBitcoinIcon>} />,
+      image: <Button startIcon={< CurrencyBitcoinIcon fontSize="large"></CurrencyBitcoinIcon>} />,
     },
     {
       id: '2',
@@ -244,7 +244,7 @@ const TabsAsset = () => {
               disableRipple
             >
               <a>{tab.title}<br /></a>
-              <a style={{ "fontSize": 18, "fontWeight": 800 }}>&emsp;&emsp;&emsp;{"$100M"}</a>
+              <a style={{ "fontSize": 18, "fontWeight": 800 }}>&emsp;&emsp;&emsp;{tab.amount}</a>
             </Button>
           )}
 
@@ -271,7 +271,6 @@ const TabsAsset = () => {
 */}
 
 
-      <Header category="" title="Vaults" />
 
 
 
@@ -300,12 +299,12 @@ const TabsAsset = () => {
                           <Table sx={{ "& td, &  th": { border: 0 } }} size="large" aria-label="">
 
                             <TableBody >
-                              {rows.map((row) => (
+                              {rows1.map((row) => (
                                 <TableRow key={row.name}>
                                   <TableCell sx={{ width: '50%' }} component="th" scope="row" >
 
-                                    <div className="flex-container">
-                                      < HealthAndSafetyIcon sx={{ fontSize: 60 }} color="primary" />
+                                    <div className="flex-container flex" style={{"alignItems": "center",}}>
+                                      <img src={row.image} width="40" />
                                       <a style={{ "fontSize": "20px", "fontWeight": "400" }} >&emsp;&emsp;{row.name}</a>
                                     </div>
 

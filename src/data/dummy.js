@@ -931,56 +931,67 @@ export const assetsData = [{
     image: bitcoin,
     label: 'BTC',
     id: 0,
+    amount: "$21.4M",
 },
     {
         image: ethereum,
         label: 'ETH',
         id: 1,
+        amount: "$15.3M",
     },
     {
         image: tether,
         label: 'USDT',
         id: 2,
+        amount: "$7.3M",
     },
     {
         image: usdc,
         label: 'USDC',
         id: 3,
+        amount: "$6.5M",
     },
     {
         image: xrp,
         label: 'XRP',
         id: 4,
+        amount: "$11.3M",
     },
     {
         image: bnb,
         label: 'BNB',
         id: 5,
+        amount: "$10.9M",
     },
     {
         image: cardano,
         label: 'ADA',
         id: 6,
+        amount: "$2.7M",
     },
     {
         image: solana,
         label: 'SOL',
         id: 7,
+        amount: "$2.2M",
     },
     {
         image: dogecoin,
         label: 'DOGE',
         id: 8,
+        amount: "$4.2M",
     },
     {
         image: dai,
         label: 'DAI',
         id: 9,
+        amount: "$1.1M",
     },
     {
         image: litecoin,
         label: 'LTC',
         id: 10,
+        amount: "$11.4M",
     },
 ];
 

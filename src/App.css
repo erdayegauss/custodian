@@ -193,7 +193,7 @@
     margin: 1%;
     padding: 1px;
     display: inline-block;
-    background-color:rgb(226, 222, 222);
+    background-color:white;
     width: 31%;
     height: 90px;
     grid-template-columns: repeat(2, 1fr);
@@ -216,6 +216,9 @@
 
 .assetcard:focus {
     background-color:#002ead;
+    color: white;
+    font-size:larger;
+    font:bold;
   }
 
 
