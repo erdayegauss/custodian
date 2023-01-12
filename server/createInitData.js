@@ -374,7 +374,63 @@ const run = async () => {
         note: "Transfer from Lily's Ethereum Wallet in Quant Vault to John's Ethereum Wallet in AutoCall Vault",
         aml: "Pass"
     });
+
+    const transaction_from_1_1_1_to_3_1_1_asset_1 = await transactionController.createTransaction({
+        txType: "Transfer",
+        txId: "0x2562a1f91567",
+        txHash: "0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e",
+        txStatus: "success",
+        fee: 0.0001,
+        amount: 100,
+        senderId: user1.id,
+        senderName: user1.name,
+        receiverId: user3.id,
+        receiverName: user3.name,
+        fromVaultId: vault1_1.id,
+        fromVaultName: vault1_1.name,
+        toVaultId: vault3_1.id,
+        toVaultName: vault3_1.name,
+        fromWalletId: wallet1_1_1.id,
+        fromAddress: wallet1_1_1.address,
+        toWalletId: wallet2_1_1.id,
+        toAddress: wallet2_1_1.address,
+        assetId: asset3.id,
+        assetName: asset3.name,
+        assetSymbol: asset3.symbol,
+        sign: "John transfer to Lily",
+        note: "Transfer from John's Bitcoin Wallet in Quant Vault to Lily's Bitcoin Wallet in Quant Vault",
+        aml: "Pass"
+    });
+
+    const transaction_from_1_1_1_to_1_1_1_2_asset_1 = await transactionController.createTransaction({
+        txType: "Transfer",
+        txId: "0x2562a1f91567",
+        txHash: "0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e",
+        txStatus: "failure",
+        fee: 0.0001,
+        amount: 100,
+        senderId: user1.id,
+        senderName: user1.name,
+        receiverId: user2.id,
+        receiverName: user2.name,
+        fromVaultId: vault1_1.id,
+        fromVaultName: vault1_1.name,
+        toVaultId: vault2_1.id,
+        toVaultName: vault2_1.name,
+        fromWalletId: wallet1_1_1.id,
+        fromAddress: wallet1_1_1.address,
+        toWalletId: wallet2_1_1.id,
+        toAddress: wallet2_1_1.address,
+        assetId: asset1.id,
+        assetName: asset1.name,
+        assetSymbol: asset1.symbol,
+        sign: "John transfer to Lily",
+        note: "Transfer from John's Bitcoin Wallet in Quant Vault to Lily's Bitcoin Wallet in Quant Vault",
+        aml: "Pass"
+    });
 };
+
+
 
 // db.sequelize.sync();
 db.sequelize.sync({force: true}).then(() => {

@@ -132,7 +132,7 @@ exports.findAllWithWallets = (req, res) => {
                         }
                     })
 
-                    return createVaultView(vault.id, vault.image, vault.name, vault.amount, vault.status, vault.updatedAt, accounts)
+                    return createVaultView(vault.id, vault.image, vault.name, vault.amount, vault.status, vault.updatedAt.toLocaleString('chinese', {hour12: false}), accounts)
                 })
 
                 res.send({

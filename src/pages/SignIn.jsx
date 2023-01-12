@@ -29,7 +29,7 @@ function Copyright(props) {
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
             <Link color="inherit" href="https://mui.com/">
-                Your Website
+                2022 All rights reserved by Metaharvest
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
