@@ -1,83 +1,105 @@
-import React, {useEffect} from 'react';
-import {
-    GridComponent,
-    ColumnsDirective,
-    ColumnDirective,
-    Resize,
-    Sort,
-    ContextMenu,
-    Filter,
-    Page,
-    ExcelExport,
-    PdfExport,
-    Edit,
-    Inject
-} from '@syncfusion/ej2-react-grids';
+import React, { useState } from 'react';
+import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';
 
-import {contextMenuItems, WhitelistGrid, userData, assetsData} from '../data/dummy';
-import {Header, Addlist} from '../components';
+import { contextMenuItems, WhitelistGrid, userData, assetsData } from '../data/dummy';
+import { Header, Addlist, AddAccount } from '../components';
 import Button from '@mui/material/Button';
-import axios from "axios";
-import header from "../components/Header";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import Box from '@mui/material/Box';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import Paper from '@mui/material/Paper';
+import avatar9 from '../data/avatar9.png'
+
 
 
 const Whitelist = () => {
-    const userData = JSON.parse(sessionStorage.token).data;
-    const localToken = JSON.parse(sessionStorage.token).token;
-    const [whiteListData, setWhiteListData] = React.useState();
-
-    useEffect(() => {
-        axios.get('http://localhost:8089/api/whitelists',
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': localToken,
-                    'Access-Control-Allow-Origin': '*',
-                    'Accept': 'application/json'
-                }
-            }
-        )
-            .then(res => {
-                console.log(res);
-                let resultWhitelists = res.data;
+  const editing = { allowDeleting: true, allowEditing: true };
 
 
-                setWhiteListData(resultWhitelists)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
 
-    }, []);
-
-    const editing = {allowDeleting: true, allowEditing: true};
-    return (
-        <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-
-            <Button style={{positon: "relative", left: "90%",}} variant="outlined"><Addlist dataSource={assetsData}
-                                                                                            display={assetsData[4].image}
-                                                                                            image={assetsData[4].image}
-                                                                                            title="great"></Addlist></Button>
+ // {ID: '13', label: "Hoe", name: 'Hoe Rhodes', image: avatar13, status: "invalid", statusBg: "red"},
 
 
-            <Header category="" title="Whitelist"/>
-            <GridComponent
-                id="gridcomp"
-                dataSource={whiteListData}
-                allowPaging
-                allowSorting
-                allowExcelExport
-                allowPdfExport
-                contextMenuItems={contextMenuItems}
-                editSettings={editing}
-            >
-                <ColumnsDirective>
-                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                    {WhitelistGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
-                </ColumnsDirective>
-                <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]}/>
-            </GridComponent>
-        </div>
-    );
+  function createData(id, title) {
+
+    const ID=id;
+    const label=title;
+    const name=title;
+    const image=avatar9;
+    const status="valid";
+    const statusBg="green";
+    let tmp={ID: ID, label: label, name: name, image: image, status:status, statusBg:statusBg}
+
+
+    return tmp
+  }
+
+
+
+  const [partners, setPartners] = useState(userData);
+  const [part, setPart] = useState('')
+
+  const changeValue = event => {
+    setPart(event.target.value);
+  }
+
+  const handleAddVault = (event) => {
+    const id = partners.length.toString();
+
+    let datatmp = [...partners, createData(id,part)];
+
+    setPartners(datatmp);
+    console.log("The current partners is:", partners)
+  }
+
+
+  return (
+    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+
+
+<Header category="" title="Whitelists" />
+
+<Button style={{ positon: "relative", left: "86%", }} ><AddAccount name="name" func={handleAddVault} func1={changeValue}></AddAccount></Button>
+
+
+      <TableContainer component={Paper} style={{ width: '100%' }} >
+        <Table sx={{ "& td, &  th": { border: 0 } }} size="large" aria-label="">
+
+          <TableBody >
+            {partners.map((row) => (
+              <TableRow key={row.name}>
+                <TableCell sx={{ width: '25%' }} component="th" scope="row" >
+
+                  <div className="flex-container flex" style={{ "alignItems": "center", }}>
+                    <img src={row.image} width="40" />
+                    <a style={{ "fontSize": "20px", "fontWeight": "400" }} >&emsp;&emsp;{row.name}</a>
+                  </div>
+
+                </TableCell>
+                <TableCell align='left' sx={{ width: '30%' }} style={{ "fontSize": "20px", "fontWeight": "800" }}>{row.status}</TableCell>
+                <TableCell align='left' sx={{ width: '20%' }}  ><div class="flex"> &emsp; more </div></TableCell>
+                <TableCell align='left' sx={{ width: '25%' }}  ><div class="flex"> &emsp; more </div></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+
+
+
+
+
+
+
+       
+    </div>
+  );
 };
 export default Whitelist;

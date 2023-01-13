@@ -41,8 +41,8 @@ const Transfer = (props) => {
   const [amount, setAmount] = useState('');
   const [asset, setAsset] = useState('');
   const [note, setNote] = useState('');
-  const localData = JSON.parse(sessionStorage.token).data;
-  const localToken = JSON.parse(sessionStorage.token).token;
+ // const localData = JSON.parse(sessionStorage.token).data;
+ // const localToken = JSON.parse(sessionStorage.token).token;
   const [rows, setRows] = useState([]);
 
   const handleTx = () => {
@@ -280,7 +280,11 @@ const Transfer = (props) => {
             </DialogContent>
             <DialogActions style={{ "justifyContent": "center" }}>
               {/*              <Button onClick={handleClose}>Cancel</Button>  */}
-              <div><Button style={{ "width": "500px", "height": "60px", "justifyContent": "center", borderRadius:"15px" }} variant='contained' onClick={handleTx}>Submit</Button></div>
+              <div>
+                <Button style={{ "width": "500px", "height": "60px", 
+                "justifyContent": "center", borderRadius:"15px" }} 
+                variant='contained' onClick={handleTx}>Submit</Button>
+                </div>
             </DialogActions>
           </Dialog>
         </Modal>

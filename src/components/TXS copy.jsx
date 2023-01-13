@@ -26,123 +26,151 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Ajax } from '@syncfusion/ej2-base';
-import { format } from 'date-fns'
+import {format} from 'date-fns'
+import axios from "axios";
 
 
 
 let rows = [
-  createData(0, 3, 6.0, 0, "Pending", "#FEC90F", "2022-09-12"),
+  createData(0, 3, 6.0, 0, "Pending","#FEC90F", "2022-09-12"),
   createData(1, 3, 3.2, 1, "active", "#03c9d7", "2022-09-12"),
-  createData(2, 3, 7.0, 4, "done", "#8BE78B", "2022-10-12"),
-  createData(1, 3, 6.2, 3, "done", "#8BE78B", "2022-10-19"),
-  createData(3, 0, 12.2, 2, "done", "#8BE78B", "2022-8-12"),
+  createData(2, 3, 7.0, 4, "done", "#8BE78B","2022-10-12"),
+  createData(1, 3, 6.2, 3, "done","#8BE78B", "2022-10-19"),
+  createData(3, 0,12.2, 2, "done","#8BE78B", "2022-8-12"),
 ];
 
 
-function createData(source, destination, amount, asset, status, statusBg, createdAt) {
-  return {
-    source,
-    destination,
-    amount,
-    asset,
-    status,
-    statusBg,
-    createdAt,
-    history: [
-      {
-        Type: "Transfer",
-        DestAddr: "0x2546BcD3c84621e976D8185a91A922aE77ECEc30",
-        TxHash: "0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e",
-        TxID: "0x2562a1f91567",
-        NetworkFee: "0.001ETH",
-        Amount: 6,
-        Update: "2023-01-09",
-        Signed: "Tom",
-        AML: 'N/A',
-        Note: "pls Cristiano",
-      },
+function createData(source, destination, amount, asset, status, statusBg, createdAt, type, destAddr, txHash, txId, networkFee, update, signed, aml, note, senderImage, receiverImage, assetImage) {
+    return {
+        source,
+        destination,
+        amount,
+        asset,
+        status,
+        statusBg,
+        createdAt,
+        senderImage,
+        receiverImage,
+        assetImage,
+        history: [
+            {
+                Type: type,
+                DestAddr: destAddr,
+                TxHash: txHash,
+                TxID: txId,
+                NetworkFee: networkFee,
+                Amount: amount,
+                Update: update,
+                Signed: signed,
+                AML: aml,
+                Note: note
+            },
     ],
   };
 }
 
 const TXS = () => {
+
+ /* 
   useEffect(() => {
-    const ajax = new Ajax();
-    ajax.send();
-    ajax.onSuccess = (data: any) => {
-      setData([]);
-    }
+
+
+      axios.get('http://localhost:8089/api/transactions',
+          {
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': localToken,
+                  'Access-Control-Allow-Origin': '*',
+                  'Accept': 'application/json'
+              }
+          }
+      )
+          .then(res => {
+              let resultTransactionData = res.data;
+
+              setRows(resultTransactionData);
+          })
+          .catch(err => {
+              console.log(err);
+          })
+      console.log("useEffect");
   }, []);
 
-  const [data, setData] = useState('');
-  const [source, setSource] = useState('');
-  const [destination, setDestination] = useState('');
-  const [amount, setAmount] = useState('');
-  const [asset, setAsset] = useState('');
-  const [note, setNote] = useState('');
+*/
 
-  const handleTx = () => {
-    rows = [...rows, createData(3, destination.ID, amount, asset.id, "done", "#8BE78B", format(new Date(), 'yyyy-mm-dd'))]
-    setData(rows)
-    handleClose()
-  }
+    const [data, setData] = useState('');
+    const [source, setSource] = useState('');
+    const [destination, setDestination] = useState('');
+    const [amount, setAmount] = useState('');
+    const [asset, setAsset] = useState('');
+    const [note, setNote] = useState('');
+    const localData = JSON.parse(sessionStorage.token).data;
+    const localToken = JSON.parse(sessionStorage.token).token;
+    const [rows, setRows] = useState([]);
 
-  function Row(props) {
-    const { row } = props;
-    const [open, setOpen] = React.useState(false);
-    return (
+    const handleTx = () => {
+        setRows([...rows, createData(3, destination.ID, amount, asset.id, "done", "#8BE78B", format(new Date(), 'yyyy-mm-dd'))])
+        handleClose()
+    }
+
+    function Row(props) {
+        const {row} = props;
+        const [open, setOpen] = React.useState(false);
+        return (
       <>
-        <TableRow >
+        <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
           <TableCell>
-            <div className='flex' style={{ "alignItems": "center" }}>
-              <IconButton
-                aria-label="expand row"
-                size="small"
-                onClick={() => setOpen(!open)}
-              >
-                {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-              </IconButton>
-              <img
-                loading="eager"
-                width="50"
-                src={userData[row.source].image}
-                alt=""
-              />
-            </div>
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </TableCell>
+          <TableCell >
+          <Box  sx={{ '& > img': { mr: 1,  } }} {...props}>
+                    <img
+                        loading="eager"
+                        width="30"
+                        src={row.senderImage}
+                        alt=""
+                    />
+                  </Box>
           </TableCell>
           <TableCell>
-
-            <Box sx={{ '& > img': { mr: 1, } }} {...props}>
-              <img
-                loading="eager"
-                width="50"
-                src={userData[row.destination].image}
-                alt=""
-              />
-            </Box>
+            
+          <Box  sx={{ '& > img': { mr: 1,  } }} {...props}>
+                    <img
+                        loading="eager"
+                        width="30"
+                        src={row.receiverImage}
+                        alt=""
+                    />
+                  </Box>
+            </TableCell>
+          <TableCell>{row.amount}</TableCell>
+          <TableCell style={{width: "10px"}} align="right">
+          <Box  sx={{ '& > img': { mr: 1,  } }} {...props}>
+                    <img
+                        loading="eager"
+                        width="30"
+                        src={row.assetImage}
+                        alt=""
+                    />
+                  </Box>
           </TableCell>
-          <TableCell align="left"><p style={{ "font-size": "20px" }}>{row.amount}</p></TableCell>
-          <TableCell align="left">
-            <Box sx={{ '& > img': { mr: 1, } }} {...props}>
-              <img
-                loading="eager"
-                width="50"
-                src={assetsData[row.asset].image}
-                alt=""
-              />
-            </Box>
+          <TableCell align="right">
+          <button type = "button"
+    style = {{ background: row.statusBg }}
+    className = "text-white py-1 px-2 capitalize rounded-2xl text-md" > { row.status} </button>
           </TableCell>
-          <TableCell align="left">
-            <button type="button"
-              style={{ background: row.statusBg }}
-              className="text-white py-1 px-2 capitalize rounded-2xl text-md" > <p style={{ "font-size": "19px" }}>{row.status}</p> </button>
-          </TableCell>
-          <TableCell align="left"><p style={{ "font-size": "18px" }}>{row.createdAt}</p></TableCell>
+          <TableCell align="right">{row.createdAt}</TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
             <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box style={{ backgroundColor: "#f0f0f0", }} >
+              <Box style={{ backgroundColor: "#f7f4ef", }} >
                 <Typography variant="h6" gutterBottom component="div">
                   History
                 </Typography>
@@ -151,21 +179,19 @@ const TXS = () => {
                   {row.history.map((historyRow) =>
                     <>
                       <div class="history">
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>Transaction type:&emsp;&emsp;</p><p> {historyRow.Type}</p></div>
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>TX ID:&emsp;&emsp;</p><p> {historyRow.TxID}</p></div>
+                        <p style={{ fontWeight: "bold" }}>Transaction type:</p><p> {historyRow.Type}</p><p style={{ fontWeight: "bold" }}>TX ID:</p><p> {historyRow.TxID}</p>
                       </div>
-                      <div class="history flex" >
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>Fee:&emsp;&emsp;</p><p> {historyRow.NetworkFee}</p></div>
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>Amount:&emsp;&emsp;</p><p> {historyRow.Amount}</p></div>
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>Created:&emsp;&emsp;</p><p> {historyRow.Update}</p></div>
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>Signed:&emsp;&emsp;</p><p> {historyRow.Signed}</p></div>
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>AML:&emsp;&emsp;</p><p> {historyRow.AML}</p></div>
-                        <div class="flex" style={{ "alignItems": "center" }}><p style={{ fontWeight: "bold", "font-size": "16px" }}>Note:&emsp;&emsp;</p><p> {historyRow.Note}</p></div>
+                      <div class="container">
+                        <p style={{ fontWeight: "bold" }}>Transaction Hash:</p><a href="https://goerli.etherscan.io/tx/0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e"> {historyRow.TxHash}</a>
                       </div>
-                      <div class="container flex" style={{ "alignItems": "center" }}>
-                        <p style={{ fontWeight: "600", "font-size": "16px" }}>Transaction Hash: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p><a href="https://goerli.etherscan.io/tx/0x3bbe99a6146ff79c25d6ba73667d84a327b8bb92da10ee50873ec4a6e454689e"> {historyRow.TxHash}</a>
+                      <div class="history" >
+                        <div><p style={{ fontWeight: "bold" }}>fee:</p><p> {historyRow.NetworkFee}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>amount:</p><p> {historyRow.Amount}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>Created:</p><p> {historyRow.Update}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>Signed:</p><p> {historyRow.Signed}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>AML:</p><p> {historyRow.AML}</p></div>
+                        <div><p style={{ fontWeight: "bold" }}>Note:</p><p> {historyRow.Note}</p></div>
                       </div>
-
                     </>
                   )}
                 </div>
@@ -173,7 +199,6 @@ const TXS = () => {
             </Collapse>
           </TableCell>
         </TableRow>
-
       </>
     );
   }
@@ -334,18 +359,18 @@ const TXS = () => {
       </div>
 
 
-      <TableContainer component={Paper} style={{ width: '90%', margin:"2%" }} >
-        <Table sx={{ "& td, &  th": { border: 0 } }} size="large" aria-label="">
 
-
+      <TableContainer style={{ width: "90%", margin: "5%" }} component={Paper}>
+        <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ width: '16%' }}  ><p style={{ fontWeight: "bold", "font-size": "25px" }}>From</p></TableCell>
-              <TableCell sx={{ width: '16%' }}  ><p style={{ fontWeight: "bold", "font-size": "25px" }}>To</p></TableCell>
-              <TableCell sx={{ width: '16%' }}  ><p style={{ fontWeight: "bold", "font-size": "25px" }}>Amount</p></TableCell>
-              <TableCell sx={{ width: '16%' }}  ><p style={{ fontWeight: "bold", "font-size": "25px" }}>Asset</p></TableCell>
-              <TableCell sx={{ width: '16%' }}  ><p style={{ fontWeight: "bold", "font-size": "25px" }}>Status</p></TableCell>
-              <TableCell sx={{ width: '16%' }}  ><p style={{ fontWeight: "bold", "font-size": "25px" }}>Updated @</p></TableCell>
+              <TableCell />
+              <TableCell >From</TableCell>
+              <TableCell>To</TableCell>
+              <TableCell>Amount</TableCell>
+              <TableCell align="right">Asset</TableCell>
+              <TableCell align="right">Status</TableCell>
+              <TableCell align="right">Updated @</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

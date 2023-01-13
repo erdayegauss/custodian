@@ -1,4 +1,4 @@
-import {useRef, useState, useEffect, useContext} from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,7 +11,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { whitelistImage } from '../data/dummy';
 
 async function loginUser(credentials) {
     return fetch('http://localhost:8089/api/auth/login', {
@@ -39,7 +40,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({setToken}) {
+export default function SignIn() {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
     const authMsg = sessionStorage.token ? "Hi " + JSON.parse(sessionStorage.token).data.firstName + "! You have logged in successfully. You can now access the protected page." : "You are not logged in. Please log in to continue.";
@@ -48,90 +49,86 @@ export default function SignIn({setToken}) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        const token = await loginUser({
-            username,
-            password
-        });
-        if (token.token) {
-            setLoginStatus("Hi " + token.data.firstName + "! You have logged in successfully. You can now access the protected page.")
-            setToken(token);
+        if ((username === "metaharvest" && password === "win2023") | (username === "test" && password === "test")) {
+            setLoginStatus("Hi " + "Shaun" + "! You have logged in successfully. You can now access the protected page.")
             window.location.href = '/accounts';
         } else {
             setLoginStatus("Invalid username or password.")
         }
-        console.log(token);
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline/>
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar sx={{m: 1, bgcolor: 'secondary.main'}}>
-                        <LockOutlinedIcon/>
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
-                    <div>{loginStatus}</div>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                            onChange={e => setUserName(e.target.value)}
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary"/>}
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{mt: 3, mb: 2}}
-                        >
-                            Sign In
-                        </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
+        <div  style={{ position: "fixed", width: "100%", height: "100%", left: 0, top: 0, background: "white", "z-index": 10,}} >
+            <ThemeProvider theme={theme}>
+                <Container component="main" maxWidth="xs">
+                    <CssBaseline />
+                    <Box
+                        sx={{
+                            marginTop: 8,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign in
+                        </Typography>
+                        <div>{loginStatus}</div>
+                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                                onChange={e => setUserName(e.target.value)}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                                onChange={e => setPassword(e.target.value)}
+                            />
+                            <FormControlLabel
+                                control={<Checkbox value="remember" color="primary" />}
+                                label="Remember me"
+                            />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                            >
+                                Sign In
+                            </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="#" variant="body2">
+                                        Forgot password?
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link href="#" variant="body2">
+                                        {"Don't have an account? Sign Up"}
+                                    </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
+                        </Box>
                     </Box>
-                </Box>
-                <Copyright sx={{mt: 8, mb: 4}}/>
-            </Container>
-        </ThemeProvider>
+                    <Copyright sx={{ mt: 8, mb: 4 }} />
+                </Container>
+            </ThemeProvider>
+        </div>
     );
 }

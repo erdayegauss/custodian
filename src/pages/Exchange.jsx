@@ -22,7 +22,7 @@ const Exchange = () => {
       </div>
       <div class="exchange">
         <div class=""><button onClick={() => { setLink("https://bitcoinwisdom.io/markets/binance/btcusdt") }}>
-          <Deficard image={exchangeData[1].image} name="Uniswap"  ></Deficard></button>
+          <Deficard image={exchangeData[0].image} name="Uniswap"  ></Deficard></button>
           <div class="ex1">
             <Button variant="outlined" ><InfoDefi dataSource={assetsData} display={exchangeData[1].image} image={connect}></InfoDefi></Button>
           </div>

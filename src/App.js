@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {FiSettings} from 'react-icons/fi';
-import {TooltipComponent} from '@syncfusion/ej2-react-popups';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { FiSettings } from 'react-icons/fi';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import {
     Validation,
     TwoFactor,
@@ -27,7 +27,6 @@ import {
     Accounts,
     Calendar,
     Stacked,
-    Pyramid,
     Kanban,
     Line,
     Area,
@@ -40,10 +39,9 @@ import {
     SignIn
 } from './pages';
 import './App.css';
-import UseToken from './components/UseToken';
 
 
-import {useStateContext} from './contexts/ContextProvider';
+import { useStateContext } from './contexts/ContextProvider';
 
 
 function setToken(userToken) {
@@ -72,7 +70,8 @@ const App = () => {
         activeMenu,
         currentColor,
         themeSettings,
-        setThemeSettings
+        setThemeSettings,
+        setLogin,
     } = useStateContext();
 
 
@@ -88,15 +87,21 @@ const App = () => {
     }, []);
 
 
-    if (!getToken()) {
-        return <SignIn setToken={setToken}/>
-    }
-    
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+
+
+      
+
+
+
+
+
     return (
         <div className={currentMode === 'Dark' ? 'dark' : ''}>
             <BrowserRouter>
                 <div className="flex relative dark:bg-main-dark-bg">
-                    <div className="fixed right-4 bottom-4" style={{zIndex: '1000'}}>
+                    <div className="fixed right-4 bottom-4" style={{ zIndex: '0' }}>
                         <TooltipComponent
                             content="Settings"
                             position="Top"
@@ -104,24 +109,24 @@ const App = () => {
                             <button
                                 type="button"
                                 onClick={() => setThemeSettings(true)}
-                                style={{background: currentColor, borderRadius: '50%'}}
+                                style={{ background: currentColor, borderRadius: '50%' }}
                                 className="text-3xl text-white p-3 hover:drop-shadow-xl hover:bg-light-gray"
                             >
-                                <FiSettings/>
+                                <FiSettings />
                             </button>
 
                         </TooltipComponent>
                     </div>
                     {activeMenu ? (
                         <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
-                            <Sidebar/>
+                            <Sidebar />
                         </div>
                     ) : (
                         <div className="w-16 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
                             {/*
             <div className="w-0 dark:bg-secondary-dark-bg">
             */}
-                            <Sidebar/>
+                            <Sidebar />
                         </div>
                     )}
                     <div
@@ -133,53 +138,50 @@ const App = () => {
                     >
                         {/*                : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 ' */}
                         <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
-                            <Navbar/>
+                            <Navbar />
                         </div>
                         <div>
-                            {themeSettings && (<ThemeSettings/>)}
+                            {themeSettings && (<ThemeSettings />)}
 
                             <Routes>
                                 {/* fund  */}
-                                <Route path="/" element={(<SignIn setToken={setToken}/>)}/>
-                                <Route path="/accounts" element={(<Accounts/>)}/>
-                                <Route path="/assets" element={(<Assets/>)}/>
+                                {/*      <Route path="/" element={(<SignIn setToken={setToken}/>)}/>    */}
+                                <Route path="/" element={(<SignIn />)} />
+                                <Route path="/accounts" element={(<Accounts />)} />
+                                <Route path="/assets" element={(<Assets />)} />
 
                                 {/* app  */}
-                                <Route path="/clearance" element={<Clearance/>}/>
-                                <Route path="/settlement" element={<Settlement/>}/>
-                                <Route path="/network" element={<Network/>}/>
-                                <Route path="/whitelist" element={<Whitelist/>}/>
-                                <Route path="/defi" element={<Defi/>}/>
-                                <Route path="/Transactions" element={<Tx/>}/>
-                                <Route path="/Exchange" element={<Exchange/>}/>
+                                <Route path="/clearance" element={<Clearance />} />
+                                <Route path="/settlement" element={<Settlement />} />
+                                <Route path="/network" element={<Network />} />
+                                <Route path="/whitelist" element={<Whitelist />} />
+                                <Route path="/defi" element={<Defi />} />
+                                <Route path="/Transactions" element={<Tx />} />
+                                <Route path="/Exchange" element={<Exchange />} />
+                                <Route path="/login" element={<SignIn />} />
 
                                 {/* login  */}
 
-                                <Route path="/login" component={Login}/>
-                                <Route path="/register" component={Register}/>
-                                <Route exact path="/dashboard" component={Dashboard}/>
-                                <Route path="/dashboard/2fa" component={TwoFactor}/>
-                                <Route path="/user/validate" component={Validation}/>
+                                <Route path="/login" component={Login} />
+                                <Route path="/register" component={Register} />
+                                <Route exact path="/dashboard" component={Dashboard} />
+                                <Route path="/dashboard/2fa" component={TwoFactor} />
+                                <Route path="/user/validate" component={Validation} />
 
                                 {/* apps  */}
-                                <Route path="/kanban" element={<Kanban/>}/>
-                                <Route path="/editor" element={<Editor/>}/>
-                                <Route path="/calendar" element={<Calendar/>}/>
-                                <Route path="/color-picker" element={<ColorPicker/>}/>
+                                <Route path="/kanban" element={<Kanban />} />
+                                <Route path="/editor" element={<Editor />} />
+                                <Route path="/calendar" element={<Calendar />} />
+                                <Route path="/color-picker" element={<ColorPicker />} />
 
                                 {/* charts  */}
-                                <Route path="/line" element={<Line/>}/>
-                                <Route path="/area" element={<Area/>}/>
-                                <Route path="/bar" element={<Bar/>}/>
-                                <Route path="/pie" element={<Pie/>}/>
-                                <Route path="/financial" element={<Financial/>}/>
-                                <Route path="/color-mapping" element={<ColorMapping/>}/>
-                                <Route path="/pyramid" element={<Pyramid/>}/>
-                                <Route path="/stacked" element={<Stacked/>}/>
+                                <Route path="/pie" element={<Pie />} />
+                                <Route path="/financial" element={<Financial />} />
+                                <Route path="/color-mapping" element={<ColorMapping />} />
 
                             </Routes>
                         </div>
-                        <Footer/>
+                        <Footer />
                     </div>
                 </div>
             </BrowserRouter>

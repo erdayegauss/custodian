@@ -2,17 +2,78 @@ import { React, useState } from 'react';
 
 import { defiData } from '../data/dummy';
 import { Deficard } from '../components';
+import Grid from '@mui/material/Unstable_Grid2';
+import Button from '@mui/material/Button';
+
+
 
 const Defi = () => {
 
 
-  const [link, setLink] = useState('');
+  const [link, setLink] = useState('https://app.uniswap.org/#/swap');
+  const [currentTab, setCurrentTab] = useState('0');
+  const handleTabClick = (e) => {
+    setCurrentTab(e.target.id);
+    console.log("currentTab is: ", currentTab)
+  }
+
+  const tabs = [
+    {
+      id: '0',
+      tabTitle: 'Uniswap',
+      title: 'Uniswap',
+      content: 'Uniswap',
+      amount: "$1.2M",
+      image: defiData[0].image,
+    },
+    {
+      id: '1',
+      tabTitle: 'Quickswap',
+      title: 'Quickswap',
+      content: 'Quickswap',
+      amount: "$542M",
+      image: defiData[0].image,
+    },
+    {
+      id: '2',
+      tabTitle: 'Polygon',
+      title: 'Polygon',
+      content: 'Polygon',
+      amount: "$50M",
+      image: defiData[0].image,
+    }
+  ];
 
 
 
   return (
 
+
     <div className=" m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+      <div className='scrolling-wrapper' style={{ "padding": "2px" }}>
+        <div>
+          {defiData.map((tab, i) =>
+            <Button class="deficard" justifySelf='center' key={tab.name} id={i} variant="outlined"
+              startIcon={<img src={tab.image}  width="100"/>}
+              onClick={() => { setLink(tab.link) }}
+              disableRipple
+            >
+              <a>{tab.name}<br /></a>
+              <a style={{ "fontSize": 18, "fontWeight": 800 }}>&emsp;&emsp;&emsp;</a>
+            </Button>
+          )}
+        </div>
+      </div>
+
+
+      <div style={{  padding: "10px"}}>
+        <iframe frameBorder="0" style={{ padding: "10px", marginLeft: "auto", marginRight: "auto", border: 0, }} src={link} height="800" width="90%" title="The defi page"></iframe>
+      </div>
+
+
+
+
+      {/*
       <div class="defihead">
 
         <iframe src={link} height="100%" width="100%" title="Iframe Example"></iframe>
@@ -41,6 +102,11 @@ const Defi = () => {
         <div class="defi10"><button onClick={() => { setLink("https://app.optimism.io/bridge/deposit") }}>
           <Deficard image={defiData[9].image} name="Optimism"  ></Deficard></button>   </div>
       </div>
+
+
+          */}
+
+
     </div>
   );
 };

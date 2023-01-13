@@ -5,6 +5,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
+import  photo from "../data/avatar4.jpg"
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -24,7 +25,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const UserData = JSON.parse(sessionStorage.token).data;
+//  const UserData = JSON.parse(sessionStorage.token).data;
     const {
         currentColor,
         activeMenu,
@@ -67,7 +68,7 @@ const Navbar = () => {
           >
               <img
                   className="rounded-full w-6 h-8"
-                  src={UserData.image}
+                  src={photo}
                   alt="user-profile"
                   style={{
                       objectFit: 'cover',
@@ -80,7 +81,7 @@ const Navbar = () => {
               <p>
                   <span className="text-gray-400 text-14">Hi,</span>{' '}
                   <span className="text-gray-400 font-bold ml-1 text-14">
-                {UserData.firstName}
+                Shaun
               </span>
               </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />

@@ -6,9 +6,11 @@ import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import shuan from '../data/shuan.jpg';
 import LogOutButton from "./LogOutButton";
+import avatar4 from '../data/avatar4.jpg'
 
 const UserProfile = () => {
-    const UserData = JSON.parse(sessionStorage.token).data;
+    const UserData =     {ID: '3', label: "Shaun", name: 'Shaun Parker', image: avatar4, status: "active", statusBg: "green"};
+
     const {currentColor} = useStateContext();
 
     return (

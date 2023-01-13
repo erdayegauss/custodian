@@ -55,7 +55,7 @@ console.log("the data is:", data)
   
     return (
       <div >
-        <Button onClick={handleOpen}> <img  width='30px' src={props.image}></img></Button>
+        <Button variant="filled" onClick={handleOpen}> add whitelist</Button>
         <Modal
         
           hideBackdrop

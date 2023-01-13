@@ -1,28 +1,27 @@
-import React from 'react';
-import { Slides, Header } from '../components';
+import React, { useState} from 'react';
+import {  TabsAsset } from '../components';
+
+
 
 
 const Assets = () => {
-  const toolbarOptions = ['Search'];
+    const [totalAmount, setTotalAmount] = useState(0);
 
-  const editing = { allowDeleting: true, allowEditing: true };
+    const setTotal = (amount) => {
+        setTotalAmount(amount);
+    }
 
-
-  const state = {
-    seen: false
-  };
-
-
-
-
+    function handleClick(event) {
+        event.preventDefault();
+        console.info('You clicked a breadcrumb.');
+    }
 
 
-  return (
-<div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="" title="Asset" />
-      <Slides>
-      </Slides>
-    </div >
-  );
+    return (
+        <div className=" account ">
+                     <TabsAsset /> 
+
+        </div>
+    );
 };
 export default Assets;

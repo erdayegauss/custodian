@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {useStateContext} from '../contexts/ContextProvider';
+import App from './App';
 
 const Button = ({icon, bgColor, color, bgHoverColor, size, text, borderRadius, width}) => {
     const {setIsClicked, initialState} = useStateContext();
@@ -11,7 +12,7 @@ const Button = ({icon, bgColor, color, bgHoverColor, size, text, borderRadius, w
             onClick={() => {
                 console.log("logout");
                 sessionStorage.clear();
-                window.location.href = '/login';
+                window.location.href = '/';
                 setIsClicked(initialState)
             }
             }

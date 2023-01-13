@@ -151,7 +151,80 @@
     opacity: 1.0;
 }
 
-.card:hover {
+
+.tabcard {
+    margin: 1%;
+    padding: 1px;
+    display: inline-block;
+    background-color:white;
+    width: 31%;
+    height: 200px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    border-radius: 10px;
+}
+
+.tabcard:hover {
+    background-color:#002ead;
+    opacity: 0.5;
+  }
+
+.tabcard img {
+    margin: 8%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.tabcard:focus {
+    background-color:#002ead;
+    color: white;
+    font-size:larger;
+    font:bold;
+  }
+
+
+
+
+
+
+  .assetcard {
+    margin: 1%;
+    padding: 1px;
+    display: inline-block;
+    background-color:white;
+    width: 31%;
+    height: 120px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    border-radius: 10px;
+}
+
+.assetcard:hover {
+    background-color:#002ead;
+    opacity: 0.5;
+  }
+
+.assetcard img {
+    margin: 8%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.assetcard:focus {
+    background-color:#002ead;
+    color: white;
+    font-size:larger;
+    font:bold;
+  }
+
+
+
+
+.card:focus {
     opacity: 0.2;
   }
 
@@ -246,7 +319,6 @@
     margin: 2%;
     padding: 5%;
     display: inline-block;
-    background-color: ;
     width: 100%;
     height: 40%;
     grid-template-columns: repeat(2, 1fr);
@@ -348,16 +420,7 @@
     grid-area: 2 / 5 / 3 / 6;
 }
 
-.deficard {
-    margin: 1px;
-    padding: auto;
-    display: inline-block;
-    width: 100%;
-    height: 100px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1em;
-    border-radius: 5px;
-}
+
 
 .app1 {
     position: relative;
@@ -455,3 +518,50 @@
     padding: 10px;
   
   }
+
+
+  .activitycard {
+   border-radius: 10px;
+   padding: 10px;
+   height: 70%; 
+   align-items: center;
+   text-align: center;
+   background-color: rgb(244, 239, 244);
+
+  }
+
+
+
+  .deficard {
+    margin: 1%;
+    padding: 1px;
+    display: inline-block;
+    background-color:white;
+    width: 18%;
+    height: 120px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    border-radius: 10px;
+}
+
+.deficard:hover {
+    background-color:#002ead;
+    opacity: 0.5;
+  }
+
+.deficard img {
+    margin: 8%;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.deficard:focus {
+    background-color:#002ead;
+    color: white;
+    font-size:larger;
+    font:bold;
+  }
+
+  

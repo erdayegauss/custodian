@@ -10,6 +10,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Autocomplete from '@mui/material/Autocomplete';
 import { assetsData, partnerData } from '../data/dummy';
+import IconButton from '@mui/material/IconButton';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Badge from '@mui/material/Badge';
+
+
 
 const style = {
   position: 'absolute',
@@ -57,7 +62,12 @@ const Popup = (props) => {
   
     return (
       <div >
-        <Button onClick={handleOpen1}>Connect</Button>
+
+
+
+
+        
+        <Button  onClick={handleOpen1}>Connect</Button>
         <Modal
         
           hideBackdrop
@@ -159,7 +169,17 @@ const Popup = (props) => {
 
   return (
     <div style={{ display: "flex", justifyContent: "right", alignItems: "right", margin: "10px" }}>
-      <Button variant="contained" onClick={handleOpen}>{props.title}</Button>
+
+
+<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <IconButton size="large" aria-label="show 4 new mails" onClick={handleOpen} color="inherit">
+                            <Badge  color="error">
+                                <AddCircleIcon color='primary' />
+                            </Badge>
+                        </IconButton>
+
+                    </Box>
+      
       <Modal
         open={open}
         onClose={handleClose}
