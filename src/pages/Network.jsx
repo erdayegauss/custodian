@@ -9,10 +9,12 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import tether from '../data/tether.png'
-import deribit from '../data/deribit.png'
+import  galaxy from '../data/galaxy.png'
 import binance from '../data/binance.png'
 import bitstamp from '../data/bitstamp.png'
 import { AddAccount } from '../components';
+import fidelity from '../data/fidelity.jpeg'
+import Silvergate  from '../data/silver.png'
 
 import { ordersData, contextMenuItems, ordersGrid, partnerData } from '../data/dummy';
 import { Header, Netcard, ConEx, Popup, Transfer } from '../components';
@@ -28,9 +30,12 @@ const Network = () => {
 
 
   const [partners, setPartners] = useState([
-    { image: deribit, name: "Deribit" },
-    { image: binance, name: "Binance" },
-    { image: bitstamp, name: "Bitstamp" },
+    { image: galaxy, name: "Galaxy", 
+    intro: "Galaxy Digital Holdings Ltd. is a financial services and investment management company.Offering services in  digital asset, blockchain tech sector."},
+    { image: fidelity, name: "Fidelity  " , 
+    intro: "Fidelity Digital Assets is dedicated to building products and services that help institutions adopt digital assets and innovate within digital world."},
+    { image: Silvergate, name: "Silvergate" , 
+    intro: "Silvergate Bank is the leading bank for innovative businesses in fintech and cryptocurrency. Based in San Diego, Silvergate has served innovators."},
   ]);
 
 
@@ -45,6 +50,7 @@ const Network = () => {
     let datatmp = [...partners, {
       name: part,
       image: tether,
+      intro: part+" Companhy is dedicated to building products and services that help institutions adopt digital assets and innovate within digital world."
     }];
     setPartners(datatmp);
     console.log(partners)
@@ -69,17 +75,11 @@ const Network = () => {
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="" title="Network" />
-
-
-
       <AddAccount func={handleChange} func1={addCard} name="Network" />
 
-
-
-      <Button variant="filled" onClick={handleChange} ><ArrowDownwardIcon /></Button>
       <div class="parent">
         {partners.map((partner, i) =>
-          <div > <Netcard image={partner.image} name={partner.name} intro="Galaxy Digital is a crypto services company. The Company's business lines include trading, asset management, investment banking, mining and principal invest." ></Netcard></div>
+          <div > <Netcard image={partner.image} name={partner.name} intro={partner.intro} ></Netcard></div>
         )}
 
         {/*

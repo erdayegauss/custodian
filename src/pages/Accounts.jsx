@@ -12,14 +12,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 const Accounts = () => {
     const [totalAmount, setTotalAmount] = useState(0);
 
-    const setTotal = (amount) => {
-        setTotalAmount(amount);
-    }
-
-    function handleClick(event) {
-        event.preventDefault();
-        console.info('You clicked a breadcrumb.');
-    }
+ 
 
 
     return (

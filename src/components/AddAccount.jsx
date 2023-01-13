@@ -34,7 +34,7 @@ const AddAccount = (props) => {
 
   return (
 
-    <div style={{ display: "flex", justifyContent: "right", alignItems: "right", margin: "10px" }} >
+    <div style={{ height: "60px", display: "flex", justifyContent: "right", alignItems: "right", margin: "10px" }} >
       <Button startIcon={<AddCircleIcon />} variant="outlined" onClick={handleClickOpen}>
         {props.name}
       </Button>

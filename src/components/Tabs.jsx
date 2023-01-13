@@ -10,6 +10,7 @@ import binance from '../data/binance.png'
 import bitstamp from '../data/bitstamp.png'
 import deribit from '../data/deribit.png'
 import Safeguard1 from '../data/Safeguard.png'
+import safty from "../data/safty.png"
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { CollapsePage, Appbar, Transfer, AddAccount } from '../components';
@@ -118,7 +119,6 @@ let datatmp1 = [
   { image: bitstamp, name: "Bitstamp", amount: "145,000" },
 
 ];
-
 
 
 function createData(name, amount, image) {
@@ -346,32 +346,6 @@ const Tabs = () => {
       <div className='' style={{ "padding": "2px" }}>
         <div>
 
-          <Grid container spacing={2}>
-            <Grid container lg={4} spacing={2} >
-              <Button class="tabcard" justify-self='center' key={0} id={0} variant="outlined"
-                startIcon={<Button variant="contained"  ><HealthAndSafetyIcon sx={{ width: 80, height: 60, }} /></Button>}
-                onClick={(handleTabClick)}
-                disableRipple
-              >
-                <a style={{ "fontSize": 25, "fontWeight": 100 }}>Vaults<br /></a>
-                <a style={{ "fontSize": 30, "fontWeight": 800 }}>&emsp;&emsp;&emsp;{"$1.7B"}</a>
-              </Button>
-
-            </Grid>
-            <Grid container lg={4} spacing={2} >
-          <Button class="tabcard" justify-self='center' key={0} id={1} variant="outlined"
-            startIcon={<Button variant="contained" ><CurrencyExchangeIcon sx={{ width: 80, height: 60, }} /></Button>}
-            onClick={(handleTabClick)}
-            disableRipple
-          >
-            <a style={{ "fontSize": 25, "fontWeight": 100 }}>Exchanges<br /></a>
-            <a style={{ "fontSize": 30, "fontWeight": 800 }}>&emsp;&emsp;&emsp;{"$310M"}</a>
-          </Button>
-
-            </Grid>
-
-          </Grid>
-
 
           <Button class="tabcard" justify-self='center' key={0} id={0} variant="outlined"
             startIcon={<Button variant="contained"  ><HealthAndSafetyIcon sx={{ width: 80, height: 60, }} /></Button>}
@@ -402,7 +376,6 @@ const Tabs = () => {
 
         </div>
       </div>
-
 
 
 
@@ -494,7 +467,7 @@ const Tabs = () => {
                       style={{ "width": "100%" }}>
 
                       <div  >
-                        <Pie id="pie-chart" data={ecomPieChartData[0]} legendVisiblity={true} />
+                        <Pie id="pie-chart" title="vaults"  data={ecomPieChartData[0]} legendVisiblity={true} />
                       </div>
                     </div>
                   </>
@@ -506,7 +479,7 @@ const Tabs = () => {
                   <div className="m-4  mt-1 p-1 md:p-10 bg-white rounded-2xl"
                     style={{ "width": "100%" }}>
                     <div  >
-                      <Pie id="pie-chart" data={ecomPieChartData[1]} legendVisiblity={true} />
+                      <Pie id="pie-chart" title="exchanges"  data={ecomPieChartData[1]} legendVisiblity={true} />
                     </div>
                   </div>
                 }
@@ -516,7 +489,7 @@ const Tabs = () => {
                   <div className="m-4  mt-1 p-1 md:p-10 bg-white rounded-2xl"
                     style={{ "width": "100%" }}>
                     <div  >
-                      <Pie id="pie-chart" data={ecomPieChartData[2]} legendVisiblity={true} />
+                      <Pie id="pie-chart" title="fiats" data={ecomPieChartData[2]} legendVisiblity={true} />
                     </div>
                   </div>
                 }

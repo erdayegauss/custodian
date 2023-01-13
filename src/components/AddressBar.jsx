@@ -43,8 +43,6 @@ const AddressBar = (props) => {
   const [amount, setAmount] = useState('');
   const [asset, setAsset] = useState('');
   const [note, setNote] = useState('');
-  const localData = JSON.parse(sessionStorage.token).data;
-  const localToken = JSON.parse(sessionStorage.token).token;
   const [rows, setRows] = useState([]);
 
   const handleTx = () => {

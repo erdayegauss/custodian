@@ -2,18 +2,17 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+
+import { SignIn,  ThemeSettings } from './components';
+import './App.css';
+import { useStateContext } from './contexts/ContextProvider';
+
 import {
-    Validation,
-    TwoFactor,
-    Dashboard,
-    Register,
+
     Login,
-    ProtectedRoute,
-    AuthedRoute,
     Navbar,
     Footer,
     Sidebar,
-    ThemeSettings
 } from './components';
 import {
     Exchange,
@@ -25,34 +24,12 @@ import {
     Settlement,
     Assets,
     Accounts,
-    Calendar,
-    Stacked,
-    Kanban,
-    Line,
-    Area,
-    Bar,
     Pie,
-    Financial,
-    ColorPicker,
-    ColorMapping,
-    Editor,
-    SignIn
 } from './pages';
 import './App.css';
 
 
-import { useStateContext } from './contexts/ContextProvider';
 
-
-function setToken(userToken) {
-    console.log("clearing token");
-    sessionStorage.removeItem('token');
-
-    console.log("setting token");
-    console.log(userToken.data.id);
-    sessionStorage.setItem('token', JSON.stringify(userToken));
-    console.log(userToken)
-}
 
 function getToken() {
     const tokenString = sessionStorage.getItem('token');
@@ -70,8 +47,7 @@ const App = () => {
         activeMenu,
         currentColor,
         themeSettings,
-        setThemeSettings,
-        setLogin,
+        setThemeSettings
     } = useStateContext();
 
 
@@ -87,12 +63,8 @@ const App = () => {
     }, []);
 
 
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
-
-
-
+   
       
-
 
 
 
@@ -145,9 +117,9 @@ const App = () => {
 
                             <Routes>
                                 {/* fund  */}
-                                {/*      <Route path="/" element={(<SignIn setToken={setToken}/>)}/>    */}
                                 <Route path="/" element={(<SignIn />)} />
                                 <Route path="/accounts" element={(<Accounts />)} />
+
                                 <Route path="/assets" element={(<Assets />)} />
 
                                 {/* app  */}
@@ -160,24 +132,10 @@ const App = () => {
                                 <Route path="/Exchange" element={<Exchange />} />
                                 <Route path="/login" element={<SignIn />} />
 
-                                {/* login  */}
-
-                                <Route path="/login" component={Login} />
-                                <Route path="/register" component={Register} />
-                                <Route exact path="/dashboard" component={Dashboard} />
-                                <Route path="/dashboard/2fa" component={TwoFactor} />
-                                <Route path="/user/validate" component={Validation} />
-
-                                {/* apps  */}
-                                <Route path="/kanban" element={<Kanban />} />
-                                <Route path="/editor" element={<Editor />} />
-                                <Route path="/calendar" element={<Calendar />} />
-                                <Route path="/color-picker" element={<ColorPicker />} />
 
                                 {/* charts  */}
+
                                 <Route path="/pie" element={<Pie />} />
-                                <Route path="/financial" element={<Financial />} />
-                                <Route path="/color-mapping" element={<ColorMapping />} />
 
                             </Routes>
                         </div>

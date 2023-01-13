@@ -46,3 +46,4 @@ export { default as TabsAsset } from './TabsAsset';
 export { default as Appbar } from './Appbar';
 export { default as CollapsePage } from './CollapsePage';
 export { default as AddressBar } from './AddressBar';
+export { default as SignIn} from './SignIn';
