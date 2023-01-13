@@ -51,15 +51,17 @@ export default function SignIn() {
 
         if ((username === "metaharvest") && (password === "win2023")) {
             setLoginStatus("Hi " + username + "! You have logged in successfully. You can now access the protected page.")
-            window.location.href = '/';
+            window.location.href = '/accounts';
         } else {
             setLoginStatus("Invalid username or password.")
         }
     }
 
     return (
+
+        <div className='box'>
         <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs" style={{color: "white",}}>
+            <Container component="main" maxWidth="xs" style={{color: "black",}}>
                 <CssBaseline/>
                 <Box
                     sx={{
@@ -128,5 +130,6 @@ export default function SignIn() {
                 <Copyright sx={{mt: 8, mb: 4}}/>
             </Container>
         </ThemeProvider>
+        </div>        
     );
 }

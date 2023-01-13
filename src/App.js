@@ -15,7 +15,7 @@ import {
     Sidebar,
 } from './components';
 import {
-    Exchange,
+    Margin,
     Tx,
     Network,
     Defi,
@@ -129,8 +129,8 @@ const App = () => {
                                 <Route path="/whitelist" element={<Whitelist />} />
                                 <Route path="/defi" element={<Defi />} />
                                 <Route path="/Transactions" element={<Tx />} />
-                                <Route path="/Exchange" element={<Exchange />} />
                                 <Route path="/login" element={<SignIn />} />
+                                <Route path="/Exchange" element={(<Margin />)} />
 
 
                                 {/* charts  */}

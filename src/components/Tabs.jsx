@@ -3,7 +3,8 @@ import Button from '@mui/material/Button';
 import { fiatData, vaultData, exchangeData, FiatData, vaultGrid, exchangeGrid, fiatGrid, iconData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import { Ajax } from '@syncfusion/ej2-base';
-import { Pie } from '../pages';
+import { Pie } from '.';
+
 
 
 import binance from '../data/binance.png'

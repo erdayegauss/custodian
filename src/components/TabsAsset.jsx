@@ -248,27 +248,8 @@ const TabsAsset = () => {
             </Button>
           )}
 
-
-
-
         </div>
       </div>
-
-      {/*
-      <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/network">
-          MUI
-        </Link>
-        <Link
-          underline="hover"
-          color="inherit"
-          href="/assets/"
-        >
-          Core
-        </Link>
-        <Typography color="text.primary">Breadcrumbs</Typography>
-      </Breadcrumbs>
-*/}
 
 
 
