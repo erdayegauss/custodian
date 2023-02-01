@@ -4,36 +4,20 @@ import { vaultData, exchangeData, FiatData, vaultGrid, exchangeGrid, fiatGrid, i
 import { useStateContext } from '../contexts/ContextProvider';
 import { Ajax } from '@syncfusion/ej2-base';
 
-
-import binance from '../data/binance.png'
-import bitstamp from '../data/bitstamp.png'
-import deribit from '../data/deribit.png'
-import Safeguard1 from '../data/Safeguard.png'
 import Grid from '@mui/material/Unstable_Grid2';
-
 import { Pie, Transfer } from '.';
-import { ecomPieChartData } from '../data/dummy';
-
-
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-
 import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Paper from '@mui/material/Paper';
-import { Header } from '.';
-
-
-
 
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -41,30 +25,14 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import SendIcon from '@mui/icons-material/Send';
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import { assetsData } from '../data/dummy';
-
-
-let datatmp = [
-  { image: Safeguard1, name: "Quant Vault", amount: "1,000,000" },
-  { image: Safeguard1, name: "Autocall Vault", amount: "560,010" },
-  { image: Safeguard1, name: "Options Vault", amount: "790,000" },
-  { image: Safeguard1, name: "Grid Vault", amount: "45,000" },
-  { image: Safeguard1, name: "Dual currency Vault", amount: "120,000" },
-  { image: Safeguard1, name: "Snowball Vault", amount: "103,000" },
-  { image: Safeguard1, name: "Fix income Vault", amount: "100,001" },
-
-];
-let datatmp1 = [
-  { image: deribit, name: "Deribit", amount: "560,010" },
-  { image: binance, name: "Binance", amount: "790,000" },
-  { image: bitstamp, name: "Bitstamp", amount: "145,000" },
-
-];
+import binance from '../data/binance.png'
+import bitstamp from '../data/bitstamp.png'
+import deribit from '../data/deribit.png'
+import Safeguard1 from '../data/Safeguard.png'
+import { ecomPieChartData } from '../data/dummy';
 
 
 function createData(name, amount, carbs, protein) {
@@ -90,30 +58,13 @@ const rows = [
 
 const TabsAsset = () => {
 
-  const [data1, setData1] = useState(datatmp1);
-  const [data, setData] = useState(datatmp);
-
-  const [name, setName] = useState('');
-  const [amount, setAmount] = useState('');
-
-  const [exchange, setExchange] = useState('');
-  const [exbalance, setExbalance] = useState('');
-
   const [currentTab, setCurrentTab] = useState('0');
-
-  const { currentColor } = useStateContext();
-
-  const source = [datatmp, datatmp1, FiatData]
-  const gridsource = [vaultGrid, exchangeGrid, fiatGrid]
-
-  const toolbarOptions = ['Search'];
 
   const tabs = [
     {
       id: '0',
       tabTitle: 'My Vault',
       title: 'BTC',
-      content: 'Las tabs se generan automáticamente a partir de un array de objetos, el cual tiene las propiedades: id, tabTitle, title y content.',
       amount: "$1.2M",
       image: <CurrencyBitcoinIcon />,
     },
@@ -121,7 +72,6 @@ const TabsAsset = () => {
       id: '1',
       tabTitle: 'Ethereum',
       title: 'Ethereum',
-      content: 'Contenido de tab 2.',
       amount: "$542M",
       image: <Button startIcon={< CurrencyBitcoinIcon fontSize="large"></CurrencyBitcoinIcon>} />,
     },
@@ -129,7 +79,6 @@ const TabsAsset = () => {
       id: '2',
       tabTitle: 'USDT',
       title: 'USDT',
-      content: 'Contenido de tab 3.',
       amount: "$50M",
       image: <CurrencyBitcoinIcon />,
     }
@@ -141,87 +90,6 @@ const TabsAsset = () => {
   }
 
 
-  useEffect(() => {
-
-    const ajax = new Ajax();
-    ajax.send();
-    ajax.onSuccess = (data: any) => {
-      setData([]);
-    }
-
-
-    const ajax1 = new Ajax();
-    ajax.send();
-    ajax1.onSuccess = (data1: any) => {
-      setData1([]);
-    }
-  }, []);
-
-
-
-  const dataupdate = () => {
-
-
-    datatmp = [...datatmp, {
-      name: name,
-      amount: amount,
-    }];
-
-    setData(datatmp);
-
-
-    console.log("the data is:", vaultData)
-
-    console.log("the data is:", data)
-  };
-
-
-  const dataupdate1 = () => {
-
-
-    datatmp1 = [...datatmp1, {
-      name: exchange,
-      amount: exbalance,
-    }];
-
-    setData1(datatmp1);
-
-
-    console.log("the data1 is:", exchangeData)
-
-    console.log("the data1 is:", data1)
-  };
-
-
-  const handleChange = event => {
-    setName(event.target.value);
-  }
-
-  const handleChange1 = event => {
-    setAmount(event.target.value);
-  }
-
-
-  const handleChange2 = event => {
-    setExchange(event.target.value);
-  }
-
-  const handleChange3 = event => {
-    setExbalance(event.target.value);
-  }
-
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-
   const [value, setValue] = React.useState('1');
 
   const handleChange5 = (event, newValue) => {
@@ -231,10 +99,6 @@ const TabsAsset = () => {
 
   return (
     <div className='' style={{ zIndex: 1, "width": "100%", "paddingLeft": "2%" }} >
-
-
-
-
       <div className='scrolling-wrapper' style={{ "padding": "2px" }}>
         <div>
           {assetsData.map((tab, i) =>
@@ -251,23 +115,14 @@ const TabsAsset = () => {
         </div>
       </div>
 
-
-
-
-
-
       {tabs.map((tab, i) =>
         <div id={i} style={{ width: "98%", }}>
-
           <Grid container spacing={2}>
             <Grid container lg={8} spacing={2} >
-
-
               {currentTab === `${tab.id}` &&
                 <div className=" bg-white rounded-2xl"
                   style={{ "width": "100%" }}
                 >
-
                   <div>
                     <TabContext value={value}>
                       <Box sx={{ borderBottom: 'none', borderColor: 'black', }}>
@@ -284,7 +139,7 @@ const TabsAsset = () => {
                                 <TableRow key={row.name}>
                                   <TableCell sx={{ width: '50%' }} component="th" scope="row" >
 
-                                    <div className="flex-container flex" style={{"alignItems": "center",}}>
+                                    <div className="flex-container flex" style={{ "alignItems": "center", }}>
                                       <img src={row.image} width="40" />
                                       <a style={{ "fontSize": "20px", "fontWeight": "400" }} >&emsp;&emsp;{row.name}</a>
                                     </div>
@@ -307,10 +162,6 @@ const TabsAsset = () => {
             </Grid>
 
             <Grid container lg={3.95} spacing={2} >
-
-
-
-
               {currentTab === `0` && `${tab.id}` === `0` &&
                 <>
                   <div className="m-4  mt-1 p-1 md:p-10 bg-white rounded-2xl"
@@ -464,17 +315,11 @@ const TabsAsset = () => {
                   </div>
                 </>
               }
-
-
-
             </Grid>
           </Grid>
         </div>
-
       )
       }
-
-
     </div >
   );
 }

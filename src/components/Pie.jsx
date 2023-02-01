@@ -1,7 +1,7 @@
 import React from 'react';
 import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationDataLabel, Inject, AccumulationTooltip } from '@syncfusion/ej2-react-charts';
 
-import { useStateContext } from '../../contexts/ContextProvider';
+import { useStateContext } from '../contexts/ContextProvider';
 
 const Doughnut = ({ id, data, legendVisiblity, height }) => {
   const { currentMode } = useStateContext();
@@ -17,15 +17,14 @@ const Doughnut = ({ id, data, legendVisiblity, height }) => {
       <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
       <AccumulationSeriesCollectionDirective>
         <AccumulationSeriesDirective
-          name="Sale"
+          name="Distribution"
           dataSource={data}
           xName="x"
           yName="y"
-          innerRadius="40%"
+          innerRadius="80%"
           startAngle={0}
           endAngle={360}
-          radius="70%"
-          explode
+          radius="100%"
           explodeOffset="10%"
           explodeIndex={2}
           dataLabel={{
@@ -33,7 +32,7 @@ const Doughnut = ({ id, data, legendVisiblity, height }) => {
             name: 'text',
             position: 'Inside',
             font: {
-              fontWeight: '600',
+              fontWeight: '800',
               color: '#fff',
             },
           }}
