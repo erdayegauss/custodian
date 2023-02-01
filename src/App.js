@@ -20,11 +20,8 @@ import {
     Network,
     Defi,
     Whitelist,
-    Clearance,
-    Settlement,
     Assets,
     Accounts,
-    Pie,
 } from './pages';
 import './App.css';
 
@@ -123,8 +120,6 @@ const App = () => {
                                 <Route path="/assets" element={(<Assets />)} />
 
                                 {/* app  */}
-                                <Route path="/clearance" element={<Clearance />} />
-                                <Route path="/settlement" element={<Settlement />} />
                                 <Route path="/network" element={<Network />} />
                                 <Route path="/whitelist" element={<Whitelist />} />
                                 <Route path="/defi" element={<Defi />} />
@@ -135,7 +130,6 @@ const App = () => {
 
                                 {/* charts  */}
 
-                                <Route path="/pie" element={<Pie />} />
 
                             </Routes>
                         </div>
